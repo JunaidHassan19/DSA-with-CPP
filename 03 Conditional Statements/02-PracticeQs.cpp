@@ -12,11 +12,11 @@ int main()
 
   if (num1 > num2)
   {
-    cout << "The largest number is: " << num1;
+    cout << "The largest number is: " << num1 << endl;
   }
   else
   {
-    cout << num2 << " Is the largest number";
+    cout << num2 << " Is the largest number" << endl;
   }
 
   // Print if a Number is Odd or Even.
@@ -26,11 +26,11 @@ int main()
 
   if (num % 2 == 0)
   {
-    cout << num << " Is Even";
+    cout << num << " Is Even" << endl;
   }
   else
   {
-    cout << num << " Is Odd";
+    cout << num << " Is Odd" << endl;
   }
 
   return 0;
