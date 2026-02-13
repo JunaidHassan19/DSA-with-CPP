@@ -59,17 +59,72 @@ using namespace std;
      Qs: Reverse a given number and print the result
   */
 
+// int main()
+// {
+//    int n = 123456;
+//    int res = 0;
+
+//    while (n > 0)
+//    {
+//       int lastDig = n % 10;
+//       res = res * 10 + lastDig;
+//       n /= 10;
+//    }
+//    cout << "Result is: " << res;
+//    return 0;
+// }
+
+// Qs Check if a number is prime or not
+
+// int main()
+// {
+//    int n;
+//    cout << "Enter the Number: ";
+//    cin >> n;
+
+//    bool isPrime = true;
+//    for (int i = 2; i < n - 1; i++)
+//    {
+//       if (n % i == 0)
+//       {
+//          isPrime = false;
+//          break;
+//       }
+//    }
+//    if (isPrime)
+//    {
+//       cout << n << " IS PRIME " << endl;
+//    }
+//    else
+//    {
+//       cout << n << " IS NOT PRIME";
+//    }
+//    return 0;
+// }
+
 int main()
 {
-   int n = 123456;
-   int res = 0;
+   int n;
+   cout << "ENTER A NUMBER: ";
+   cin >> n;
 
-   while (n > 0)
+   bool isPrime = true;
+
+   for (int i = 2; i < n - 1; i++)
    {
-      int lastDig = n % 10;
-      res = res * 10 + lastDig;
-      n /= 10;
+      if (n % i == 0)
+      {
+         isPrime = false;
+         break;
+      }
    }
-   cout << "Result is: " << res;
+   if (isPrime)
+   {
+      cout << n << " IS PRIME" << endl;
+   }
+   else
+   {
+      cout << n << " IS NOT PRIME";
+   }
    return 0;
 }
