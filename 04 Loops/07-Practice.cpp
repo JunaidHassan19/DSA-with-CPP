@@ -19,7 +19,7 @@ int main()
   cout << sum;
   // Output: Enter a Number: 10829
   //         20
-  /********************************************/
+  //***********************************************************************************
 
   // Q. Print the Sum of odd Digits of a number using while Loop.
 
@@ -40,4 +40,45 @@ int main()
   cout << sum;
   // Output: Enter a Number: 10829
   //         10
+
+  //*******************************************************************************************
+
+  /*
+     Qs: Print the digits of a given number in reverse using while loop
+        n = 10829
+  */
+
+  int n = 10829;
+  int lastDig;
+  while (n > 0)
+  {
+    lastDig = n % 10; // Get the last digit
+    cout << lastDig;  // Print the last digit
+    n /= 10;          // Remove the last digit from n
+  }
+
+  cout << endl;
+
+  // Output: 92801
+
+  //*******************************************************************************************
+
+  /*
+     Qs: Reverse a given and print the result
+  */
+
+  int n = 10829;
+  int result = 0; // Variable to store the reversed number
+
+  while (n > 0)
+  {
+    int lastDig = n % 10;           // Get the last digit of n
+    result = result * 10 + lastDig; // Update the result by shifting the previous digits to the left and adding the last digit
+    n /= 10;                        // Remove the last digit from n by dividing it by 10
+  }
+  cout << result;
+
+  // Output: 92801
+
+  return 0;
 }
