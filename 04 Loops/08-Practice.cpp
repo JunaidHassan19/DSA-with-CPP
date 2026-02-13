@@ -59,17 +59,17 @@ using namespace std;
      Qs: Reverse a given number and print the result
   */
 
-// int main()
-// {
-//   int n = 123456;
-//   int res = 0;
+int main()
+{
+   int n = 123456;
+   int res = 0;
 
-//   while (n > 0)
-//   {
-//     int lastDig = n % 10;
-//     res = res * 10 + lastDig;
-//     n /= 10;
-//   }
-//   cout << "Result is: " << res;
-//   return 0;
-// }
+   while (n > 0)
+   {
+      int lastDig = n % 10;
+      res = res * 10 + lastDig;
+      n /= 10;
+   }
+   cout << "Result is: " << res;
+   return 0;
+}
