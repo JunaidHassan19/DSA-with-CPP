@@ -89,8 +89,22 @@ int main()
 }
 */
 
+// Pattern 5
+/*
 int main()
 {
+  // int n = 4;
+  // char ch = 'A';
+  // for (int i = 1; i <= n; i++)
+  // {
+  //   for (int j = 1; j <= i; j++)
+  //   {
+  //     cout << ch;
+  //     ch++;
+  //   }
+  //   cout << endl;
+  // }
+
   int n = 4;
   char ch = 'A';
   for (int i = 1; i <= n; i++)
@@ -102,5 +116,7 @@ int main()
     }
     cout << endl;
   }
+
   return 0;
 }
+*/
