@@ -37,3 +37,25 @@ void sayHello()
 */
 
 // 03 topic
+/*
+int sum(int a, int b)
+{
+  return a + b;
+}
+int pro(int a, int b)
+{
+  return a * b;
+}
+int divide(int a, int b)
+{
+  return a / b;
+}
+
+int main()
+{
+  cout << sum(4, 2) << endl;
+  cout << pro(4, 2) << endl;
+  cout << divide(4, 2) << endl;
+  return 0;
+}
+*/
