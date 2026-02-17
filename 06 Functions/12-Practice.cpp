@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// 01 topic
+// 01
 /*
 void sayHello()
 {
@@ -21,7 +21,7 @@ int main()
 }
 */
 
-// 02 topic
+// 02
 /*
 void sayHello();
 
@@ -36,7 +36,7 @@ void sayHello()
 }
 */
 
-// 03 topic
+// 03
 /*
 int sum(int a, int b)
 {
@@ -56,6 +56,20 @@ int main()
   cout << sum(4, 2) << endl;
   cout << pro(4, 2) << endl;
   cout << divide(4, 2) << endl;
+  return 0;
+}
+*/
+
+// 04
+/*
+int pro(int a, int b)
+{
+  return a * b;
+}
+
+int main()
+{
+  cout << pro(4, 2);
   return 0;
 }
 */
