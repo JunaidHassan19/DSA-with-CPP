@@ -106,7 +106,6 @@ int main()
 */
 
 // 06
-
 /*
 int factorial(int n)
 {
@@ -125,5 +124,41 @@ int main()
   cin >> n;
 
   cout << factorial(n) << endl;
+}
+*/
+
+// 07
+/*
+bool isPrime(int n)
+{
+  if (n == 1)
+  {
+    return false;
+  }
+  for (int i = 2; i * i <= n; i++)
+  {
+    if (n % i == 0)
+    {
+      return false;
+    }
+  }
+  return true;
+}
+
+int main()
+{
+  int n;
+  cout << "Enter a number: ";
+  cin >> n;
+
+  if (isPrime(n))
+  {
+    cout << n << " Is prime" << endl;
+  }
+  else
+  {
+    cout << n << " Is Not Prime";
+  }
+  return 0;
 }
 */
