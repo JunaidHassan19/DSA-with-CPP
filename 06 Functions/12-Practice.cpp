@@ -104,3 +104,26 @@ int main()
   return 0;
 }
 */
+
+// 06
+
+/*
+int factorial(int n)
+{
+  int fact = 1;
+  for (int i = 1; i <= n; i++)
+  {
+    fact *= i;
+  }
+  return fact;
+}
+
+int main()
+{
+  int n;
+  cout << "Enter a number: ";
+  cin >> n;
+
+  cout << factorial(n) << endl;
+}
+*/
