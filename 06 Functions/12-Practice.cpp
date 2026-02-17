@@ -73,3 +73,34 @@ int main()
   return 0;
 }
 */
+
+// 05
+/*
+bool isEven(int n)
+{
+  if (n % 2 == 0)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+int main()
+{
+  int n;
+  cout << "Enter a number:";
+  cin >> n;
+
+  if (isEven(n))
+  {
+    cout << n << " is even" << endl;
+  }
+  else
+  {
+    cout << n << " is odd";
+  }
+  return 0;
+}
+*/
