@@ -194,3 +194,21 @@ int main()
 */
 
 // 09
+/*
+int sum(int a, int b)
+{
+  return a + b;
+}
+
+int sum(double a, double b)
+{
+  return a - b;
+}
+
+int main()
+{
+  int a, b;
+  cout << sum(5, 2) << endl;
+  cout << sum(5.2, 2.8) << endl;
+}
+*/
