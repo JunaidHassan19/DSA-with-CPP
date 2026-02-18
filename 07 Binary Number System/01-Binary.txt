@@ -1,0 +1,145 @@
+===============================================
+         BINARY NUMBER SYSTEM
+===============================================
+
+What is Binary Number System?
+------------------------------
+Binary is a number system that uses only TWO digits: 0 and 1.
+It is also called "Base-2" number system.
+
+In our daily life, we use the Decimal system (Base-10) which has 10 digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
+Computers use Binary because they work with electrical signals - ON (1) and OFF (0).
+
+
+Why Do Computers Use Binary?
+-----------------------------
+- Computers are made of tiny switches called transistors
+- A switch can only be ON or OFF
+- ON = 1, OFF = 0
+- This makes binary perfect for computers!
+
+
+Understanding Place Values
+---------------------------
+In Decimal (Base-10):
+    Each position is a power of 10
+    Example: 523 = 5×100 + 2×10 + 3×1
+                 = 5×10² + 2×10¹ + 3×10⁰
+
+In Binary (Base-2):
+    Each position is a power of 2
+    Powers of 2: 1, 2, 4, 8, 16, 32, 64, 128...
+
+    Position:    7     6     5     4     3     2     1     0
+    Value:      128   64    32    16    8     4     2     1
+
+
+Converting Binary to Decimal (Examples)
+----------------------------------------
+Example 1: Convert 1010 (binary) to decimal
+    
+    Position:     3    2    1    0
+    Binary:       1    0    1    0
+    Value:        8    4    2    1
+    
+    Calculation: (1×8) + (0×4) + (1×2) + (0×1)
+               = 8 + 0 + 2 + 0
+               = 10
+    
+    Answer: 1010 (binary) = 10 (decimal)
+
+
+Example 2: Convert 1101 (binary) to decimal
+
+    Position:     3    2    1    0
+    Binary:       1    1    0    1
+    Value:        8    4    2    1
+    
+    Calculation: (1×8) + (1×4) + (0×2) + (1×1)
+               = 8 + 4 + 0 + 1
+               = 13
+    
+    Answer: 1101 (binary) = 13 (decimal)
+
+
+Example 3: Convert 11111 (binary) to decimal
+
+    Position:     4    3    2    1    0
+    Binary:       1    1    1    1    1
+    Value:       16    8    4    2    1
+    
+    Calculation: 16 + 8 + 4 + 2 + 1 = 31
+    
+    Answer: 11111 (binary) = 31 (decimal)
+
+
+Converting Decimal to Binary (Examples)
+----------------------------------------
+Method: Divide by 2, write remainders from bottom to top
+
+Example 1: Convert 13 (decimal) to binary
+
+    13 ÷ 2 = 6  remainder 1   ↑
+    6  ÷ 2 = 3  remainder 0   |
+    3  ÷ 2 = 1  remainder 1   |  Read from bottom to top
+    1  ÷ 2 = 0  remainder 1   |
+    
+    Answer: 13 (decimal) = 1101 (binary)
+
+
+Example 2: Convert 25 (decimal) to binary
+
+    25 ÷ 2 = 12 remainder 1   ↑
+    12 ÷ 2 = 6  remainder 0   |
+    6  ÷ 2 = 3  remainder 0   |
+    3  ÷ 2 = 1  remainder 1   |  Read from bottom to top
+    1  ÷ 2 = 0  remainder 1   |
+    
+    Answer: 25 (decimal) = 11001 (binary)
+
+
+Example 3: Convert 50 (decimal) to binary
+
+    50 ÷ 2 = 25 remainder 0   ↑
+    25 ÷ 2 = 12 remainder 1   |
+    12 ÷ 2 = 6  remainder 0   |
+    6  ÷ 2 = 3  remainder 0   |  Read from bottom to top
+    3  ÷ 2 = 1  remainder 1   |
+    1  ÷ 2 = 0  remainder 1   |
+    
+    Answer: 50 (decimal) = 110010 (binary)
+
+
+Quick Reference Table
+----------------------
+Decimal  |  Binary
+---------|----------
+   0     |    0
+   1     |    1
+   2     |   10
+   3     |   11
+   4     |  100
+   5     |  101
+   6     |  110
+   7     |  111
+   8     | 1000
+   9     | 1001
+  10     | 1010
+  15     | 1111
+  16     | 10000
+  32     | 100000
+  64     | 1000000
+ 100     | 1100100
+ 255     | 11111111
+
+
+Key Points to Remember
+-----------------------
+1. Binary uses only 0 and 1
+2. Each position represents a power of 2
+3. Rightmost position is 2⁰ = 1
+4. To convert binary to decimal: multiply each digit by its position value and add
+5. To convert decimal to binary: divide by 2 repeatedly and read remainders upward
+6. Adding one more bit doubles the maximum value you can represent
+
+===============================================
