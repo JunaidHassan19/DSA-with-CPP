@@ -1,9 +1,26 @@
 #include <iostream>
 using namespace std;
 
-void binToDec(int binNum)
+// void binToDec(int binNum)
+// {
+//   int n = binNum;
+//   int decNum = 0;
+//   int pow = 1;
+
+//   while (n > 0)
+//   {
+//     int lastDig = n % 10;
+//     decNum += lastDig * pow;
+//     pow *= 2;
+//     n /= 10;
+//   }
+
+//   cout << decNum;
+// }
+
+void binToDec(int BinNum)
 {
-  int n = binNum;
+  int n = BinNum;
   int decNum = 0;
   int pow = 1;
 
@@ -14,7 +31,6 @@ void binToDec(int binNum)
     pow *= 2;
     n /= 10;
   }
-
   cout << decNum;
 }
 
