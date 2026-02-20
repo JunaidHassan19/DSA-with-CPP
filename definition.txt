@@ -1,0 +1,197 @@
+================================================================================
+                        ARRAYS (Part 1) - DEFINITIONS
+================================================================================
+
+1. WHAT IS AN ARRAY?
+--------------------
+   - An array is a collection of elements of the SAME data type stored in 
+     CONTIGUOUS (continuous) memory locations.
+   - It allows storing multiple values under a single variable name.
+   - Each element can be accessed using an INDEX (position number).
+   - Arrays have a FIXED SIZE that must be defined at the time of declaration.
+
+   Example: int marks[5];  // Array of 5 integers
+
+
+2. WHY USE ARRAYS?
+------------------
+   - To store multiple values of the same type without declaring separate variables.
+   - Efficient memory usage (contiguous allocation).
+   - Easy to traverse and manipulate data using loops.
+   - Useful for implementing other data structures (stacks, queues, etc.).
+
+
+3. ARRAY DECLARATION
+--------------------
+   Syntax: dataType arrayName[size];
+
+   Examples:
+      int numbers[10];      // Integer array of size 10
+      float prices[5];      // Float array of size 5
+      char letters[26];     // Character array of size 26
+
+   Note: Size must be a positive integer constant (or const variable).
+
+
+4. ARRAY INITIALIZATION
+-----------------------
+   a) At the time of declaration:
+      int arr[5] = {10, 20, 30, 40, 50};
+
+   b) Partial initialization (remaining elements become 0):
+      int arr[5] = {10, 20};  // arr = {10, 20, 0, 0, 0}
+
+   c) Initialize all elements to 0:
+      int arr[5] = {0};       // arr = {0, 0, 0, 0, 0}
+
+   d) Size auto-detection:
+      int arr[] = {1, 2, 3, 4};  // Size automatically becomes 4
+
+   e) After declaration (element by element):
+      int arr[3];
+      arr[0] = 10;
+      arr[1] = 20;
+      arr[2] = 30;
+
+
+5. ARRAY INDEXING
+-----------------
+   - Array indices start from 0 (Zero-based indexing).
+   - First element is at index 0, last element is at index (size - 1).
+   - For an array of size n: valid indices are 0 to n-1.
+
+   Example:
+      int arr[5] = {10, 20, 30, 40, 50};
+      
+      Index:    0    1    2    3    4
+      Value:   10   20   30   40   50
+
+      arr[0] = 10  (First element)
+      arr[4] = 50  (Last element)
+      arr[5] = ??  (OUT OF BOUNDS - Undefined behavior!)
+
+
+6. ACCESSING ARRAY ELEMENTS
+---------------------------
+   - Use the index inside square brackets: arrayName[index]
+   
+   Reading:
+      int x = arr[2];       // x gets the value at index 2
+      cout << arr[0];       // Prints first element
+
+   Writing:
+      arr[3] = 100;         // Assigns 100 to index 3
+
+
+7. TRAVERSING AN ARRAY
+----------------------
+   - Visiting each element of the array one by one.
+   - Typically done using loops.
+
+   Using for loop:
+      for(int i = 0; i < size; i++) {
+          cout << arr[i] << " ";
+      }
+
+   Using while loop:
+      int i = 0;
+      while(i < size) {
+          cout << arr[i] << " ";
+          i++;
+      }
+
+
+8. MEMORY REPRESENTATION
+------------------------
+   - Arrays are stored in CONTIGUOUS memory locations.
+   - Address of element = Base Address + (Index × Size of DataType)
+
+   Example: int arr[4] = {10, 20, 30, 40};
+   If base address is 1000 and int size is 4 bytes:
+   
+      arr[0] -> Address 1000 -> Value 10
+      arr[1] -> Address 1004 -> Value 20
+      arr[2] -> Address 1008 -> Value 30
+      arr[3] -> Address 1012 -> Value 40
+
+
+9. FINDING ARRAY SIZE
+---------------------
+   Total size in bytes:  sizeof(arr)
+   Number of elements:   sizeof(arr) / sizeof(arr[0])
+
+   Example:
+      int arr[5] = {1, 2, 3, 4, 5};
+      int size = sizeof(arr) / sizeof(arr[0]);  // size = 5
+
+
+10. PASSING ARRAYS TO FUNCTIONS
+-------------------------------
+    - Arrays are passed by REFERENCE (address), not by value.
+    - Changes made inside function affect the original array.
+    - Size is usually passed as a separate parameter.
+
+    Syntax:
+       void printArray(int arr[], int size) {
+           for(int i = 0; i < size; i++) {
+               cout << arr[i] << " ";
+           }
+       }
+
+    Function Call:
+       int numbers[5] = {1, 2, 3, 4, 5};
+       printArray(numbers, 5);
+
+
+11. COMMON ARRAY OPERATIONS
+---------------------------
+    a) Input elements:
+       for(int i = 0; i < n; i++) {
+           cin >> arr[i];
+       }
+
+    b) Find sum:
+       int sum = 0;
+       for(int i = 0; i < n; i++) {
+           sum += arr[i];
+       }
+
+    c) Find maximum/minimum:
+       int max = arr[0];
+       for(int i = 1; i < n; i++) {
+           if(arr[i] > max) max = arr[i];
+       }
+
+    d) Search for an element (Linear Search):
+       for(int i = 0; i < n; i++) {
+           if(arr[i] == key) {
+               cout << "Found at index " << i;
+               break;
+           }
+       }
+
+    e) Reverse an array:
+       int start = 0, end = n - 1;
+       while(start < end) {
+           swap(arr[start], arr[end]);
+           start++;
+           end--;
+       }
+
+
+12. IMPORTANT POINTS TO REMEMBER
+--------------------------------
+    ✓ Array index starts from 0, not 1.
+    ✓ Accessing index out of bounds causes undefined behavior.
+    ✓ Array size must be known at compile time (for static arrays).
+    ✓ Arrays cannot be resized once declared.
+    ✓ Array name represents the base address of the array.
+    ✓ Arrays are passed to functions by reference (address).
+    ✓ Uninitialized arrays contain garbage values.
+    ✓ Using {0} initializes all elements to 0.
+
+
+================================================================================
+                              END OF ARRAYS (Part 1)
+               Next: 2D Arrays, 3D Arrays & Multidimensional Arrays
+================================================================================
