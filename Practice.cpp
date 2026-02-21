@@ -112,7 +112,7 @@ int main()
 */
 
 // Linear Search
-
+/*
 int linearSearch(int *arr, int len, int key)
 {
   for (int i = 0; i < len; i++)
@@ -132,4 +132,33 @@ int main()
   int key = 10;
 
   cout << linearSearch(arr, len, key);
+}
+*/
+
+// Reverse Array
+
+void reverse(int *arr, int len)
+{
+  int start = 0;
+  int end = len - 1;
+  while (start < end)
+  {
+    swap(arr[start], arr[end]);
+    start++;
+    end--;
+  }
+  cout << "Reversed array ";
+  for (int i = 0; i < len; i++)
+  {
+    cout << arr[i] << ", ";
+  }
+  cout << endl;
+}
+
+int main()
+{
+  int arr[] = {2, 4, 6, 8, 10, 12};
+  int len = sizeof(arr) / sizeof(int);
+
+  reverse(arr, len);
 }
