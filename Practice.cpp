@@ -78,3 +78,58 @@ int main()
   return 0;
 }
 */
+
+// Arrays Passed by Reference -ll
+/*
+void fun(int arr[])
+{
+  arr[0] = 1000;
+}
+
+void fun2(int *ptr)
+{
+  ptr[2] = 500;
+}
+
+void printArr(int arr[], int len)
+{
+  // arr[0] = 100;
+  for (int i = 0; i < len; i++)
+  {
+    cout << arr[i] << " ";
+  }
+  cout << endl;
+}
+
+int main()
+{
+  int arr[] = {1, 2, 3, 4, 5};
+  int len = sizeof(arr) / sizeof(int);
+  printArr(arr, len);
+  cout << arr[2];
+  return 0;
+}
+*/
+
+// Linear Search
+
+int linearSearch(int *arr, int len, int key)
+{
+  for (int i = 0; i < len; i++)
+  {
+    if (arr[i] == key)
+    {
+      return i;
+    }
+  }
+  return -1;
+}
+
+int main()
+{
+  int arr[] = {2, 4, 6, 8, 10, 12, 14, 18};
+  int len = sizeof(arr) / sizeof(int);
+  int key = 10;
+
+  cout << linearSearch(arr, len, key);
+}
