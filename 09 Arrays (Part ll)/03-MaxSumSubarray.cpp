@@ -14,7 +14,7 @@ void maxSumSubset(int *arr, int len)
     }
     cout << endl;
   }
-  cout << "The higest sum is = " << maxSum;
+  cout << "Maxinum Subarray sum = " << maxSum;
 }
 
 int main()
