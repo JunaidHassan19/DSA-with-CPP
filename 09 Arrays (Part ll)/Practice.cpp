@@ -76,7 +76,7 @@ int main()
 }
 */
 
-// max Sum Subarray
+// max Sum Subarray - Brute Force Approach - O(n^3) time complexity
 
 // void maxSumSubarray(int *arr, int len)
 // {
@@ -116,6 +116,24 @@ int main()
 //   cout << "Maxinum Subarray sum = " << maxSum;
 // }
 
+// void maxSumSubarray(int *arr, int len)
+// {
+//   int maxSum = INT_MIN;
+//   for (int start = 0; start < len; start++)
+//   {
+//     for (int end = start; end < len; end++)
+//     {
+//       int currSum = 0;
+//       for (int i = start; i <= end; i++)
+//       {
+//         currSum += arr[i];
+//         maxSum = max(maxSum, currSum);
+//       }
+//     }
+//   }
+//   cout << "Maxinum Subarray sum = " << maxSum;
+// }
+
 void maxSumSubarray(int *arr, int len)
 {
   int maxSum = INT_MIN;
@@ -131,7 +149,7 @@ void maxSumSubarray(int *arr, int len)
       }
     }
   }
-  cout << "Maxinum Subarray sum = " << maxSum;
+  cout << " Maxinum Subarray sum = " << maxSum;
 }
 
 int main()
