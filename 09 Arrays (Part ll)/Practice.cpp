@@ -77,7 +77,7 @@ int main()
 */
 
 // max Sum Subarray - Brute Force Approach - O(n^3) time complexity
-
+/*
 // void maxSumSubarray(int *arr, int len)
 // {
 //   int maxSum = INT_MIN;
@@ -158,5 +158,63 @@ int main()
   int len = sizeof(arr) / sizeof(int);
 
   maxSumSubarray(arr, len);
+  return 0;
+}
+*/
+
+// Optimized Approach - O(n^2) time complexity
+
+// void maxSumSubset(int *arr, int len)
+// {
+//   int maxSum = INT_MIN;
+//   for (int start = 0; start < len; start++)
+//   {
+//     int currSum = 0;
+//     for (int end = start; end < len; end++)
+//     {
+//       currSum += arr[end];
+//       maxSum = max(maxSum, currSum);
+//     }
+//   }
+//   cout << "Maxinum Subarray sum = " << maxSum;
+// }
+
+// void maxSumSubset(int *arr, int len)
+// {
+//   int maxSum = INT_MIN;
+//   for (int start = 0; start < len; start++)
+//   {
+//     int currSum = 0;
+//     for (int end = start; end < len; end++)
+//     {
+//       currSum += arr[end];
+//       maxSum = max(maxSum, currSum);
+//     }
+//   }
+//   cout << "Maxinum Subarray sum = " << maxSum;
+// }
+
+void maxSumSubset(int *arr, int len)
+{
+  int maxSum = INT_MIN;
+  for (int start = 0; start < len; start++)
+  {
+    int currSum = 0;
+    for (int end = start; end < len; end++)
+    {
+      currSum += arr[end];
+      maxSum = max(maxSum, currSum);
+    }
+  }
+  cout << "Maxinum Subarray sum = " << maxSum;
+}
+
+int main()
+{
+  int arr[6] = {2, -3, 6, -5, 4, 2};
+  int len = sizeof(arr) / sizeof(int);
+
+  maxSumSubset(arr, len);
+
   return 0;
 }
