@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+// Optimized Approach - O(n^2) time complexity
 void maxSumSubset(int *arr, int len)
 {
   int maxSum = INT_MIN;
