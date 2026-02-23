@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// Kadane's Algorithm
+// Kadane's Algorithm - O(n) time complexity
 void maxSumSubarray(int *arr, int len)
 {
   int currSum = 0;
