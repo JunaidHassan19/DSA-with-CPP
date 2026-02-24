@@ -283,7 +283,7 @@ int main()
 */
 
 // Given an array of stock prices, find the maximum profit that can be made by buying and selling a single stock. You must buy before you sell.
-
+/*
 // void maxProfit(int *prices, int len)
 // {
 //   int bestBuy[10000];
@@ -341,5 +341,96 @@ int main()
   int len = sizeof(prices) / sizeof(int);
 
   maxProfit(prices, len);
+  return 0;
+}
+*/
+
+// Function to calculate the amount of water trapped.
+// int trappingRainwater(int *heights, int len)
+// {
+//   int leftMax[20000];
+//   int rightMax[20000];
+//   leftMax[0] = heights[0];
+//   rightMax[len - 1] = heights[len - 1];
+//   for (int i = 1; i < len; i++)
+//   {
+//     leftMax[i] = max(leftMax[i - 1], heights[i - 1]);
+//   }
+//   for (int i = len - 2; i >= 0; i--)
+//   {
+//     rightMax[i] = max(rightMax[i + 1], heights[i + 1]);
+//   }
+//   int waterTrapped = 0;
+//   for (int i = 0; i < len; i++)
+//   {
+//     int currWater = min(leftMax[i], rightMax[i]) - heights[i];
+//     if (currWater > 0)
+//     {
+//       waterTrapped += currWater;
+//     }
+//   }
+//   return waterTrapped;
+// }
+
+// int trappingRainwater(int *heights, int len)
+// {
+//   int leftMax[20000];
+//   int rightMax[20000];
+//   leftMax[0] = heights[0];
+//   rightMax[len - 1] = heights[len - 1];
+//   for (int i = 1; i < len; i++)
+//   {
+//     leftMax[i] = max(leftMax[i - 1], heights[i - 1]);
+//   }
+//   for (int i = len - 2; i >= 0; i--)
+//   {
+//     rightMax[i] = max(rightMax[i + 1], heights[i + 1]);
+//   }
+//   int trappedWater = 0;
+//   for (int i = 0; i < len; i++)
+//   {
+//     int currWater = min(leftMax[i], rightMax[i]) - heights[i];
+//     if (currWater > 0)
+//     {
+//       trappedWater += currWater;
+//     }
+//   }
+//   return trappedWater;
+// }
+
+int trappingRainwater(int *heights, int len)
+{
+  int leftMax[20000];
+  int rightMax[20000];
+  leftMax[0] = heights[0];
+  rightMax[len - 1] = heights[len - 1];
+
+  for (int i = 1; i < len; i++)
+  {
+    leftMax[i] = max(leftMax[i - 1], heights[i - 1]);
+  }
+  for (int i = len - 2; i >= 0; i--)
+  {
+    rightMax[i] = max(rightMax[i + 1], heights[i + 1]);
+  }
+  int trappedWater = 0;
+  for (int i = 0; i < len; i++)
+  {
+    int currWater = min(leftMax[i], rightMax[i]) - heights[i];
+    if (currWater > 0)
+    {
+      trappedWater += currWater;
+    }
+  }
+  return trappedWater;
+}
+
+int main()
+{
+  int heights[7] = {4, 2, 0, 6, 3, 2, 5};
+  int len = sizeof(heights) / sizeof(int);
+
+  cout << "Trapping Rainwater =  " << trappingRainwater(heights, len);
+
   return 0;
 }
