@@ -221,6 +221,7 @@ int main()
 */
 
 // max Sum Subarray - Kadane's Algorithm - O(n) time complexity
+/*
 
 // void maxSumSubarray(int *arr, int len)
 // {
@@ -277,5 +278,68 @@ int main()
 
   maxSumSubarray(arr, len);
 
+  return 0;
+}
+*/
+
+// Given an array of stock prices, find the maximum profit that can be made by buying and selling a single stock. You must buy before you sell.
+
+// void maxProfit(int *prices, int len)
+// {
+//   int bestBuy[10000];
+//   bestBuy[0] = INT_MAX;
+//   for (int i = 1; i < len; i++)
+//   {
+//     bestBuy[i] = min(bestBuy[i - 1], prices[i - 1]);
+//   }
+//   int maxProfit = 0;
+//   for (int i = 0; i < len; i++)
+//   {
+//     int currProfit = prices[i] - bestBuy[i];
+//     maxProfit = max(maxProfit, currProfit);
+//   }
+//   cout << "Max Profit = " << maxProfit;
+// }
+
+// void maxProfit(int *prices, int len)
+// {
+//   int bestBuy[10000];
+//   bestBuy[0] = INT_MAX;
+//   for (int i = 1; i < len; i++)
+//   {
+//     bestBuy[i] = min(bestBuy[i - 1], prices[i - 1]);
+//   }
+//   int maxProfit = 0;
+//   for (int i = 0; i < len; i++)
+//   {
+//     int currProfit = prices[i] - bestBuy[i];
+//     maxProfit = max(maxProfit, currProfit);
+//   }
+//   cout << "Max Profit = " << maxProfit;
+// }
+
+void maxProfit(int *prices, int len)
+{
+  int bestBuy[10000];
+  bestBuy[0] = INT_MAX;
+
+  for (int i = 1; i < len; i++)
+  {
+    bestBuy[i] = min(bestBuy[i - 1], prices[i - 1]);
+  }
+  int maxProfit = 0;
+  for (int i = 0; i < len; i++)
+  {
+    int currprofit = prices[i] - bestBuy[i];
+    maxProfit = max(maxProfit, currprofit);
+  }
+  cout << "Max Profit = " << maxProfit;
+}
+int main()
+{
+  int prices[6] = {7, 1, 5, 3, 6, 4};
+  int len = sizeof(prices) / sizeof(int);
+
+  maxProfit(prices, len);
   return 0;
 }
