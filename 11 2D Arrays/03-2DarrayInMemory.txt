@@ -1,6 +1,6 @@
-// 2D Arrays in Memory
+2D Arrays in Memory
 
-/*
+
     How 2D Arrays are Stored in Memory?
     ------------------------------------
 
@@ -25,4 +25,4 @@
 
     For arr[1][2] in int arr[3][4]:
     Address = Base + (1 * 4 + 2) * 4 = Base + 24 bytes
-*/
+
