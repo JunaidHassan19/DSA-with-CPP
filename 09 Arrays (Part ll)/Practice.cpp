@@ -35,6 +35,24 @@ using namespace std;
 //   }
 // }
 
+
+
+// void printSubarrays(int *arr, int len)
+// {
+//   for (int start = 0; start < len; start++)
+//   {
+//     for (int end = start; end < len; end++)
+//     {
+//       for (int i = start; i <= end; i++)
+//       {
+//         cout << arr[i];
+//       }
+//       cout << ", ";
+//     }
+//     cout << endl;
+//   }
+// }
+
 // void printSubarrays(int *arr, int len)
 // {
 //   for (int start = 0; start < len; start++)
@@ -66,6 +84,7 @@ void printSubarrays(int *arr, int len)
     cout << endl;
   }
 }
+
 int main()
 {
   int arr[5] = {1, 2, 3, 4, 5};
@@ -77,7 +96,7 @@ int main()
 */
 
 // max Sum Subarray - Brute Force Approach - O(n^3) time complexity
-/*
+
 // void maxSumSubarray(int *arr, int len)
 // {
 //   int maxSum = INT_MIN;
@@ -134,6 +153,24 @@ int main()
 //   cout << "Maxinum Subarray sum = " << maxSum;
 // }
 
+// void maxSumSubarray(int *arr, int len)
+// {
+//   int maxSum = INT_MIN;
+//   for (int start = 0; start < len; start++)
+//   {
+//     for (int end = start; end < len; end++)
+//     {
+//       int currSum = 0;
+//       for (int i = start; i <= end; i++)
+//       {
+//         currSum += arr[i];
+//         maxSum = max(maxSum, currSum);
+//       }
+//     }
+//   }
+//   cout << " Maxinum Subarray sum = " << maxSum;
+// }
+
 void maxSumSubarray(int *arr, int len)
 {
   int maxSum = INT_MIN;
@@ -145,11 +182,13 @@ void maxSumSubarray(int *arr, int len)
       for (int i = start; i <= end; i++)
       {
         currSum += arr[i];
-        maxSum = max(maxSum, currSum);
       }
+      cout << currSum << ", ";
+      maxSum = max(maxSum, currSum);
     }
+    cout << endl;
   }
-  cout << " Maxinum Subarray sum = " << maxSum;
+  cout << "Max subsrray sum = " << maxSum;
 }
 
 int main()
@@ -160,7 +199,6 @@ int main()
   maxSumSubarray(arr, len);
   return 0;
 }
-*/
 
 // max Sum Subarray - Optimized Approach - O(n^2) time complexity
 /*
@@ -346,6 +384,7 @@ int main()
 */
 
 // Function to calculate the amount of water trapped.
+/*
 // int trappingRainwater(int *heights, int len)
 // {
 //   int leftMax[20000];
@@ -434,3 +473,4 @@ int main()
 
   return 0;
 }
+*/
