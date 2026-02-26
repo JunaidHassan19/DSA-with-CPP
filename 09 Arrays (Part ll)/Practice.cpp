@@ -276,6 +276,21 @@ int main()
 
 // max Sum Subarray - Kadane's Algorithm - O(n) time complexity
 /*
+// void maxSumSubarray(int *arr, int len)
+// {
+//   int currSum = 0;
+//   int maxSum = INT_MIN;
+//   for (int i = 0; i < len; i++)
+//   {
+//     currSum += arr[i];
+//     maxSum = max(maxSum, currSum);
+//     if (currSum < 0)
+//     {
+//       currSum = 0;
+//     }
+//   }
+//   cout << "Maxinum Subarray sum = " << maxSum;
+// }
 
 // void maxSumSubarray(int *arr, int len)
 // {
@@ -313,6 +328,7 @@ void maxSumSubarray(int *arr, int len)
 {
   int currSum = 0;
   int maxSum = INT_MIN;
+
   for (int i = 0; i < len; i++)
   {
     currSum += arr[i];
@@ -322,7 +338,7 @@ void maxSumSubarray(int *arr, int len)
       currSum = 0;
     }
   }
-  cout << "Maxinum Subarray sum = " << maxSum;
+  cout << "Max subarray Sum = " << maxSum;
 }
 
 int main()
