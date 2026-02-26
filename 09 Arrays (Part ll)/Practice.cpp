@@ -434,7 +434,7 @@ int main()
 */
 
 // Function to calculate the amount of water trapped.
-/*
+
 // int trappingRainwater(int *heights, int len)
 // {
 //   int leftMax[20000];
@@ -487,6 +487,32 @@ int main()
 //   return trappedWater;
 // }
 
+// int trappingRainwater(int *heights, int len)
+// {
+//   int leftMax[20000];
+//   int rightMax[20000];
+//   leftMax[0] = heights[0];
+//   rightMax[len - 1] = heights[len - 1];
+//   for (int i = 1; i < len; i++)
+//   {
+//     leftMax[i] = max(leftMax[i - 1], heights[i - 1]);
+//   }
+//   for (int i = len - 2; i >= 0; i--)
+//   {
+//     rightMax[i] = max(rightMax[i + 1], heights[i + 1]);
+//   }
+//   int trappedWater = 0;
+//   for (int i = 0; i < len; i++)
+//   {
+//     int currWater = min(leftMax[i], rightMax[i]) - heights[i];
+//     if (currWater > 0)
+//     {
+//       trappedWater += currWater;
+//     }
+//   }
+//   return trappedWater;
+// }
+
 int trappingRainwater(int *heights, int len)
 {
   int leftMax[20000];
@@ -502,16 +528,16 @@ int trappingRainwater(int *heights, int len)
   {
     rightMax[i] = max(rightMax[i + 1], heights[i + 1]);
   }
-  int trappedWater = 0;
+  int waterTrapped = 0;
   for (int i = 0; i < len; i++)
   {
     int currWater = min(leftMax[i], rightMax[i]) - heights[i];
     if (currWater > 0)
     {
-      trappedWater += currWater;
+      waterTrapped += currWater;
     }
   }
-  return trappedWater;
+  return waterTrapped;
 }
 
 int main()
@@ -523,4 +549,3 @@ int main()
 
   return 0;
 }
-*/
