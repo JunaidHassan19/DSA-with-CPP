@@ -388,6 +388,23 @@ int main()
 //   cout << "Max Profit = " << maxProfit;
 // }
 
+// void maxProfit(int *prices, int len)
+// {
+//   int bestBuy[10000];
+//   bestBuy[0] = INT_MAX;
+//   for (int i = 1; i < len; i++)
+//   {
+//     bestBuy[i] = min(bestBuy[i - 1], prices[i - 1]);
+//   }
+//   int maxProfit = 0;
+//   for (int i = 0; i < len; i++)
+//   {
+//     int currprofit = prices[i] - bestBuy[i];
+//     maxProfit = max(maxProfit, currprofit);
+//   }
+//   cout << "Max Profit = " << maxProfit;
+// }
+
 void maxProfit(int *prices, int len)
 {
   int bestBuy[10000];
@@ -400,11 +417,12 @@ void maxProfit(int *prices, int len)
   int maxProfit = 0;
   for (int i = 0; i < len; i++)
   {
-    int currprofit = prices[i] - bestBuy[i];
-    maxProfit = max(maxProfit, currprofit);
+    int currProfit = prices[i] - bestBuy[i];
+    maxProfit = max(maxProfit, currProfit);
   }
   cout << "Max Profit = " << maxProfit;
 }
+
 int main()
 {
   int prices[6] = {7, 1, 5, 3, 6, 4};
