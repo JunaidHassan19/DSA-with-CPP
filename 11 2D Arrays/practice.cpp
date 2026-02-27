@@ -18,8 +18,78 @@ int main()
 }
 */
 
-// Spiral Matrix
+// output & input
 /*
+// int main()
+// {
+//   int students[3][3];
+//   int n = 3, m = 3;
+//   for (int i = 0; i < n; i++)
+//   {
+//     for (int j = 0; j < m; j++)
+//     {
+//       cin >> students[i][j];
+//     }
+//   }
+//   for (int i = 0; i < n; i++)
+//   {
+//     for (int j = 0; j < m; j++)
+//     {
+//       cout << students[i][j] << " ";
+//     }
+//     cout << endl;
+//   }
+//   return 0;
+// }
+
+// int main()
+// {
+//   int arr[3][4];
+//   int row = 3, col = 4;
+//   cout << "Enter 2D Array Elements: ";
+//   for (int i = 0; i < row; i++)
+//   {
+//     for (int j = 0; j < col; j++)
+//     {
+//       cin >> arr[i][j];
+//     }
+//   }
+//   for (int i = 0; i < row; i++)
+//   {
+//     for (int j = 0; j < col; j++)
+//     {
+//       cout << arr[i][j] << " ";
+//     }
+//     cout << endl;
+//   }
+//   return 0;
+// }
+
+int main()
+{
+  int arr[4][4];
+  int row = 4, col = 4;
+  for (int i = 0; i < row; i++)
+  {
+    for (int j = 0; j < col; j++)
+    {
+      cin >> arr[i][j];
+    }
+  }
+  for (int i = 0; i < row; i++)
+  {
+    for (int j = 0; j < col; j++)
+    {
+      cout << arr[i][j] << " ";
+    }
+    cout << endl;
+  }
+  return 0;
+}
+  */
+
+// Spiral Matrix
+
 void spiralMat(int mat[][4], int n, int m)
 {
   int srow = 0, scol = 0;
@@ -70,7 +140,6 @@ int main()
   spiralMat(arr, 4, 4);
   return 0;
 }
-*/
 
 // Diagonal Sum
 /*
