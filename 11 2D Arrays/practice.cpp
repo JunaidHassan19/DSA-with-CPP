@@ -309,6 +309,22 @@ int main()
 
 // Search Matrix - Brute force
 
+// void searchMatrix(int mat[][4], int n, int m, int key)
+// {
+//   for (int i = 0; i < n; i++)
+//   {
+//     for (int j = 0; j < m; j++)
+//     {
+//       if (mat[i][j] == key)
+//       {
+//         cout << "Found at cell (" << i << "," << j << ")" << endl;
+//         return;
+//       }
+//     }
+//   }
+//   cout << "Key not found" << endl;
+// }
+
 void searchMatrix(int mat[][4], int n, int m, int key)
 {
   for (int i = 0; i < n; i++)
@@ -324,7 +340,6 @@ void searchMatrix(int mat[][4], int n, int m, int key)
   }
   cout << "Key not found" << endl;
 }
-
 int main()
 {
   int matrix[4][4] = {{10, 20, 30, 40},
