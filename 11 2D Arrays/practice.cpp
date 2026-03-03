@@ -420,21 +420,68 @@ int main()
 //   cout << "Key not found" << endl;
 // }
 
+// void searchMatrix(int mat[][4], int n, int m, int key)
+// {
+//   for (int i = 0; i < n; i++)
+//   {
+//     for (int j = 0; j < m; j++)
+//     {
+//       if (mat[i][j] == key)
+//       {
+//         cout << "Found at cell (" << i << ", " << j << ")" << endl;
+//         return;
+//       }
+//     }
+//   }
+//   cout << "Key not found";
+// }
+
+// Search Matrix -Staircase
+
+// void searchMatrix(int mat[][4], int n, int m, int key)
+// {
+//   int i = 0, j = m - 1;
+//   while (i < n && j >= 0)
+//   {
+//     if (mat[i][j] == key)
+//     {
+//       cout << "Found key at " << i << ", " << j << ")" << endl;
+//       return;
+//     }
+//     else if (mat[i][j] > key)
+//     {
+//       j--;
+//     }
+//     else
+//     {
+//       i++;
+//     }
+//   }
+//   cout << "Key not found" << endl;
+//   return;
+// }
+
 void searchMatrix(int mat[][4], int n, int m, int key)
 {
-  for (int i = 0; i < n; i++)
+  int i = 0, j = m - 1;
+  while (i < n && j >= 0)
   {
-    for (int j = 0; j < m; j++)
+    if (mat[i][j] == key)
     {
-      if (mat[i][j] == key)
-      {
-        cout << "Found at cell (" << i << ", " << j << ")" << endl;
-        return;
-      }
+      cout << "Found key at " << i << ", " << j << ")" << endl;
+      return;
     }
+    else if (mat[i][j] > key)
+    {
+      j--;
+    }
+    else
+      i++;
   }
-  cout << "Key not found";
+  cout << "Key not found" << endl;
+  return;
 }
+
 int main()
 {
   int matrix[4][4] = {{10, 20, 30, 40},
@@ -442,6 +489,6 @@ int main()
                       {27, 29, 37, 48},
                       {32, 33, 39, 50}};
 
-  searchMatrix(matrix, 4, 4, 50);
+  searchMatrix(matrix, 4, 4, 29);
   return 0;
 }
