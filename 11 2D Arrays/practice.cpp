@@ -19,7 +19,7 @@ int main()
 */
 
 // output & input
-/*
+
 // int main()
 // {
 //   int students[3][3];
@@ -65,28 +65,50 @@ int main()
 //   return 0;
 // }
 
+// int main()
+// {
+//   int arr[4][4];
+//   int row = 4, col = 4;
+//   for (int i = 0; i < row; i++)
+//   {
+//     for (int j = 0; j < col; j++)
+//     {
+//       cin >> arr[i][j];
+//     }
+//   }
+//   for (int i = 0; i < row; i++)
+//   {
+//     for (int j = 0; j < col; j++)
+//     {
+//       cout << arr[i][j] << " ";
+//     }
+//     cout << endl;
+//   }
+//   return 0;
+// }
+
 int main()
 {
-  int arr[4][4];
-  int row = 4, col = 4;
-  for (int i = 0; i < row; i++)
+  int arr[3][4];
+  int n = 3, m = 4;
+
+  for (int i = 0; i < n; i++)
   {
-    for (int j = 0; j < col; j++)
+    for (int j = 0; j < m; j++)
     {
       cin >> arr[i][j];
     }
   }
-  for (int i = 0; i < row; i++)
+
+  for (int i = 0; i < n; i++)
   {
-    for (int j = 0; j < col; j++)
+    for (int j = 0; j < m; j++)
     {
       cout << arr[i][j] << " ";
     }
     cout << endl;
   }
-  return 0;
 }
-  */
 
 // Spiral Matrix
 /*
@@ -308,7 +330,7 @@ int main()
   */
 
 // Search Matrix - Brute force
-
+/*
 // void searchMatrix(int mat[][4], int n, int m, int key)
 // {
 //   for (int i = 0; i < n; i++)
@@ -350,3 +372,4 @@ int main()
   searchMatrix(matrix, 4, 4, 37);
   return 0;
 }
+*/
