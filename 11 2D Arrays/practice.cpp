@@ -19,7 +19,7 @@ int main()
 */
 
 // output & input
-
+/*
 // int main()
 // {
 //   int students[3][3];
@@ -109,9 +109,10 @@ int main()
     cout << endl;
   }
 }
+*/
 
 // Spiral Matrix
-/*
+
 // void spiralMat(int mat[][4], int n, int m)
 // {
 //   int srow = 0, scol = 0;
@@ -226,13 +227,49 @@ int main()
 //   }
 // }
 
+// void spiralMat(int mat[][4], int n, int m)
+// {
+//   int srow = 0, scol = 0;
+//   int erow = n - 1, ecol = m - 1;
+//   while (srow <= erow && scol <= ecol)
+//   {
+//     // Top
+//     for (int i = scol; i <= ecol; i++)
+//     {
+//       cout << mat[srow][i] << " ";
+//     }
+//     // Right
+//     for (int j = srow + 1; j <= erow; j++)
+//     {
+//       cout << mat[j][ecol] << " ";
+//     }
+//     // Bottom
+//     for (int i = ecol - 1; i >= scol; i--)
+//     {
+//       cout << mat[erow][i] << " ";
+//     }
+//     // left
+//     for (int j = erow - 1; j >= srow + 1; j--)
+//     {
+//       cout << mat[j][scol] << " ";
+//     }
+//     srow++;
+//     scol++;
+//     erow--;
+//     ecol--;
+//   }
+// }
+
 void spiralMat(int mat[][4], int n, int m)
 {
-  int srow = 0, scol = 0;
-  int erow = n - 1, ecol = m - 1;
+  int srow = 0;
+  int scol = 0;
+  int erow = n - 1;
+  int ecol = m - 1;
+
   while (srow <= erow && scol <= ecol)
   {
-    // Top
+    // TOP
     for (int i = scol; i <= ecol; i++)
     {
       cout << mat[srow][i] << " ";
@@ -242,14 +279,19 @@ void spiralMat(int mat[][4], int n, int m)
     {
       cout << mat[j][ecol] << " ";
     }
+
     // Bottom
     for (int i = ecol - 1; i >= scol; i--)
     {
+      if (srow == erow)
+        break;
       cout << mat[erow][i] << " ";
     }
     // left
     for (int j = erow - 1; j >= srow + 1; j--)
     {
+      if (scol == ecol)
+        break;
       cout << mat[j][scol] << " ";
     }
     srow++;
@@ -257,6 +299,7 @@ void spiralMat(int mat[][4], int n, int m)
     erow--;
     ecol--;
   }
+  cout << endl;
 }
 
 int main()
@@ -268,7 +311,6 @@ int main()
   spiralMat(arr, 4, 4);
   return 0;
 }
-  */
 
 // Diagonal Sum
 /*
