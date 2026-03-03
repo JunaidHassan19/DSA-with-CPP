@@ -314,7 +314,7 @@ int main()
 */
 
 // Diagonal Sum
-
+/*
 // int diagonal(int mat[][3], int n)
 // {
 //   int sum = 0;
@@ -384,9 +384,26 @@ int main()
   diagonal(matrix, 4);
   return 0;
 }
+*/
 
 // Search Matrix - Brute force
-/*
+
+// void searchMatrix(int mat[][4], int n, int m, int key)
+// {
+//   for (int i = 0; i < n; i++)
+//   {
+//     for (int j = 0; j < m; j++)
+//     {
+//       if (mat[i][j] == key)
+//       {
+//         cout << "Found at cell (" << i << "," << j << ")" << endl;
+//         return;
+//       }
+//     }
+//   }
+//   cout << "Key not found" << endl;
+// }
+
 // void searchMatrix(int mat[][4], int n, int m, int key)
 // {
 //   for (int i = 0; i < n; i++)
@@ -411,12 +428,12 @@ void searchMatrix(int mat[][4], int n, int m, int key)
     {
       if (mat[i][j] == key)
       {
-        cout << "Found at cell (" << i << "," << j << ")" << endl;
+        cout << "Found at cell (" << i << ", " << j << ")" << endl;
         return;
       }
     }
   }
-  cout << "Key not found" << endl;
+  cout << "Key not found";
 }
 int main()
 {
@@ -425,7 +442,6 @@ int main()
                       {27, 29, 37, 48},
                       {32, 33, 39, 50}};
 
-  searchMatrix(matrix, 4, 4, 37);
+  searchMatrix(matrix, 4, 4, 50);
   return 0;
 }
-*/
