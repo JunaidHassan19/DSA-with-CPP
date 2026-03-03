@@ -112,7 +112,7 @@ int main()
 */
 
 // Spiral Matrix
-
+/*
 // void spiralMat(int mat[][4], int n, int m)
 // {
 //   int srow = 0, scol = 0;
@@ -311,9 +311,9 @@ int main()
   spiralMat(arr, 4, 4);
   return 0;
 }
+*/
 
 // Diagonal Sum
-/*
 
 // int diagonal(int mat[][3], int n)
 // {
@@ -345,7 +345,22 @@ int main()
 //   return sum;
 // }
 
-int diagonal(int mat[][3], int n)
+// int diagonal(int mat[][3], int n)
+// {
+//   int sum = 0;
+//   for (int i = 0; i < n; i++)
+//   {
+//     sum += mat[i][n - i - 1];
+//     if (i != n - i - 1)
+//     {
+//       sum += mat[i][n - i - 1];
+//     }
+//   }
+//   cout << "Sum = " << sum;
+//   return 0;
+// }
+
+int diagonal(int mat[][4], int n)
 {
   int sum = 0;
   for (int i = 0; i < n; i++)
@@ -357,19 +372,18 @@ int diagonal(int mat[][3], int n)
     }
   }
   cout << "Sum = " << sum;
-  return 0;
+  return sum;
 }
-
 int main()
 {
-  int matrix[3][3] = {{1, 2, 3},
-                      {4, 5, 6},
-                      {7, 8, 9}};
+  int matrix[4][4] = {{1, 2, 3, 4},
+                      {5, 6, 7, 8},
+                      {9, 10, 11, 12},
+                      {13, 14, 15, 16}};
 
-  diagonal(matrix, 3);
+  diagonal(matrix, 4);
   return 0;
 }
-  */
 
 // Search Matrix - Brute force
 /*
