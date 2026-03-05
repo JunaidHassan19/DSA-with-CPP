@@ -482,6 +482,27 @@ int main()
 //   return;
 // }
 
+// void searchMatrix(int mat[][4], int n, int m, int key)
+// {
+//   int i = 0, j = m - 1;
+//   while (i < n && j >= 0)
+//   {
+//     if (mat[i][j] == key)
+//     {
+//       cout << "Found key at " << i << ", " << j << ")" << endl;
+//       return;
+//     }
+//     else if (mat[i][j] > key)
+//     {
+//       j--;
+//     }
+//     else
+//       i++;
+//   }
+//   cout << "Key not found" << endl;
+//   return;
+// }
+
 void searchMatrix(int mat[][4], int n, int m, int key)
 {
   int i = 0, j = m - 1;
