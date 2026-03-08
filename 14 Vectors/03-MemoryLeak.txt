@@ -1,0 +1,86 @@
+========================================================
+  Memory Leak in C++
+========================================================
+
+What is a Memory Leak?
+-----------------------
+A memory leak occurs when we allocate memory on the heap
+using "new" but forget to free it using "delete".
+
+That memory stays occupied even though no one is using it.
+Over time, this can consume all available memory and crash
+the program or slow down the system.
+
+
+How does it happen?
+--------------------
+When we use "new", memory is allocated on the heap.
+This memory is NOT automatically freed when a function ends.
+We must manually free it using "delete" or "delete[]".
+
+If we forget to do that → Memory Leak!
+
+
+Example of Memory Leak:
+-------------------------
+  void func() {
+      int *ptr = new int[100];   // 100 ints allocated on heap
+      // ... some work ...
+      // forgot to write: delete[] ptr;
+  }
+  // func() ends, ptr (on stack) is destroyed
+  // but the heap memory (100 ints) is still occupied!
+  // No way to access or free it now → MEMORY LEAK
+
+
+Correct Way (No Leak):
+------------------------
+  void func() {
+      int *ptr = new int[100];
+      // ... some work ...
+      delete[] ptr;   // heap memory freed properly
+  }
+
+
+Another Common Cause — Reassigning Pointer:
+---------------------------------------------
+  int *ptr = new int(10);   // allocates memory, stores 10
+  ptr = new int(20);        // allocates NEW memory, stores 20
+  // The first block (with value 10) is now leaked!
+  // We lost the address, so we can never delete it.
+
+  Fix:
+  int *ptr = new int(10);
+  delete ptr;               // free the first block first
+  ptr = new int(20);        // now allocate new memory
+  delete ptr;               // free the second block
+
+
+Why is Memory Leak Dangerous?
+-------------------------------
+  - Wastes memory that could be used by other processes.
+  - Program may slow down or crash if too much memory leaks.
+  - In long-running programs (servers, games), small leaks
+    add up over time and cause major problems.
+
+
+Key Rules to Avoid Memory Leaks:
+----------------------------------
+  1. Every "new" must have a matching "delete".
+  2. Every "new[]" must have a matching "delete[]".
+  3. Never reassign a pointer without freeing the old memory first.
+  4. Set pointer to nullptr after deleting:
+       delete ptr;
+       ptr = nullptr;
+  5. In modern C++, prefer using smart pointers or vectors
+     which handle memory automatically.
+
+
+Summary:
+---------
+  - Memory Leak = heap memory allocated but never freed.
+  - Caused by forgetting delete, or losing the pointer.
+  - Always pair new with delete, new[] with delete[].
+  - Vectors (coming next!) solve this problem automatically.
+
+========================================================
