@@ -1,0 +1,114 @@
+Encapsulation in C++
+=====================
+
+Encapsulation means wrapping data (properties) and methods (functions)
+together into a single unit (class), and hiding the internal details
+from the outside world.
+
+In simple words:
+  - Keep data PRIVATE
+  - Provide PUBLIC methods (getters/setters) to access or modify that data
+
+
+Why Encapsulation?
+------------------
+1. Data Protection — prevents direct access, so data can't be changed accidentally.
+2. Control — you decide how data is read or modified.
+3. Flexibility — you can change internal logic without affecting outside code.
+4. Security — sensitive data stays hidden.
+
+
+How to Achieve Encapsulation:
+-----------------------------
+  Step 1: Make properties PRIVATE
+  Step 2: Provide PUBLIC getter and setter methods
+
+
+Example:
+--------
+  class BankAccount {
+  private:
+    string accountHolder;
+    double balance;           // hidden from outside
+
+  public:
+    // Setter — to set/modify data
+    void setBalance(double amt) {
+      if (amt >= 0) {         // validation before setting
+        balance = amt;
+      }
+    }
+
+    // Getter — to read data
+    double getBalance() {
+      return balance;
+    }
+
+    void setAccountHolder(string name) {
+      accountHolder = name;
+    }
+
+    string getAccountHolder() {
+      return accountHolder;
+    }
+  };
+
+  int main() {
+    BankAccount acc;
+    acc.setAccountHolder("Junni");
+    acc.setBalance(5000);
+
+    cout << acc.getAccountHolder() << endl;  // ✓ Junni
+    cout << acc.getBalance() << endl;        // ✓ 5000
+
+    // acc.balance = -100;  // ✗ ERROR: balance is private
+    // Direct access is blocked — data is protected!
+  }
+
+
+Without Encapsulation (Bad Practice):
+--------------------------------------
+  class BankAccount {
+  public:
+    double balance;       // anyone can change it directly
+  };
+
+  BankAccount acc;
+  acc.balance = -99999;   // No validation! Invalid data allowed.
+
+
+With Encapsulation (Good Practice):
+-------------------------------------
+  class BankAccount {
+  private:
+    double balance;
+
+  public:
+    void setBalance(double amt) {
+      if (amt >= 0) {
+        balance = amt;    // only valid data is allowed
+      }
+    }
+  };
+
+  BankAccount acc;
+  acc.setBalance(-99999); // Rejected by validation! Data stays safe.
+
+
+Getters & Setters:
+------------------
+  Getter → A public method that RETURNS the value of a private property.
+           Convention: getPropertyName()
+
+  Setter → A public method that SETS/MODIFIES the value of a private property.
+           Convention: setPropertyName(value)
+
+
+Key Points:
+-----------
+1. Encapsulation = Data Hiding + Bundling data & methods together.
+2. Use private for properties, public for getters/setters.
+3. It is one of the 4 pillars of OOP (along with Abstraction, Inheritance, Polymorphism).
+4. Helps in data validation — you control what values are assigned.
+5. Real-world analogy: A capsule (medicine) hides its contents inside a shell.
+   You use it without knowing what's inside — that's encapsulation!
