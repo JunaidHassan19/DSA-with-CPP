@@ -11,7 +11,7 @@ public:
     cout << "Eats..." << endl;
   }
 
-  void breath()
+  void breathe()
   {
     cout << "breathes.." << endl;
   }
@@ -31,7 +31,7 @@ public:
 int main()
 {
   Cat c1;
-  c1.breath();
+  c1.breathe();
   c1.eat();
   c1.walk();
 
