@@ -1,0 +1,147 @@
+==========================================
+           INHERITANCE IN C++
+==========================================
+
+What is Inheritance?
+--------------------
+Inheritance is a fundamental concept in OOP where a new class (child/derived class) 
+acquires the properties and behaviors (data members & member functions) of an 
+existing class (parent/base class).
+
+It promotes code reusability — we don't need to rewrite common code again and again.
+
+
+Syntax:
+-------
+class Parent {
+    // parent class members
+};
+
+class Child : access_modifier Parent {
+    // child class members
+};
+
+
+Terminology:
+------------
+- Base Class (Parent Class)    → The class whose properties are inherited.
+- Derived Class (Child Class)  → The class that inherits from the base class.
+
+
+Example:
+--------
+class Animal {
+public:
+    string name;
+    void eat() {
+        cout << name << " eats food." << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void bark() {
+        cout << name << " barks." << endl;
+    }
+};
+
+int main() {
+    Dog d1;
+    d1.name = "Buddy";
+    d1.eat();   // inherited from Animal
+    d1.bark();  // Dog's own function
+    return 0;
+}
+
+
+==========================================
+       MODES OF INHERITANCE
+==========================================
+
+The access modifier used during inheritance controls how the base class members 
+are accessible in the derived class:
+
+1) public inheritance    → class Child : public Parent
+   - public members of Parent    → remain public in Child
+   - protected members of Parent → remain protected in Child
+   - private members of Parent   → NOT accessible in Child
+
+2) protected inheritance → class Child : protected Parent
+   - public members of Parent    → become protected in Child
+   - protected members of Parent → remain protected in Child
+   - private members of Parent   → NOT accessible in Child
+
+3) private inheritance   → class Child : private Parent  (default)
+   - public members of Parent    → become private in Child
+   - protected members of Parent → become private in Child
+   - private members of Parent   → NOT accessible in Child
+
+Note: Private members of the base class are NEVER directly accessible 
+      in the derived class. Use getters/setters to access them.
+
+
+==========================================
+       TYPES OF INHERITANCE
+==========================================
+
+1. Single Inheritance
+   - One child inherits from one parent.
+
+   class A { };
+   class B : public A { };
+
+
+2. Multi-level Inheritance
+   - A chain of inheritance (grandparent → parent → child).
+
+   class A { };
+   class B : public A { };
+   class C : public B { };
+
+
+3. Multiple Inheritance
+   - One child inherits from multiple parents.
+
+   class A { };
+   class B { };
+   class C : public A, public B { };
+
+
+4. Hierarchical Inheritance
+   - Multiple children inherit from a single parent.
+
+   class A { };
+   class B : public A { };
+   class C : public A { };
+
+
+5. Hybrid Inheritance
+   - Combination of two or more types of inheritance.
+   - Can lead to the "Diamond Problem" (ambiguity).
+   - Solved using virtual inheritance.
+
+   class A { };
+   class B : virtual public A { };
+   class C : virtual public A { };
+   class D : public B, public C { };
+
+
+==========================================
+       KEY POINTS TO REMEMBER
+==========================================
+
+1. Constructors are NOT inherited. The base class constructor is called 
+   automatically before the derived class constructor.
+
+2. Destructors are called in reverse order — derived class destructor 
+   runs first, then the base class destructor.
+
+3. A derived class can override base class functions (Function Overriding).
+
+4. The 'protected' access modifier is specifically useful in inheritance — 
+   it allows derived classes to access members while keeping them 
+   hidden from outside the class.
+
+5. Use 'virtual' keyword to solve the Diamond Problem in hybrid inheritance.
+
+==========================================
