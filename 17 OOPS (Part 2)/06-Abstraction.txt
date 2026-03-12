@@ -1,0 +1,198 @@
+========================================
+         ABSTRACTION IN C++ (OOP)
+========================================
+
+1. What is Abstraction?
+------------------------
+Abstraction means hiding the internal implementation details 
+and showing only the essential features/functionality to the user.
+
+Real-Life Example:
+- When you drive a car, you use the steering wheel, brakes, and accelerator.
+- You don't need to know how the engine, transmission, or fuel injection works internally.
+- The complex details are "abstracted" away from you.
+
+
+2. Why Abstraction?
+--------------------
+- Reduces complexity for the user
+- Increases security by hiding implementation details
+- Makes code easier to maintain and modify
+- Provides a clean interface
+
+
+3. How to Achieve Abstraction in C++?
+---------------------------------------
+Abstraction can be achieved using:
+
+  a) Abstract Classes (using pure virtual functions)
+  b) Access Modifiers (public, private, protected)
+
+
+4. Abstract Class
+------------------
+- A class that has at least ONE pure virtual function is called an abstract class.
+- We CANNOT create objects of an abstract class.
+- It acts as a base class for other derived classes.
+
+Syntax of Pure Virtual Function:
+    virtual returnType functionName() = 0;
+
+Example:
+
+    class Shape {
+    public:
+        virtual void draw() = 0;    // pure virtual function
+        virtual double area() = 0;  // pure virtual function
+
+        void display() {            // normal function (allowed)
+            cout << "I am a shape" << endl;
+        }
+    };
+
+    class Circle : public Shape {
+    public:
+        double radius;
+
+        Circle(double r) { radius = r; }
+
+        void draw() override {
+            cout << "Drawing Circle" << endl;
+        }
+
+        double area() override {
+            return 3.14 * radius * radius;
+        }
+    };
+
+    class Rectangle : public Shape {
+    public:
+        double length, width;
+
+        Rectangle(double l, double w) { length = l; width = w; }
+
+        void draw() override {
+            cout << "Drawing Rectangle" << endl;
+        }
+
+        double area() override {
+            return length * width;
+        }
+    };
+
+    int main() {
+        // Shape s;          // ERROR! Cannot create object of abstract class
+
+        Circle c(5);
+        c.draw();            // Output: Drawing Circle
+        cout << c.area();    // Output: 78.5
+
+        Rectangle r(4, 6);
+        r.draw();            // Output: Drawing Rectangle
+        cout << r.area();    // Output: 24
+
+        // Using pointers (Polymorphism + Abstraction)
+        Shape* ptr;
+        ptr = &c;
+        ptr->draw();         // Output: Drawing Circle
+        ptr = &r;
+        ptr->draw();         // Output: Drawing Rectangle
+
+        return 0;
+    }
+
+
+5. Key Rules of Abstract Classes
+----------------------------------
+  i)   Cannot create objects of an abstract class.
+  ii)  Can have constructors and destructors.
+  iii) Can have both pure virtual and normal functions.
+  iv)  If a derived class does NOT override ALL pure virtual functions,
+       it also becomes an abstract class.
+  v)   Can have pointers/references of an abstract class type.
+
+
+6. Abstraction using Access Modifiers
+---------------------------------------
+- private members  -> hidden from outside (implementation details)
+- public members   -> visible to outside (interface)
+- protected members -> visible to derived classes only
+
+Example:
+
+    class BankAccount {
+    private:
+        double balance;        // hidden detail
+
+        void updateLog() {     // hidden detail
+            // internal logging
+        }
+
+    public:
+        void deposit(double amount) {    // public interface
+            balance += amount;
+            updateLog();
+        }
+
+        void withdraw(double amount) {   // public interface
+            if (amount <= balance) {
+                balance -= amount;
+                updateLog();
+            }
+        }
+
+        double getBalance() {            // public interface
+            return balance;
+        }
+    };
+
+Here the user only interacts with deposit(), withdraw(), getBalance().
+The internal balance variable and updateLog() are abstracted away.
+
+
+7. Abstract Class vs Interface (in C++)
+-----------------------------------------
+  Abstract Class:
+    - Can have both pure virtual and normal functions
+    - Can have data members (variables)
+    - Can have constructors
+
+  Pure Interface (fully abstract class):
+    - ALL functions are pure virtual
+    - No data members
+    - No constructors
+
+  Example of Pure Interface:
+
+    class Printable {
+    public:
+        virtual void print() = 0;
+        virtual ~Printable() {}    // virtual destructor
+    };
+
+
+8. Abstraction vs Encapsulation
+---------------------------------
+  Abstraction:
+    - Hides complexity, shows only essential features
+    - Focuses on WHAT an object does
+    - Achieved via abstract classes & access modifiers
+
+  Encapsulation:
+    - Wraps data and methods together in a single unit (class)
+    - Focuses on HOW data is protected
+    - Achieved via classes with private data + public getters/setters
+
+  They work together! Encapsulation helps implement Abstraction.
+
+
+========================================
+  SUMMARY
+========================================
+- Abstraction = hiding implementation, showing only functionality
+- Achieved using Abstract Classes (pure virtual functions) & Access Modifiers
+- Abstract class has at least 1 pure virtual function
+- Cannot create objects of abstract class
+- Derived class must override all pure virtual functions (or it becomes abstract too)
+- Abstraction reduces complexity, increases security, improves maintainability
+========================================
