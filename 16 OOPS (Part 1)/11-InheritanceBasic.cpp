@@ -12,7 +12,7 @@ public:
     cout << "Eats.." << endl;
   }
 
-  void breath()
+  void breathe()
   {
     cout << "Breathes.." << endl;
   }
