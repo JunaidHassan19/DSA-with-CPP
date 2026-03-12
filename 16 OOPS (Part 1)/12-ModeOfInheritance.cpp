@@ -15,7 +15,7 @@ public:
     cout << "Eats.." << endl;
   }
 
-  void breath()
+  void breathe()
   {
     cout << "Breathes.." << endl;
   }
@@ -45,7 +45,7 @@ public:
 
   void walk()
   {
-    breath(); // OK — accessible inside the class
+    breathe(); // OK — accessible inside the class
     cout << "Walking.." << endl;
   }
 };
@@ -60,7 +60,7 @@ public:
 
   void walk()
   {
-    breath(); // OK — accessible inside the class
+    breathe(); // OK — accessible inside the class
     cout << "Walking.." << endl;
   }
 };
@@ -76,14 +76,14 @@ int main()
   cout << c1.color << endl;
 
   c1.walk();
-  c1.breath(); // OK — inherited as public
-  c1.eat();    // OK — inherited as public
+  c1.breathe(); // OK — inherited as public
+  c1.eat();     // OK — inherited as public
 
   // PROTECTED inheritance — Animal's members are NOT accessible from outside
   Dog d1;
   d1.legs = 4;
   // d1.color = "Black";  // ERROR — color became protected, can't access outside
-  // d1.breath();          // ERROR — breath() became protected too
+  // d1.breathe();          // ERROR — breathe() became protected too
 
   cout << d1.legs << endl;
   // cout << d1.color << endl; // ERROR
