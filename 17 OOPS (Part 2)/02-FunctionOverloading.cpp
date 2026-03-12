@@ -25,6 +25,7 @@ int main()
 }
 
 /*
+compile time polymorphism: Function Overloading
 Function Overloading: Same function name but different parameters (type or number)
 - The compiler determines which function to call based on the arguments passed.
 - This allows us to use the same function name for different purposes, improving code readability and organization.
