@@ -1,0 +1,102 @@
+==========================================
+         POLYMORPHISM IN C++
+==========================================
+
+What is Polymorphism?
+---------------------
+Polymorphism means "many forms".
+It allows the same function or operator to behave differently 
+based on the context (object type, arguments, etc.).
+
+Real-life example:
+  A person can be a student, a son, and a friend — 
+  same person, different roles = polymorphism.
+
+
+==========================================
+       TYPES OF POLYMORPHISM
+==========================================
+
+Polymorphism
+├── 1. Compile-Time (Static) Polymorphism
+│       ├── Function Overloading
+│       └── Operator Overloading
+│
+└── 2. Run-Time (Dynamic) Polymorphism
+        └── Function Overriding (using virtual functions)
+
+
+------------------------------------------
+1. COMPILE-TIME POLYMORPHISM
+------------------------------------------
+Decided at compile time. The compiler knows which function to call.
+
+a) Function Overloading:
+   - Same function name, different parameters (number or type).
+   
+   int add(int a, int b)       { return a + b; }
+   double add(double a, double b) { return a + b; }
+
+   add(2, 3);       // calls int version
+   add(2.5, 3.5);   // calls double version
+
+
+b) Operator Overloading:
+   - Giving new meaning to an existing operator for user-defined types.
+   
+   class Complex {
+   public:
+       int real, imag;
+       Complex operator+(Complex &c) {
+           Complex temp;
+           temp.real = real + c.real;
+           temp.imag = imag + c.imag;
+           return temp;
+       }
+   };
+
+
+------------------------------------------
+2. RUN-TIME POLYMORPHISM
+------------------------------------------
+Decided at run time. Uses virtual functions and base class pointers.
+
+Function Overriding:
+   - Same function name & parameters in both parent and child class.
+   - The child class provides its own version.
+   - Use 'virtual' keyword in the base class to enable run-time binding.
+
+   class Animal {
+   public:
+       virtual void speak() {
+           cout << "Animal speaks" << endl;
+       }
+   };
+
+   class Dog : public Animal {
+   public:
+       void speak() override {
+           cout << "Dog barks" << endl;
+       }
+   };
+
+   Animal *a;
+   Dog d;
+   a = &d;
+   a->speak();   // Output: "Dog barks" (run-time decision)
+
+   Without 'virtual': would print "Animal speaks" (compile-time binding).
+
+
+==========================================
+       KEY POINTS TO REMEMBER
+==========================================
+
+1. Function Overloading = same name, different parameters (compile-time).
+2. Function Overriding  = same name & params in parent-child (run-time).
+3. 'virtual' keyword enables run-time polymorphism.
+4. 'override' keyword (optional) makes overriding explicit and safer.
+5. Base class pointer + virtual function = dynamic dispatch.
+6. Without 'virtual', base class pointer always calls the base version.
+
+==========================================
