@@ -37,3 +37,12 @@ int main()
 
   return 0;
 }
+
+/*
+Single Inheritance in C++
+===========================
+- Single inheritance is a type of inheritance where a derived class (child class) inherits from a single base class (parent class).
+- The derived class can access the public and protected members of the base class, but not the private members.
+- The derived class can also have its own members (properties and methods) in addition to the inherited members.
+- Syntax: class DerivedClass : public BaseClass { };
+*/
