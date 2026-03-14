@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-
 // Predict the output.
 class A
 {
@@ -34,6 +33,7 @@ int main()
 
   return 0;
 }
+
 /*
 Output:
 A constructor..
