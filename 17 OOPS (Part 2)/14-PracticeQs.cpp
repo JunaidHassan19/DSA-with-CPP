@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-
 // Predict the output.
 class Base
 {
@@ -32,7 +31,7 @@ int main()
 
 /*
 Output:
-Derived class
+Derived class.
 
 logic:
 1. The program starts and the main function is executed.
