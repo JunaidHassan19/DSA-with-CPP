@@ -1,0 +1,44 @@
+What is Stack Overflow?
+
+Stack overflow happens when the call stack memory becomes full.
+
+In recursion, every function call creates a new stack frame.
+If calls keep increasing and do not stop in time, stack memory gets exhausted.
+Then program crashes with stack overflow.
+
+Common reasons:
+
+1) Missing base case
+	- Recursive function never stops.
+
+2) Wrong base case
+	- Base case is present but never reached.
+
+3) Very deep recursion
+	- Base case exists, but recursion depth is too large for available stack size.
+
+Example (causes stack overflow):
+
+void fun() {
+	 fun(); // no base case
+}
+
+int main() {
+	 fun();
+}
+
+Why this crashes:
+- fun() calls fun() again and again.
+- New stack frames keep getting added.
+- Stack becomes full, then stack overflow occurs.
+
+How to avoid stack overflow:
+
+1) Always write a correct base case.
+2) Make sure each recursive call moves toward base case.
+3) Avoid unnecessary deep recursion.
+4) For very large depth, use loops (iterative approach) when possible.
+
+Quick summary:
+Stack overflow = too many function calls in stack memory.
+Most common recursion mistake = no proper stopping condition.
