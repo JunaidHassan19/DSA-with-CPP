@@ -8,8 +8,8 @@ void print(int n)
   {
     return;
   }
-  cout << n << " ";
-  print(n - 1); // Recursive call with n-1
+  cout << n << " "; // Print the current number
+  print(n - 1);     // Recursive call with n-1
 }
 
 int main()
