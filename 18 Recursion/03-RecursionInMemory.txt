@@ -1,0 +1,86 @@
+Basic recursion function to find factorial of 5
+
+Code:
+
+int factorial(int n) {
+	 if (n == 0 || n == 1) {
+		  return 1;
+	 }
+	 return n * factorial(n - 1);
+}
+
+int main() {
+	 int ans = factorial(5);
+}
+
+What happens in memory (Call Stack):
+
+When we call factorial(5), each function call gets its own memory frame
+on the stack. A frame stores local variables and where to return.
+
+1) factorial(5) is called
+	- Stack frame created for n = 5
+	- Needs: 5 * factorial(4)
+
+2) factorial(4) is called
+	- New stack frame for n = 4
+	- Needs: 4 * factorial(3)
+
+3) factorial(3) is called
+	- New stack frame for n = 3
+	- Needs: 3 * factorial(2)
+
+4) factorial(2) is called
+	- New stack frame for n = 2
+	- Needs: 2 * factorial(1)
+
+5) factorial(1) is called
+	- New stack frame for n = 1
+	- Base case reached, returns 1
+
+Now stack starts unwinding (returns happen in reverse order):
+
+factorial(2) = 2 * 1 = 2   -> returns 2
+factorial(3) = 3 * 2 = 6   -> returns 6
+factorial(4) = 4 * 6 = 24  -> returns 24
+factorial(5) = 5 * 24 = 120 -> returns 120
+
+Final answer:
+factorial(5) = 120
+
+Important memory point:
+- During downward calls, stack size increases.
+- During returns, stack frames are removed one by one.
+- If base case is missing, calls never stop and stack overflow can happen.
+
+Memory Diagram (Call Stack)
+
+A) During function calls (stack grows):
+
+Top of Stack
++------------------------------+
+| factorial(1), n=1, return 1  |
++------------------------------+
+| factorial(2), n=2, wait for  |
+| factorial(1)                 |
++------------------------------+
+| factorial(3), n=3, wait for  |
+| factorial(2)                 |
++------------------------------+
+| factorial(4), n=4, wait for  |
+| factorial(3)                 |
++------------------------------+
+| factorial(5), n=5, wait for  |
+| factorial(4)                 |
++------------------------------+
+Bottom of Stack
+
+B) During return (stack shrinks):
+
+Step 1: factorial(1) returns 1, its frame removed
+Step 2: factorial(2) computes 2*1=2, returns 2, frame removed
+Step 3: factorial(3) computes 3*2=6, returns 6, frame removed
+Step 4: factorial(4) computes 4*6=24, returns 24, frame removed
+Step 5: factorial(5) computes 5*24=120, returns 120, frame removed
+
+After all returns, stack becomes empty again.
