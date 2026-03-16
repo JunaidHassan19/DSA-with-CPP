@@ -9,6 +9,7 @@ int lastOccurrence(vector<int> arr, int targer, int i)
   {
     return -1;
   }
+
   // recursive case: check the rest of the array by making a recursive call with the next index
   int idx = lastOccurrence(arr, targer, i + 1);
 
