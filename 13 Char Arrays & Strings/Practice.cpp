@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <string>
 using namespace std;
 
 // toUpperCase And toLowerCase
@@ -225,7 +226,7 @@ int main()
 */
 
 // ValidPalindrome
-
+/*
 // bool isPalindrome(char word[], int n)
 // {
 //   int st = 0;
@@ -284,6 +285,100 @@ int main()
 {
   char word[] = "junninnuj";
   cout << word << " Is a " << isPalindrome(word, strlen(word));
+
+  return 0;
+}
+*/
+
+// Valid Anagram
+
+// bool isAnagram(string str1, string str2)
+// {
+//   if (str1.length() != str2.length())
+//   {
+//     cout << "Not Anagram";
+//     return false;
+//   }
+//   int count[26] = {0};
+//   for (int i = 0; i < str1.length(); i++)
+//   {
+//     int idx = str1[i] - 'a';
+//     count[idx]++;
+//   }
+//   for (int i = 0; i < str2.length(); i++)
+//   {
+//     int idx = str2[i] - 'a';
+//     if (count[idx] == 0)
+//     {
+//       cout << "Not Anagram";
+//       return false;
+//     }
+//     count[idx]--;
+//   }
+//   cout << "Anagram" << endl;
+//   return true;
+// }
+
+// bool isAnagram(string str1, string str2)
+// {
+//   if (str1.length() != str2.length())
+//   {
+//     cout << "Not Anagram" << endl;
+//     return false;
+//   }
+//   int count[26] = {0};
+//   for (int i = 0; i < str1.length(); i++)
+//   {
+//     int idx = str1[i] - 'a';
+//     count[idx]++;
+//   }
+//   for (int i = 0; i < str2.length(); i++)
+//   {
+//     int idx = str2[i] - 'a';
+//     if (count[idx] == 0)
+//     {
+//       cout << "Not Anagram" << endl;
+//       return false;
+//     }
+//     count[idx]--;
+//   }
+//   cout << "Anagram" << endl;
+//   return true;
+// }
+
+bool isAnagram(string str1, string str2)
+{
+  if (str1.length() != str2.length())
+  {
+    cout << "NOT" << endl;
+    return false;
+  }
+  int count[26] = {0};
+  for (int i = 0; i < str1.length(); i++)
+  {
+    int idx = str1[i] - 'a';
+    count[idx]++;
+  }
+  for (int i = 0; i < str2.length(); i++)
+  {
+    int idx = str2[i] - 'a';
+    if (count[idx] == 0)
+    {
+      cout << "NOT" << endl;
+      return false;
+    }
+    count[idx]--;
+  }
+  cout << "YES" << endl;
+  return true;
+}
+
+int main()
+{
+  string str1 = "aab";
+  string str2 = "abb";
+
+  isAnagram(str1, str2);
 
   return 0;
 }
