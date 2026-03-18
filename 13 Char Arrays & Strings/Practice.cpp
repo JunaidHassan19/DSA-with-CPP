@@ -99,6 +99,7 @@ int main()
 */
 
 // ReverseCharArray
+/*
 
 // void reverse(char arr[], int n)
 // {
@@ -184,30 +185,32 @@ int main()
 //   }
 // }
 
-void reverseVowels(char word[], int n)
-{
-  int st = 0;
-  int end = n - 1;
-  while (st < end)
-  {
-    while (st < end && word[st] != 'a' && word[st] != 'e' && word[st] != 'i' && word[st] != 'o' && word[st] != 'u')
-    {
-      st++;
-    }
-    {
-      while (st < end && word[end] != 'a' && word[end] != 'e' && word[end] != 'i' && word[end] != 'o' && word[end] != 'u')
-      {
-        end--;
-      }
-    }
-    if (st < end)
-    {
-      swap(word[st], word[end]);
-      st++;
-      end--;
-    }
-  }
-}
+// void reverseVowels(char word[], int n)
+// {
+//   int st = 0;
+//   int end = n - 1;
+//   while (st < end)
+//   {
+//     while (st < end && word[st] != 'a' && word[st] != 'e' && word[st] != 'i' && word[st] != 'o' && word[st] != 'u')
+//     {
+//       st++;
+//     }
+//     {
+//       while (st < end && word[end] != 'a' && word[end] != 'e' && word[end] != 'i' && word[end] != 'o' && word[end] != 'u')
+//       {
+//         end--;
+//       }
+//     }
+//     if (st < end)
+//     {
+//       swap(word[st], word[end]);
+//       st++;
+//       end--;
+//     }
+//   }
+// }
+
+
 
 int main()
 {
@@ -215,6 +218,72 @@ int main()
   // reverse(word, strlen(arr));
   reverseVowels(word, strlen(word));
   cout << word << endl;
+
+  return 0;
+}
+
+*/
+
+// ValidPalindrome
+
+// bool isPalindrome(char word[], int n)
+// {
+//   int st = 0;
+//   int end = n - 1;
+//   while (st < end)
+//   {
+//     if (word[st] != word[end])
+//     {
+//       cout << "Not Palindrome" << endl;
+//       return 0;
+//     }
+//     st++;
+//     end--;
+//   }
+//   cout << "Valid palindrome" << endl;
+//   return true;
+// }
+
+// bool isPalindrome(char word[], int n)
+// {
+//   int st = 0;
+//   int end = n - 1;
+//   while (st < end)
+//   {
+//     if (word[st] != word[end])
+//     {
+//       cout << "Not Palindrome" << endl;
+//       return false;
+//     }
+//     st++;
+//     end--;
+//   }
+//   cout << "Palindrome" << endl;
+//   return true;
+// }
+
+bool isPalindrome(char word[], int n)
+{
+  int st = 0;
+  int end = n - 1;
+  while (st < end)
+  {
+    if (word[st] != word[end])
+    {
+      cout << "Not palindrome" << endl;
+      return false;
+    }
+    st++;
+    end--;
+  }
+  cout << "palindrome" << endl;
+  return true;
+}
+
+int main()
+{
+  char word[] = "junninnuj";
+  cout << word << " Is a " << isPalindrome(word, strlen(word));
 
   return 0;
 }
