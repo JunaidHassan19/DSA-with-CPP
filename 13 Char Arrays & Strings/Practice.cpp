@@ -161,20 +161,44 @@ int main()
 //   }
 // }
 
+// void reverseVowels(char word[], int n)
+// {
+//   int st = 0;
+//   int end = n - 1;
+//   while (st < end)
+//   {
+//     while (st < end && word[st] != 'a' && word[st] != 'e' && word[st] != 'i' && word[st] != 'o' && word[st] != 'u')
+//     {
+//       st++;
+//     }
+//     while (st < end && word[end] != 'a' && word[end] != 'e' && word[end] != 'i' && word[end] != 'o' && word[end] != 'u')
+//     {
+//       end--;
+//     }
+//     if (st < end)
+//     {
+//       swap(word[st], word[end]);
+//       st++;
+//       end--;
+//     }
+//   }
+// }
+
 void reverseVowels(char word[], int n)
 {
   int st = 0;
   int end = n - 1;
-
   while (st < end)
   {
     while (st < end && word[st] != 'a' && word[st] != 'e' && word[st] != 'i' && word[st] != 'o' && word[st] != 'u')
     {
       st++;
     }
-    while (st < end && word[end] != 'a' && word[end] != 'e' && word[end] != 'i' && word[end] != 'o' && word[end] != 'u')
     {
-      end--;
+      while (st < end && word[end] != 'a' && word[end] != 'e' && word[end] != 'i' && word[end] != 'o' && word[end] != 'u')
+      {
+        end--;
+      }
     }
     if (st < end)
     {
