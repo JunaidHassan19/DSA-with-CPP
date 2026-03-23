@@ -90,3 +90,51 @@ int main()
   return 0;
 }
 */
+
+// Friends Pairing Problem
+
+// int friendPairing(int n)
+// {
+//   if (n == 1 || n == 2)
+//   {
+//     return n;
+//   }
+//   // Single
+//   int single = friendPairing(n - 1);
+//   // Pair
+//   int pair = (n - 1) * friendPairing(n - 2);
+//   return single + pair;
+// }
+
+// int friendPairing(int n)
+// {
+//   if (n == 1 || n == 2)
+//   {
+//     return n;
+//   }
+//   // single
+//   int single = friendPairing(n - 1);
+//   // Pairing
+//   int pair = (n - 1) * friendPairing(n - 2);
+//   return single + pair;
+// }
+/*
+int friendPairing(int n)
+{
+  if (n == 1 || n == 2)
+  {
+    return n;
+  }
+  // single
+  int single = friendPairing(n - 1);
+  // pair
+  int pair = (n - 1) * friendPairing(n - 2);
+  return single + pair;
+}
+
+int main()
+{
+  cout << friendPairing(4);
+  return 0;
+}
+*/
