@@ -4,6 +4,8 @@ using namespace std;
 
 // Merge sort Practice
 
+// Merge sort implementation with ascending order printing
+
 // void merge(int arr[], int si, int mid, int ei)
 // {
 //   vector<int> temp;
@@ -54,6 +56,8 @@ using namespace std;
 //   cout << endl;
 // }
 
+// Merge sort implementation with descending order printing
+
 void merge(int arr[], int si, int mid, int ei)
 {
   vector<int> temp;
@@ -62,7 +66,7 @@ void merge(int arr[], int si, int mid, int ei)
 
   while (i <= mid && j <= ei)
   {
-    if (arr[i] <= arr[j])
+    if (arr[i] >= arr[j])
     {
       temp.push_back(arr[i++]);
     }
@@ -80,7 +84,7 @@ void merge(int arr[], int si, int mid, int ei)
     temp.push_back(arr[j++]);
   }
 
-  // to orinigla
+  // to original array
 
   for (int idx = si, x = 0; idx <= ei; idx++)
   {
@@ -102,7 +106,7 @@ void mergeSort(int arr[], int si, int ei)
 
 void printArray(int arr[], int n)
 {
-  for (int i = 0; i < n; i++)
+  for (int i = n - 1; i >= 0; i--)
   {
     cout << arr[i] << " ";
   }
