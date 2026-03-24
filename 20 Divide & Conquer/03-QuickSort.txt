@@ -1,0 +1,142 @@
+QUICK SORT
+
+Quick Sort is a Divide and Conquer sorting algorithm.
+
+Main idea:
+1) Choose one element as pivot.
+2) Partition the array around the pivot.
+   - Elements smaller than pivot go to left side.
+   - Elements greater than pivot go to right side.
+3) Recursively apply same process on left and right parts.
+
+
+WHY IT IS CALLED DIVIDE AND CONQUER
+
+Divide:
+- Partition creates two smaller subarrays.
+
+Conquer:
+- Recursively sort left and right subarrays.
+
+Combine:
+- No separate merge step needed.
+- Once subarrays are sorted around correct pivot positions, full array becomes sorted.
+
+
+PIVOT
+
+Pivot is the element used to split array into two parts.
+
+Common pivot choices:
+1) First element
+2) Last element
+3) Middle element
+4) Random element (helps avoid worst-case often)
+
+In beginner implementations, we usually take last element as pivot.
+
+
+PARTITION STEP (Most Important)
+
+Goal:
+- Put pivot at its correct sorted position.
+- Put all smaller elements on left.
+- Put all larger elements on right.
+
+Lomuto Partition (easy version using last element as pivot):
+
+Given arr[low ... high]
+1) pivot = arr[high]
+2) i = low - 1
+   - i marks end of "smaller than pivot" region
+3) Loop j from low to high - 1
+   - If arr[j] < pivot:
+	 a) i++
+	 b) swap arr[i], arr[j]
+4) After loop, place pivot in correct position:
+   - swap arr[i + 1], arr[high]
+5) Return pivot index = i + 1
+
+
+PARTITION EXAMPLE
+
+arr = [10, 7, 8, 9, 1, 5]
+low = 0, high = 5
+pivot = 5
+i = -1
+
+j = 0: 10 < 5 ? No
+j = 1:  7 < 5 ? No
+j = 2:  8 < 5 ? No
+j = 3:  9 < 5 ? No
+j = 4:  1 < 5 ? Yes -> i = 0, swap arr[0], arr[4]
+Array becomes [1, 7, 8, 9, 10, 5]
+
+Final swap pivot with arr[i+1] = arr[1]
+Swap arr[1], arr[5]
+Array becomes [1, 5, 8, 9, 10, 7]
+
+Pivot index = 1
+Now:
+- Left side of index 1 has smaller elements
+- Right side has larger elements
+
+
+QUICK SORT FLOW
+
+quickSort(arr, low, high):
+1) If low < high:
+2) Find pivot index p using partition(arr, low, high)
+3) Sort left part:  quickSort(arr, low, p - 1)
+4) Sort right part: quickSort(arr, p + 1, high)
+
+
+PSEUDOCODE
+
+quickSort(arr, low, high):
+	if low >= high:
+		return
+
+	p = partition(arr, low, high)
+
+	quickSort(arr, low, p - 1)
+	quickSort(arr, p + 1, high)
+
+
+partition(arr, low, high):
+	pivot = arr[high]
+	i = low - 1
+
+	for j = low to high - 1:
+		if arr[j] < pivot:
+			i = i + 1
+			swap(arr[i], arr[j])
+
+	swap(arr[i + 1], arr[high])
+	return i + 1
+
+
+TIME COMPLEXITY
+
+Best Case:    O(n log n)
+Average Case: O(n log n)
+Worst Case:   O(n^2)
+
+Worst case happens when pivot is always smallest or largest
+(for example already sorted array with poor pivot choice).
+
+
+SPACE COMPLEXITY
+
+Auxiliary space from recursion stack:
+- Average: O(log n)
+- Worst: O(n)
+
+
+KEY POINTS TO REMEMBER
+
+1) Quick Sort is generally very fast in practice.
+2) It is in-place (does not need extra array like merge sort).
+3) It is not stable in typical implementation.
+4) Partition logic is the heart of Quick Sort.
+5) Better pivot choice improves performance.
