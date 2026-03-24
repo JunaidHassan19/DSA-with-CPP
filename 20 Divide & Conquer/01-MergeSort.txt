@@ -1,0 +1,138 @@
+DIVIDE AND CONQUER
+
+Divide and Conquer is a problem-solving technique where we:
+1) Divide the big problem into smaller subproblems.
+2) Conquer each subproblem (solve them, usually using recursion).
+3) Combine the smaller solutions to get the final answer.
+
+Many efficient algorithms use this idea, and Merge Sort is one of the best examples.
+
+
+MERGE SORT (Overview)
+
+Merge Sort is a sorting algorithm that follows Divide and Conquer.
+
+Idea:
+- Divide the array into two halves.
+- Recursively sort both halves.
+- Merge (combine) the two sorted halves into one sorted array.
+
+
+HOW MERGE SORT WORKS
+
+Suppose array = [6, 3, 9, 5, 2, 8]
+
+Step 1: Divide until single elements
+[6, 3, 9, 5, 2, 8]
+-> [6, 3, 9] and [5, 2, 8]
+-> [6, 3] and [9] and [5, 2] and [8]
+-> [6] [3] [9] [5] [2] [8]
+
+Single-element arrays are already sorted.
+
+Step 2: Merge back in sorted order
+[6] + [3] -> [3, 6]
+[3, 6] + [9] -> [3, 6, 9]
+[5] + [2] -> [2, 5]
+[2, 5] + [8] -> [2, 5, 8]
+[3, 6, 9] + [2, 5, 8] -> [2, 3, 5, 6, 8, 9]
+
+
+MERGE / COMBINE STEP (Most Important)
+
+At merge time, we are given two already sorted parts:
+- Left part: arr[low ... mid]
+- Right part: arr[mid+1 ... high]
+
+Goal: Create one sorted segment from these two parts.
+
+Better way to understand:
+Think of two lines of students standing by height (already sorted).
+You always pick the shorter student from the front of the two lines.
+That keeps the final line sorted.
+
+Detailed merge process:
+1) Create a temporary array temp to store merged result.
+2) Put pointer i at start of left part (low).
+3) Put pointer j at start of right part (mid + 1).
+4) Compare arr[i] and arr[j]:
+   - If arr[i] <= arr[j], push arr[i], move i++
+   - Else push arr[j], move j++
+5) Continue until one side is fully used.
+6) Copy all remaining elements from the other side to temp.
+7) Copy temp back into original array from low to high.
+
+
+WHY THIS WORKS
+
+Both halves are already sorted.
+So the smallest unpicked element must be either at i (left front) or j (right front).
+Picking the smaller one every time guarantees sorted order.
+
+
+MERGE EXAMPLE (Focused)
+
+Left  = [3, 6, 9]
+Right = [2, 5, 8]
+
+Compare 3 and 2 -> pick 2      temp = [2]
+Compare 3 and 5 -> pick 3      temp = [2, 3]
+Compare 6 and 5 -> pick 5      temp = [2, 3, 5]
+Compare 6 and 8 -> pick 6      temp = [2, 3, 5, 6]
+Compare 9 and 8 -> pick 8      temp = [2, 3, 5, 6, 8]
+Right side ended. Copy remaining 9.
+Final merged = [2, 3, 5, 6, 8, 9]
+
+
+PSEUDOCODE
+
+mergeSort(arr, low, high):
+	if low >= high:
+		return
+
+	mid = (low + high) / 2
+
+	mergeSort(arr, low, mid)
+	mergeSort(arr, mid + 1, high)
+	merge(arr, low, mid, high)
+
+
+merge(arr, low, mid, high):
+	create empty temp
+	i = low
+	j = mid + 1
+
+	while i <= mid and j <= high:
+		if arr[i] <= arr[j]:
+			temp.push(arr[i])
+			i++
+		else:
+			temp.push(arr[j])
+			j++
+
+	while i <= mid:
+		temp.push(arr[i])
+		i++
+
+	while j <= high:
+		temp.push(arr[j])
+		j++
+
+	copy temp back to arr[low ... high]
+
+
+TIME AND SPACE COMPLEXITY
+
+Time:
+- Best, Average, Worst = O(n log n)
+
+Space:
+- O(n) extra space (because of temporary array)
+
+
+KEY POINTS TO REMEMBER
+
+1) Merge Sort is stable (equal elements keep their relative order).
+2) It is not in-place in standard implementation due to temp array.
+3) Very useful for linked lists and external sorting.
+4) Main logic is simple: divide, sort left, sort right, merge carefully.
