@@ -128,7 +128,7 @@ int main()
 // Quick Sort Practice
 
 // Quick Sort implementation with ascending order printing
-
+/*
 // int partition(int arr[], int si, int ei)
 // {
 //   int i = si - 1;
@@ -207,5 +207,55 @@ int main()
   int n = 6;
   quickSort(arr, 0, n - 1);
   printArr(arr, n - 1);
+  return 0;
+}
+*/
+
+//  Rotated Sorted Array Practice
+
+int search(int arr[], int si, int ei, int tar)
+{
+  if (si > ei)
+  {
+    return -1;
+  }
+
+  int mid = si + (ei - si) / 2;
+  if (arr[mid] == tar)
+  {
+    return mid;
+  }
+  // L1
+  if (arr[si] <= arr[mid])
+  {
+    if (arr[si] <= tar && tar <= arr[mid])
+    {
+      return search(arr, si, mid - 1, tar); // left half
+    }
+    else
+    {
+      return search(arr, mid + 1, ei, tar); // right half
+    }
+  }
+  else
+  {
+    // L2
+    if (arr[mid] <= tar && tar <= arr[ei])
+    {
+      return search(arr, mid + 1, ei, tar); // right half
+    }
+    else
+    {
+      return search(arr, si, mid - 1, tar); // left half
+    }
+  }
+}
+
+int main()
+{
+  int arr[8] = {3, 4, 5, 6, 7, 0, 1, 2};
+  int n = 8;
+
+  cout << "Idx = " << search(arr, 0, n - 1, 0);
   return 0;
 }
