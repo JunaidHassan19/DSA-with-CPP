@@ -1,0 +1,45 @@
+Quick Sort Worst-Case Time Complexity
+=====================================
+
+Worst-case time complexity of Quick Sort is: O(n^2)
+
+Why does worst case happen?
+---------------------------
+Quick Sort picks a pivot and partitions the array into two parts.
+If the pivot is always the smallest or largest element, partition becomes highly unbalanced:
+
+- Left part size = 0, Right part size = n-1 (or vice versa)
+
+So instead of dividing into almost equal halves, it reduces by only 1 element each step.
+
+Example where this happens:
+--------------------------
+If pivot is chosen as first or last element, and array is already sorted (ascending or descending):
+
+1, 2, 3, 4, 5
+
+Partition sizes become:
+n-1, n-2, n-3, ... , 1
+
+Total comparisons:
+(n-1) + (n-2) + ... + 1
+= n(n-1)/2
+= O(n^2)
+
+Recurrence relation in worst case:
+----------------------------------
+T(n) = T(n-1) + O(n)
+
+Solving this gives:
+T(n) = O(n^2)
+
+How to reduce chance of worst case:
+-----------------------------------
+1. Use randomized pivot (pick pivot randomly).
+2. Use median-of-three pivot selection.
+3. For small subarrays, switch to insertion sort (common in optimized libraries).
+
+Note:
+-----
+Average and best-case time complexity of Quick Sort is O(n log n),
+which is why Quick Sort is still very popular in practice.
