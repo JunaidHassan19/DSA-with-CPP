@@ -213,20 +213,55 @@ int main()
 
 //  Rotated Sorted Array Practice
 
+// int search(int arr[], int si, int ei, int tar)
+// {
+//   if (si > ei)
+//   {
+//     return -1;
+//   }
+//   int mid = si + (ei - si) / 2;
+//   if (arr[mid] == tar)
+//   {
+//     return mid;
+//   }
+//   // L1
+//   if (arr[si] <= arr[mid])
+//   {
+//     if (arr[si] <= tar && tar <= arr[mid])
+//     {
+//       return search(arr, si, mid - 1, tar); // left half
+//     }
+//     else
+//     {
+//       return search(arr, mid + 1, ei, tar); // right half
+//     }
+//   }
+//   else
+//   {
+//     // L2
+//     if (arr[mid] <= tar && tar <= arr[ei])
+//     {
+//       return search(arr, mid + 1, ei, tar); // right half
+//     }
+//     else
+//     {
+//       return search(arr, si, mid - 1, tar); // left half
+//     }
+//   }
+// }
+
 int search(int arr[], int si, int ei, int tar)
 {
   if (si > ei)
   {
     return -1;
   }
-
   int mid = si + (ei - si) / 2;
   if (arr[mid] == tar)
   {
     return mid;
   }
-  // L1
-  if (arr[si] <= arr[mid])
+  if (arr[si] <= arr[mid]) // L1
   {
     if (arr[si] <= tar && tar <= arr[mid])
     {
@@ -237,10 +272,8 @@ int search(int arr[], int si, int ei, int tar)
       return search(arr, mid + 1, ei, tar); // right half
     }
   }
-  else
-  {
-    // L2
-    if (arr[mid] <= tar && tar <= arr[ei])
+  else // L2
+    if (arr[mid] <= tar <= arr[ei])
     {
       return search(arr, mid + 1, ei, tar); // right half
     }
@@ -248,7 +281,6 @@ int search(int arr[], int si, int ei, int tar)
     {
       return search(arr, si, mid - 1, tar); // left half
     }
-  }
 }
 
 int main()
