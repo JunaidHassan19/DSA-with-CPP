@@ -1,0 +1,83 @@
+Big O Notation (Basic)
+
+1) What is Big O Notation?
+Big O notation is a way to describe how the running time of an algorithm grows
+when input size (n) increases.
+
+It does not tell exact seconds.
+It tells growth trend of operations.
+
+2) Why do we use Big O?
+- To compare two algorithms
+- To choose efficient code for large input
+- To understand performance before coding large systems
+
+3) Common Big O Values
+- O(1)      -> Constant time
+- O(log n)  -> Logarithmic time
+- O(n)      -> Linear time
+- O(n log n)-> Linearithmic time
+- O(n^2)    -> Quadratic time
+
+As n increases, lower growth is usually better.
+
+4) Basic Rule of Big O
+Count how operations grow with n, then keep only the dominant term.
+
+Important: In Big O, we usually consider the worst-case time complexity.
+That means we measure the maximum number of operations an algorithm may take.
+
+Examples:
+- T(n) = 3n + 5  -> O(n)
+- T(n) = n^2 + n -> O(n^2)
+- T(n) = 100     -> O(1)
+
+Why?
+- Ignore constants (3, 5, 100)
+- Ignore smaller terms when n is large
+
+5) Loop Examples
+
+Example A: Single loop
+
+for (int i = 0; i < n; i++) {
+	cout << i;
+}
+
+Runs n times -> O(n)
+
+Example B: Nested loop
+
+for (int i = 0; i < n; i++) {
+	for (int j = 0; j < n; j++) {
+		cout << i << j;
+	}
+}
+
+Runs n * n times -> O(n^2)
+
+Example C: Two separate loops
+
+for (int i = 0; i < n; i++) {
+	cout << i;
+}
+for (int i = 0; i < n; i++) {
+	cout << i;
+}
+
+Total operations = n + n = 2n -> O(n)
+
+6) Why Worst Case?
+Worst case gives a safe upper bound.
+If algorithm performance is acceptable in worst case,
+it will also be acceptable in average or best situations.
+
+Example (Linear Search):
+- Best case: element found at first index -> O(1)
+- Worst case: element found at last index or not found -> O(n)
+
+So, while writing Big O, we generally write O(n) for linear search.
+
+7) Final Note
+Big O helps us think about scalability.
+If input becomes very large, the algorithm with smaller growth is better.
