@@ -15,7 +15,7 @@ Time complexity helps us compare algorithms.
 
 3) Big-O notation
 We usually write time complexity in Big-O form.
-Example: O(1), O(n), O(n^2), O(log n)
+In this note, we focus on linear complexity: O(n)
 
 4) Important idea
 Time complexity increases when operations increase with input size.
@@ -91,3 +91,55 @@ That increase decides time complexity.
 Linear increase -> O(n)
 Quadratic increase -> O(n^2)
 So always try to reduce unnecessary operations.
+
+----------------------------------------
+Basic Time Complexity Graph (Concept)
+----------------------------------------
+
+y-axis = Number of Operations
+x-axis = Input Size (n)
+
+Operations
+^
+|                         *
+|                      *
+|                   *
+|                *
+|             *             O(n)  (Linear)
+|          *
+|____________________________________________> n
+
+How to read this graph:
+- O(n): straight linear growth
+
+Quick values example:
+n = 10   -> O(n)=10
+n = 100  -> O(n)=100
+n = 1000 -> O(n)=1000
+
+This shows: O(n) increases directly as input size increases.
+
+----------------------------------------
+Math Formula for Linear Time Complexity
+----------------------------------------
+
+For a single loop:
+
+for (int i = 0; i < n; i++) {
+	// constant work
+}
+
+If each iteration takes constant time c,
+then total time is:
+
+T(n) = c * n
+
+If we include fixed setup/ending cost b, then:
+
+T(n) = a*n + b
+
+In Big-O, constants are ignored, so:
+
+T(n) = O(n)
+
+So linear TC means operations grow in direct proportion to n.
