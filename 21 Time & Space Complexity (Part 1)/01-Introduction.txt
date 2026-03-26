@@ -1,0 +1,46 @@
+Introduction to Time and Space Complexity
+
+When we solve a problem in programming, writing a correct solution is not enough.
+We also need an efficient solution.
+Time and space complexity help us measure efficiency.
+
+1. Time Complexity
+Time complexity tells us how the running time of an algorithm grows as input size (n) increases.
+It does not measure exact seconds; it measures growth trend.
+
+Example:
+- If an algorithm checks every element once, time complexity is O(n).
+- If an algorithm compares every pair, time complexity is O(n^2).
+
+2. Space Complexity
+Space complexity tells us how much extra memory an algorithm uses as input size (n) increases.
+This includes temporary arrays, variables, recursion stack, etc.
+
+Example:
+- Using only a few variables: O(1) extra space.
+- Creating another array of size n: O(n) extra space.
+
+Why Big-O Notation?
+Big-O gives the upper bound of growth and helps compare algorithms.
+Common complexities:
+- O(1): Constant
+- O(log n): Logarithmic
+- O(n): Linear
+- O(n log n): Linearithmic
+- O(n^2): Quadratic
+
+Real-World Example: Searching a Contact in a Phonebook
+
+Case 1: Unsorted Contact List
+If contacts are unsorted and you search a name by checking one by one,
+in the worst case you may check all n contacts.
+Time complexity: O(n)
+
+Case 2: Sorted Contact List
+If contacts are sorted alphabetically, you can use binary search.
+Each step cuts the search space in half.
+Time complexity: O(log n)
+
+Insight:
+For large data, O(log n) is much faster than O(n).
+That is why understanding time and space complexity is important in real software systems.
