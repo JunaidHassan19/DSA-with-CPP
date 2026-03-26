@@ -1,0 +1,99 @@
+BIG O FOR FUNCTIONS (BASIC)
+
+1) What is Big O?
+Big O tells how the running time grows when input size n grows.
+It shows growth rate, not exact time in seconds.
+
+Example:
+- If work is n steps, Big O is O(n)
+- If work is n*n steps, Big O is O(n^2)
+
+
+2) Common Big O from Function Forms
+
+f(n) = 5
+Big O: O(1)   (constant)
+
+f(n) = 3n + 2
+Big O: O(n)   (linear)
+
+f(n) = 7n^2 + 4n + 9
+Big O: O(n^2) (quadratic)
+
+f(n) = n^3 + 10n
+Big O: O(n^3) (cubic)
+
+f(n) = log n
+Big O: O(log n)
+
+f(n) = n log n
+Big O: O(n log n)
+
+f(n) = 2^n
+Big O: O(2^n) (exponential)
+
+
+3) Basic Rules to Calculate Big O from a Function
+
+Rule A: Ignore constants
+3n -> O(n)
+1000 -> O(1)
+
+Rule B: Keep the fastest-growing term
+n^2 + n + 1 -> O(n^2)
+n^3 + n^2 + n -> O(n^3)
+
+Rule C: For multiplication, multiply complexities
+Outer loop O(n), inner loop O(n) -> O(n*n) = O(n^2)
+
+Rule D: For sequential blocks, add and keep larger one
+O(n) + O(n^2) -> O(n^2)
+
+
+4) From Code to Function to Big O
+
+Example 1:
+for(i = 0; i < n; i++)
+{
+	// constant work
+}
+Function form: f(n) = c*n
+Big O: O(n)
+
+Example 2:
+for(i = 0; i < n; i++)
+{
+	for(j = 0; j < n; j++)
+	{
+		// constant work
+	}
+}
+Function form: f(n) = c*n*n
+Big O: O(n^2)
+
+Example 3:
+for(i = 1; i < n; i = i*2)
+{
+	// constant work
+}
+Function form: number of iterations about log2(n)
+Big O: O(log n)
+
+
+5) Quick Method (Use in Exam/Interview)
+
+Step 1: Write rough function (like n^2 + n, n log n, etc.)
+Step 2: Remove constants
+Step 3: Keep highest-growth term
+Step 4: Write Big O
+
+
+6) Final Summary
+
+- Constant work -> O(1)
+- Single loop up to n -> O(n)
+- Nested two loops up to n -> O(n^2)
+- Loop with i = i*2 -> O(log n)
+- Divide and merge type patterns -> often O(n log n)
+
+Big O focuses on growth for very large n.
