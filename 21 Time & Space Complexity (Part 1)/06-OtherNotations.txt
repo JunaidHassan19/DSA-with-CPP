@@ -1,0 +1,83 @@
+OTHER ASYMPTOTIC NOTATIONS
+
+1) Big Omega - OMEGA
+Symbol: Omega(g(n))
+Meaning: Lower bound (best-case type bound in many basic discussions).
+It tells that algorithm will take at least this much time for large n.
+
+Formal idea:
+f(n) is Omega(g(n)) if there exist constants c > 0 and n0 such that
+f(n) >= c*g(n) for all n >= n0.
+
+Example:
+f(n) = 3n + 2 is Omega(n)
+because for large n, 3n + 2 is always greater than or equal to c*n.
+
+
+2) Big Theta - THETA
+Symbol: Theta(g(n))
+Meaning: Tight bound.
+It gives both upper and lower bound together.
+So growth is exactly of same order as g(n).
+
+Formal idea:
+f(n) is Theta(g(n)) if there exist constants c1, c2 > 0 and n0 such that
+c1*g(n) <= f(n) <= c2*g(n) for all n >= n0.
+
+Example:
+f(n) = 5n + 10 is Theta(n)
+because it is both O(n) and Omega(n).
+
+
+3) Small o (little o) - short definition
+Symbol: o(g(n))
+Meaning: Strictly smaller growth than g(n).
+f(n) grows slower than g(n), not equal order.
+
+Quick idea:
+limit of f(n)/g(n) as n -> infinity is 0.
+
+Example:
+log n is o(n)
+n is o(n^2)
+
+
+4) Small omega (little omega) - short definition
+Symbol: omega(g(n))
+Meaning: Strictly larger growth than g(n).
+f(n) grows faster than g(n), not equal order.
+
+Quick idea:
+limit of f(n)/g(n) as n -> infinity is infinity.
+
+Example:
+n^2 is omega(n)
+n log n is omega(n)
+
+
+5) Small theta (little theta) - short definition
+Symbol: theta(g(n))
+Note: In standard algorithm notation, little theta is not commonly used.
+In basic discussions, it is often treated as same-order growth (similar idea to Big Theta).
+
+Safe exam point:
+- Use Big Theta for exact/tight bound.
+- Use little o and little omega for strict inequalities.
+
+
+6) Quick Comparison
+
+Big O     -> upper bound
+Big Omega -> lower bound
+Big Theta -> tight bound (upper + lower)
+small o   -> strictly smaller than
+small omega -> strictly larger than
+
+
+7) One-line Memory Trick
+
+O: at most
+Omega: at least
+Theta: exactly same order
+o: much smaller
+omega: much larger
