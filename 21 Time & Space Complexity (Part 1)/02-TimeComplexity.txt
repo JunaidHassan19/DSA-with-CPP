@@ -1,0 +1,93 @@
+Time Complexity (Basic)
+
+1) What is Time Complexity?
+Time complexity tells us how the number of operations in an algorithm grows when input size (n) grows.
+It does not mean exact time in seconds.
+It means growth of work done by the program.
+
+In simple words:
+More operations -> more time
+Fewer operations -> less time
+
+2) Why do we use it?
+Two codes can give the same output, but one can be much faster for large input.
+Time complexity helps us compare algorithms.
+
+3) Big-O notation
+We usually write time complexity in Big-O form.
+Example: O(1), O(n), O(n^2), O(log n)
+
+4) Important idea
+Time complexity increases when operations increase with input size.
+
+If n becomes bigger and operations also become bigger quickly,
+then time complexity is high.
+
+----------------------------------------
+Loop Examples
+----------------------------------------
+
+Example 1: Single loop
+
+for (int i = 0; i < n; i++) {
+	cout << i;
+}
+
+This loop runs n times.
+Operations are proportional to n.
+Time Complexity = O(n)
+
+----------------------------------------
+
+Example 2: Two separate loops
+
+for (int i = 0; i < n; i++) {
+	cout << i;
+}
+
+for (int i = 0; i < n; i++) {
+	cout << i;
+}
+
+First loop: n operations
+Second loop: n operations
+Total operations: n + n = 2n
+In Big-O, constants are ignored.
+Time Complexity = O(n)
+
+----------------------------------------
+
+Example 3: Nested loop
+
+for (int i = 0; i < n; i++) {
+	for (int j = 0; j < n; j++) {
+		cout << i << j;
+	}
+}
+
+Outer loop runs n times.
+For each outer iteration, inner loop runs n times.
+Total operations = n * n = n^2
+Time Complexity = O(n^2)
+
+----------------------------------------
+
+Example 4: Half loop
+
+for (int i = 0; i < n/2; i++) {
+	cout << i;
+}
+
+Runs about n/2 times.
+Big-O ignores constant factors.
+Time Complexity = O(n)
+
+----------------------------------------
+
+Final Note:
+As input size n increases, operation count also increases.
+That increase decides time complexity.
+
+Linear increase -> O(n)
+Quadratic increase -> O(n^2)
+So always try to reduce unnecessary operations.
