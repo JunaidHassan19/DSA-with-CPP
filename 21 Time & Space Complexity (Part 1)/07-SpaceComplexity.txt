@@ -1,0 +1,103 @@
+SPACE COMPLEXITY (BASICS)
+
+1) What is Space Complexity?
+Space complexity tells how much memory an algorithm uses as input size n increases.
+
+It includes two parts:
+- Input Space
+- Auxiliary Space
+
+Total Space = Input Space + Auxiliary Space
+
+
+2) Input Space vs Auxiliary Space
+
+Input Space:
+Memory needed to store the given input itself.
+Example: If array of size n is given, input space is O(n).
+
+Auxiliary Space:
+Extra memory used by algorithm apart from input.
+Example: temporary arrays, recursion call stack, extra variables.
+
+Important:
+In interviews and DSA, when people ask for "space complexity", they often mean
+auxiliary space.
+
+
+3) Stack Memory (Call Stack)
+
+What goes in stack:
+- Function calls
+- Local variables
+- Parameters
+- Return addresses
+
+Key points:
+- Managed automatically by program execution.
+- Memory is freed when function returns.
+- Recursion uses stack frames for each call.
+
+Example:
+If recursive function depth is n, stack space can be O(n).
+
+
+4) Heap Memory
+
+What goes in heap:
+- Dynamically allocated memory (using new/malloc etc.)
+- Objects/structures created at runtime
+
+Key points:
+- Lifetime can extend beyond function scope.
+- Must be managed carefully (delete/free in C/C++).
+- Useful when size is decided at runtime.
+
+Example:
+Creating dynamic array of size n on heap uses O(n) heap space.
+
+
+5) Quick Examples of Space Complexity
+
+Example A: Constant extra variables
+int sum = 0;
+for(i = 0; i < n; i++) sum += arr[i];
+Auxiliary Space: O(1)
+
+Example B: Extra array
+int temp[n];
+Auxiliary Space: O(n)
+
+Example C: Recursive factorial
+fact(n) calls fact(n-1) ... fact(1)
+Recursion depth = n
+Auxiliary Space (stack): O(n)
+
+Example D: Iterative factorial
+Uses only few variables
+Auxiliary Space: O(1)
+
+
+6) Stack vs Heap (Short Comparison)
+
+Stack:
+- Automatic allocation/deallocation
+- Faster access
+- Limited size
+- Used for function execution data
+
+Heap:
+- Dynamic allocation/deallocation
+- Slightly slower than stack
+- Larger memory region
+- Used for runtime dynamic data
+
+
+7) Final Revision Points
+
+- Space complexity = memory growth with n.
+- Total space = input space + auxiliary space.
+- DSA answers usually focus on auxiliary space.
+- Recursion increases stack usage.
+- Dynamic allocations increase heap usage.
+- Fewer extra data structures usually means better auxiliary space.
