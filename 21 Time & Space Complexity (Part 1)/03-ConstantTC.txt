@@ -1,0 +1,84 @@
+Constant Time Complexity (O(1))
+
+1) What is Constant Time Complexity?
+Constant time means the algorithm takes almost the same number of steps,
+no matter how big the input size n is.
+
+Input can be small or very large,
+but operations stay fixed.
+
+So, Time Complexity = O(1)
+
+----------------------------------------
+2) Basic Idea
+----------------------------------------
+
+In O(1), work does not grow with n.
+
+If n = 10, 100, or 100000,
+the number of operations is still nearly constant.
+
+----------------------------------------
+3) Math Form
+----------------------------------------
+
+T(n) = c
+
+where c is a constant number of operations.
+
+In Big-O notation:
+T(n) = O(1)
+
+----------------------------------------
+4) Examples
+----------------------------------------
+
+Example 1: Access first element of array
+
+int arr[] = {10, 20, 30, 40};
+cout << arr[0];
+
+Only one direct access.
+Time Complexity = O(1)
+
+Example 2: Simple arithmetic
+
+int a = 5, b = 7;
+int sum = a + b;
+
+One fixed operation.
+Time Complexity = O(1)
+
+Example 3: Swap two variables
+
+int x = 3, y = 8;
+int temp = x;
+x = y;
+y = temp;
+
+Fixed number of steps.
+Time Complexity = O(1)
+
+----------------------------------------
+5) Tiny Graph Idea
+----------------------------------------
+
+y-axis = operations
+x-axis = input size (n)
+
+Operations
+^
+|  ----------- O(1) -----------
+|
+|
+|________________________________> n
+
+This is almost a flat line,
+because operations do not increase with n.
+
+----------------------------------------
+Final Note
+----------------------------------------
+
+O(1) is very efficient because running work stays constant.
+It is one of the best time complexities.
