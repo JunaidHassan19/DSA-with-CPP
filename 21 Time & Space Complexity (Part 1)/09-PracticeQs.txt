@@ -1,0 +1,37 @@
+/*
+
+Nested Loops
+
+Practice Question 1:
+
+for(int i = 0; i < n; i++) {
+    for(int j = i+1; j < n; j++) {
+        // contant work here
+    }
+}
+
+
+Solution:- 
+
+Step 1: Outer loop analysis
+- i runs from 0 to n-1
+- So outer loop runs n times
+
+Step 2: Inner loop analysis for each i
+- j starts from i+1 and goes to n-1
+- Number of inner iterations for a fixed i = n - (i+1) = n - i - 1
+
+Step 3: Total operations
+- Total work = Sum from i = 0 to n-1 of (n - i - 1)
+- = (n-1) + (n-2) + ... + 2 + 1 + 0
+- = n(n-1)/2
+
+Step 4: Big-O simplification
+- n(n-1)/2 = (n^2 - n)/2
+- Ignore constants and lower-order terms
+- Time Complexity = O(n^2)
+
+Final Answer:
+TC = O(n^2)
+SC = O(1)
+*/
