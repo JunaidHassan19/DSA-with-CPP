@@ -1,0 +1,57 @@
+O(n) vs O(log n)
+Linear Time vs Logarithmic Time
+
+1) What does Big-O mean?
+Big-O tells us how fast time (or steps) grows when input size n grows.
+It does not focus on exact seconds. It focuses on growth trend.
+
+2) O(n) -> Linear Time
+Meaning:
+- If n doubles, work also roughly doubles.
+- Algorithm may need to check items one by one.
+
+Common example:
+- Linear Search in an unsorted array.
+- To find one value, in worst case we check all n elements.
+
+Steps idea:
+- n = 10   -> about 10 checks
+- n = 100  -> about 100 checks
+- n = 1000 -> about 1000 checks
+
+So growth is direct with n.
+
+3) O(log n) -> Logarithmic Time
+Meaning:
+- If n doubles, work increases only a little.
+- Each step removes a big part of remaining work (usually half).
+
+Common example:
+- Binary Search in a sorted array.
+- Each check goes to left half or right half.
+
+Steps idea (base 2):
+- n = 8      -> about 3 checks
+- n = 16     -> about 4 checks
+- n = 1024   -> about 10 checks
+- n = 1,000,000 -> about 20 checks
+
+So even for huge input, steps stay small.
+
+4) Why O(log n) is usually better than O(n)
+- O(n) grows fast as data grows.
+- O(log n) grows very slowly.
+- For large n, O(log n) is much more efficient.
+
+5) Quick intuition
+Imagine finding a name in a dictionary:
+- O(n): start from first page, check page by page.
+- O(log n): open middle page, then half-left or half-right repeatedly.
+
+6) Final comparison
+- O(n): one-by-one checking (linear growth).
+- O(log n): divide-and-reduce checking (slow growth).
+- For large data, prefer O(log n) algorithms when possible.
+
+Note:
+Binary Search gives O(log n) only when data is sorted.
