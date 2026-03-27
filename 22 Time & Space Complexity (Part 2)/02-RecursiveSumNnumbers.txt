@@ -1,0 +1,69 @@
+Recursive Sum of N numbers
+
+int sum(int n) {
+    if (n == 0) return 0; // base case
+    return n + sum(n - 1); // recursive case
+}
+
+============================================================
+
+APPROACH TO FIND TIME COMPLEXITY (TC)
+============================================================
+
+Step 1: Identify the recurrence relation
+--------------------------------------
+Look at what the function does:
+- Base case: if (n == 0) -> returns 0 (1 operation)
+- Recursive case: does addition (n + ...) and calls sum(n-1) (1 operation + one smaller call)
+
+So the recurrence is:
+T(n) = T(n-1) + O(1)
+
+This means:
+- Each call does constant work (O(1))
+- Then makes one recursive call with n-1
+
+
+Step 2: Count how deep the recursion goes
+------------------------------------------
+Starting with n:
+- Call 1: sum(n)      -> calls sum(n-1)
+- Call 2: sum(n-1)    -> calls sum(n-2)
+- Call 3: sum(n-2)    -> calls sum(n-3)
+- ...
+- Call n: sum(1)      -> calls sum(0)
+- Call n+1: sum(0)    -> returns (base case, no more calls)
+
+Total function calls = n + 1 = O(n)
+
+
+Step 3: Estimate total work done by all calls
+----------------------------------------------
+Each call does O(1) work (just one addition or comparison).
+Total calls = n
+Total work = n * O(1) = O(n)
+
+
+Step 4: Final answer
+--------------------
+Time Complexity = O(n)
+
+
+VISUALIZATION
+=============
+Recursion tree for sum(4):
+                sum(4)          <- 1st call
+                  |
+              sum(3) + 4        <- 2nd call
+                  |
+              sum(2) + 3        <- 3rd call
+                  |
+              sum(1) + 2        <- 4th call
+                  |
+              sum(0) + 1        <- 5th call
+                  |
+                  0             <- base case (no more calls)
+
+Total calls = 5 (for n=4, we have n+1 calls)
+Work per call = O(1)
+Total TC = O(n)
