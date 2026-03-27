@@ -1,0 +1,33 @@
+Common Time Complexities
+
+1) O(1) - Constant Time
+- Meaning: The number of operations stays almost the same, no matter how large n becomes.
+- Example: Accessing arr[5] in an array.
+- Note: Fastest practical growth among common complexities.
+
+2) O(log n) - Logarithmic Time
+- Meaning: Work increases very slowly as n grows (usually by repeatedly dividing the problem).
+- Example: Binary search in a sorted array.
+- Note: Very efficient for large inputs.
+
+3) O(n) - Linear Time
+- Meaning: Work grows directly with n.
+- Example: Scanning all elements of an array once.
+- Note: If n doubles, time roughly doubles.
+
+4) O(n^2) - Quadratic Time
+- Meaning: Work grows with the square of n, often from nested loops.
+- Example: Comparing every pair of elements; simple bubble sort style passes.
+- Note: Becomes slow quickly for large n.
+
+5) O(2^n) - Exponential Time
+- Meaning: Each extra input element can nearly double the work.
+- Example: Naive recursive solution for Fibonacci or subset generation recursion patterns.
+- Note: Extremely expensive for even medium n.
+
+Growth Order (best to worst as n increases):
+O(1) < O(log n) < O(n) < O(n^2) << O(2^n)
+
+Quick intuition:
+- Better algorithms keep growth flatter.
+- For large input sizes, choosing O(n log n) or O(n) over O(n^2) can make a huge difference.
