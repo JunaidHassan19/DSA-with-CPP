@@ -1,0 +1,34 @@
+/*
+
+Practice Question 2:
+
+for(int i = 0; i < n; i++) {
+    for(int j = 0; j < i; j++) {
+        // constant work here
+    }
+}
+
+Solution:-
+Step 1: Outer loop analysis
+- i runs from 0 to n-1
+- So outer loop runs n times
+
+Step 2: Inner loop analysis for each i
+- j runs from 0 to i-1
+- Number of inner iterations for a fixed i = i
+
+Step 3: Total operations
+- Total work = Sum from i = 0 to n-1 of i
+- = 0 + 1 + 2 + ... + (n-1)
+- = (n-1)n/2
+
+Step 4: Big-O simplification
+- (n-1)n/2 = (n^2 - n)/2
+- Ignore constants and lower-order terms
+- Time Complexity = O(n^2)
+
+Final Answer:
+TC = O(n^2)
+SC = O(1)
+
+*/
