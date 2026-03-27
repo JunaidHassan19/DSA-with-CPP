@@ -1,0 +1,100 @@
+Recursion Time Complexity (TC)
+
+1) What is recursion TC?
+Recursion TC means: total number of operations done by all recursive calls.
+
+In recursion, we do:
+- Some work in current call
+- Then call function again (one or more times)
+
+So TC depends on:
+- How many calls are created
+- How much work each call does
+
+
+2) Quick formula idea
+For many recursion problems:
+
+T(n) = (number of recursive calls) * T(smaller input) + work done in current call
+
+Example format:
+- T(n) = T(n-1) + O(1)
+- T(n) = 2T(n-1) + O(1)
+- T(n) = T(n/2) + O(1)
+- T(n) = 2T(n/2) + O(n)
+
+
+3) Common patterns (very important)
+
+A) One recursive call, size reduces by 1
+T(n) = T(n-1) + O(1)
+TC = O(n)
+
+Example: factorial, sum of first n numbers
+
+
+B) Two recursive calls, size reduces by 1
+T(n) = 2T(n-1) + O(1)
+TC = O(2^n)
+
+Example: naive Fibonacci recursion
+
+
+C) One recursive call, size becomes half
+T(n) = T(n/2) + O(1)
+TC = O(log n)
+
+Example: binary search recursion
+
+
+D) Two recursive calls, each half
+T(n) = 2T(n/2) + O(n)
+TC = O(n log n)
+
+Example: merge sort
+
+
+4) Recursion tree intuition
+To understand TC, think of a tree:
+- Each node = one function call
+- Total nodes (or total work per level) gives total TC
+
+If calls increase fast (like 2 branches each time), TC becomes large.
+If input shrinks fast (like n/2), depth stays small.
+
+
+5) Easy examples
+
+Example 1: Factorial
+fact(n) = n * fact(n-1)
+Recurrence: T(n) = T(n-1) + O(1)
+TC = O(n)
+
+
+Example 2: Fibonacci (naive)
+fib(n) = fib(n-1) + fib(n-2)
+Calls branch again and again
+TC = O(2^n) (exponential)
+
+
+Example 3: Binary Search (recursive)
+Each time search in half array
+Recurrence: T(n) = T(n/2) + O(1)
+TC = O(log n)
+
+
+6) Important note: Time vs Space in recursion
+- Time Complexity = total operations of all calls
+- Space Complexity = recursion stack depth
+
+Examples:
+- factorial: TC O(n), stack space O(n)
+- binary search recursion: TC O(log n), stack space O(log n)
+
+
+7) Final shortcut rules
+- n -> n-1 with one call: usually O(n)
+- n -> n/2 with one call: usually O(log n)
+- two calls at each step: often exponential or n log n (depends on subproblem size)
+
+Always write recurrence first, then solve it.
