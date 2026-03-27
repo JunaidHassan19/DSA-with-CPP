@@ -1,0 +1,22 @@
+void bubbleSort(int aerr[], int n) {
+  for(int i=0; i<n-1; i++) {
+    for(int j=0; j<n-i-1; j++) {
+      if(aerr[j] > aerr[j+1]) {
+        swap(aerr[j], aerr[j+1]);
+      }
+    }
+  }
+}
+
+Solution:-
+Time Complexity Analysis:
+- Outer loop runs n-1 times.
+- Inner loop runs n-i-1 times for each iteration of the outer loop.
+- Total comparisons = (n-1) + (n-2) + ... + 1 = n(n-1)/2
+- Therefore, Time Complexity = O(n^2)
+- Space Complexity = O(1)
+
+logic:
+- The outer loop iterates through the array, and for each element, the inner loop compares it with the next element and swaps if they are in the wrong order.
+- The number of comparisons made is the sum of the first n-1 natural numbers, which simplifies to n(n-1)/2, leading to a time complexity of O(n^2).
+- The space complexity is O(1) because we are only using a constant amount of extra space for the swap operation and loop variables, regardless of the input size.
