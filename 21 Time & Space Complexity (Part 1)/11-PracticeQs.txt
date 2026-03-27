@@ -1,5 +1,3 @@
-/*
-
 Practice Questions:
 
 for some k < n
@@ -39,4 +37,3 @@ logic:
 - Total work is the product of the number of iterations of both loops.
 - The time complexity simplifies to O(n) because n is the dominant term when k < n.
 
-*/

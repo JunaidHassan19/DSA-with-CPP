@@ -1,4 +1,3 @@
-/*
 
 Nested Loops
 
@@ -34,4 +33,3 @@ Step 4: Big-O simplification
 Final Answer:
 TC = O(n^2)
 SC = O(1)
-*/
