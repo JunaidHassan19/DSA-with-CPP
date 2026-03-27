@@ -1,0 +1,77 @@
+Recursive factorial of N.
+
+int fact(int n) {
+    if (n == 0) return 1; // base case
+    return n * fact(n - 1); // recursive case
+}
+
+============================================================
+
+APPROACH 1: RECURRENCE RELATION
+============================================================
+
+From the code:
+- Base case: fact(0) = 1, so T(0) = O(1)
+- Recursive case: one multiplication + one recursive call on (n-1)
+
+Recurrence:
+T(n) = T(n-1) + O(1)
+
+Solve it:
+T(n) = O(n)
+
+So, Time Complexity = O(n)
+
+
+============================================================
+
+APPROACH 2: RECURSION TREE
+============================================================
+
+For fact(4), calls are:
+
+fact(4)
+    |
+fact(3)
+    |
+fact(2)
+    |
+fact(1)
+    |
+fact(0)
+
+Observation:
+- This is a single chain (not branching).
+- Number of levels is n+1 (from n to 0).
+- Work per level is constant O(1).
+
+Total work = (n+1) * O(1) = O(n)
+
+
+============================================================
+
+APPROACH 3: CALL STACK
+============================================================
+
+Calling fact(4):
+
+Push phase (calls):
+fact(4) -> fact(3) -> fact(2) -> fact(1) -> fact(0)
+
+Pop phase (returns):
+fact(0) returns 1
+fact(1) returns 1 * 1 = 1
+fact(2) returns 2 * 1 = 2
+fact(3) returns 3 * 2 = 6
+fact(4) returns 4 * 6 = 24
+
+Insights:
+- Total calls = n+1, so time is O(n)
+- Maximum stack depth = n+1, so recursive space is O(n)
+
+
+FINAL RESULT
+============================================================
+
+Time Complexity: O(n)
+Space Complexity (call stack): O(n)
