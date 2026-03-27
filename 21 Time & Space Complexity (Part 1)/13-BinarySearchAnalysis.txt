@@ -1,0 +1,26 @@
+int binSearch(int arr[], int n, int key) {
+  int low = 0, high = n-1;
+  while(low <= high) {
+    int mid = low + (high - low)/2;
+    if(arr[mid] == key) {
+      return mid;
+    } else if(arr[mid] < key) {
+      low = mid + 1;
+    } else {
+      high = mid - 1;
+    }
+  }
+  return -1; // key not found
+}
+
+
+Solution:-
+Time Complexity Analysis:
+- The while loop runs as long as low <= high.
+- In each iteration, the search space is halved.
+- Therefore, the number of iterations is at most log₂(n).
+- Time Complexity = O(log n)
+- Space Complexity = O(1)
+
+logic:
+- The binary search algorithm works by repeatedly dividing the search interval in half. If the value of the search key is less than the middle element, the search continues in the left half, otherwise it continues in the right half. This halving process leads to a logarithmic number of comparisons, resulting in a time complexity of O(log n). The space complexity is O(1) because we are using only a constant amount of extra space for the variables low, high, and mid.
