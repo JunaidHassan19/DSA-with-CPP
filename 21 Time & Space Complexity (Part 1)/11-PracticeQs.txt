@@ -1,0 +1,42 @@
+/*
+
+Practice Questions:
+
+for some k < n
+for(int i=0; i<n; i+k){
+    for(int j=0; j<=k; j++){
+        // constant work here
+    }
+}
+
+Solution:-
+Step 1: Outer loop analysis
+- i starts at 0 and increments by k each time
+- Number of iterations = n/k
+
+Step 2: Inner loop analysis for each i
+- j runs from 0 to k
+- Number of inner iterations = k + 1
+
+Step 3: Total operations
+- Total work = (n/k) * (k + 1)
+- = n + n/k
+
+Step 4: Big-O simplification
+- Since k < n, n/k < n
+- Therefore, the dominant term is n
+- Time Complexity = O(n)
+
+Final Answer:
+TC = O(n)
+SC = O(1)
+
+
+
+logic:
+- The outer loop runs n/k times because it increments by k each time.
+- The inner loop runs k+1 times for each iteration of the outer loop.
+- Total work is the product of the number of iterations of both loops.
+- The time complexity simplifies to O(n) because n is the dominant term when k < n.
+
+*/
