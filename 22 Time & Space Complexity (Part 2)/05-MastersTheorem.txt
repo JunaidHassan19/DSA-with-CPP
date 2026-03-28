@@ -1,0 +1,130 @@
+Master's Theorem (Divide and Conquer)
+
+============================================================
+
+1) Why we use Master's Theorem
+============================================================
+
+Master's Theorem helps find Time Complexity of many divide-and-conquer recurrences quickly.
+
+Standard form:
+T(n) = aT(n/b) + f(n)
+
+Where:
+- a = number of subproblems
+- b = factor by which input size is divided (b > 1)
+- f(n) = extra work done outside recursive calls (split/merge/process)
+
+
+============================================================
+
+2) Core comparison idea
+============================================================
+
+Compare f(n) with n^(log_b(a)).
+
+Let:
+p = log_b(a)
+
+Now compare f(n) and n^p.
+
+
+============================================================
+
+3) Three cases of Master's Theorem
+============================================================
+
+Case 1: f(n) is smaller than n^p
+Condition:
+f(n) = O(n^(p - e)) for some e > 0
+
+Answer:
+T(n) = Theta(n^p)
+
+
+Case 2: f(n) is same order as n^p
+Condition:
+f(n) = Theta(n^p * (log n)^k), k >= 0
+
+Answer:
+T(n) = Theta(n^p * (log n)^(k+1))
+
+
+Case 3: f(n) is larger than n^p
+Condition:
+f(n) = Omega(n^(p + e)) for some e > 0
+and regularity condition holds:
+a * f(n/b) <= c * f(n) for some constant c < 1 (for large n)
+
+Answer:
+T(n) = Theta(f(n))
+
+
+============================================================
+
+4) Step-by-step approach to solve
+============================================================
+
+Step 1: Write recurrence in form T(n) = aT(n/b) + f(n)
+Step 2: Find a, b, and f(n)
+Step 3: Compute p = log_b(a)
+Step 4: Compare f(n) with n^p
+Step 5: Apply Case 1 / 2 / 3
+
+
+============================================================
+
+5) Important examples
+============================================================
+
+Example 1: Binary Search
+T(n) = T(n/2) + O(1)
+a = 1, b = 2, p = log_2(1) = 0, n^p = 1
+f(n) = 1 = Theta(1)
+Case 2
+Result: T(n) = Theta(log n)
+
+
+Example 2: Merge Sort
+T(n) = 2T(n/2) + O(n)
+a = 2, b = 2, p = log_2(2) = 1, n^p = n
+f(n) = Theta(n)
+Case 2
+Result: T(n) = Theta(n log n)
+
+
+Example 3: Recurrence with Case 1
+T(n) = 4T(n/2) + O(n)
+a = 4, b = 2, p = log_2(4) = 2, n^p = n^2
+f(n) = O(n), which is smaller than n^2
+Case 1
+Result: T(n) = Theta(n^2)
+
+
+Example 4: Recurrence with Case 3
+T(n) = 2T(n/2) + O(n^2)
+a = 2, b = 2, p = 1, n^p = n
+f(n) = n^2, which is larger than n
+Case 3 (regularity holds)
+Result: T(n) = Theta(n^2)
+
+
+============================================================
+
+6) When Master's Theorem cannot be used
+============================================================
+
+Master's Theorem does NOT directly apply when:
+- Subproblem sizes are not equal (like T(n/2) + T(n/3))
+- Recurrence is not in aT(n/b) + f(n) form
+- a or b are not constants
+
+In such cases, use recursion tree, substitution, or Akra-Bazzi method.
+
+
+============================================================
+
+7) Quick revision line
+============================================================
+
+Master's Theorem = Compare f(n) with n^(log_b(a)) and choose Case 1, 2, or 3.
