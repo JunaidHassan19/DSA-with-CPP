@@ -1,0 +1,165 @@
+Merge Sort + Merge Function (C++)
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void merge(vector<int>& arr, int left, int mid, int right) {
+	int n1 = mid - left + 1;
+	int n2 = right - mid;
+
+	vector<int> L(n1), R(n2);
+
+	for (int i = 0; i < n1; i++) {
+		L[i] = arr[left + i];
+	}
+	for (int j = 0; j < n2; j++) {
+		R[j] = arr[mid + 1 + j];
+	}
+
+	int i = 0, j = 0, k = left;
+
+	while (i < n1 && j < n2) {
+		if (L[i] <= R[j]) {
+			arr[k] = L[i];
+			i++;
+		} else {
+			arr[k] = R[j];
+			j++;
+		}
+		k++;
+	}
+
+	while (i < n1) {
+		arr[k] = L[i];
+		i++;
+		k++;
+	}
+
+	while (j < n2) {
+		arr[k] = R[j];
+		j++;
+		k++;
+	}
+}
+
+void mergeSort(vector<int>& arr, int left, int right) {
+	if (left >= right) {
+		return;
+	}
+
+	int mid = left + (right - left) / 2;
+
+	mergeSort(arr, left, mid);
+	mergeSort(arr, mid + 1, right);
+
+	merge(arr, left, mid, right);
+}
+
+int main() {
+	vector<int> arr = {38, 27, 43, 3, 9, 82, 10};
+
+	mergeSort(arr, 0, (int)arr.size() - 1);
+
+	cout << "Sorted array: ";
+	for (int x : arr) {
+		cout << x << " ";
+	}
+	cout << "\n";
+
+	return 0;
+}
+
+============================================================
+
+Approach 1: Recurrence Relation
+============================================================
+
+In merge sort:
+1) We divide the array into 2 halves.
+2) We sort left half recursively.
+3) We sort right half recursively.
+4) We merge both halves in linear time.
+
+So recurrence is:
+T(n) = 2T(n/2) + O(n)
+
+Why?
+- 2 recursive calls of size n/2 -> 2T(n/2)
+- Merge step scans all n elements once -> O(n)
+
+Using Master theorem:
+- a = 2, b = 2, f(n) = n
+- n^(log_b(a)) = n^(log_2(2)) = n
+- f(n) and n^(log_b(a)) are same order
+
+Final:
+T(n) = O(n log n)
+
+
+============================================================
+
+Approach 2: Recursion Tree
+============================================================
+
+Example for n = 8:
+
+Level 0: 1 problem of size 8       -> merge work = 8
+Level 1: 2 problems of size 4      -> merge work = 8
+Level 2: 4 problems of size 2      -> merge work = 8
+Level 3: 8 problems of size 1      -> merge work = 8 (base level, no real merge cost here)
+
+Key idea:
+- At each non-base level, total merge work is O(n).
+- Number of levels is log n (because size keeps halving).
+
+Total work:
+O(n) + O(n) + ... (log n times) = O(n log n)
+
+
+============================================================
+
+Approach 3: Call Stack Understanding
+============================================================
+
+Call stack for n = 8 (one branch):
+mergeSort(0,7)
+ -> mergeSort(0,3)
+	-> mergeSort(0,1)
+	   -> mergeSort(0,0) return
+	   -> mergeSort(1,1) return
+	   -> merge(0,0,1)
+	-> mergeSort(2,3)
+	   -> ...
+	-> merge(0,1,3)
+ -> mergeSort(4,7)
+	-> ...
+ -> merge(0,3,7)
+
+Important points:
+1) Calls go deep until single-element subarray (base case).
+2) Then stack unwinds and merge happens while returning.
+3) Maximum recursion depth is log n.
+
+Space complexity:
+- Recursive call stack depth = O(log n)
+- Extra arrays used during merge overall considered O(n)
+
+Final space complexity (standard implementation): O(n)
+
+
+============================================================
+
+Final Complexity Summary
+============================================================
+
+Time Complexity:
+- Best case: O(n log n)
+- Average case: O(n log n)
+- Worst case: O(n log n)
+
+Space Complexity:
+- O(n) extra space (temporary arrays in merge)
+- O(log n) recursion stack depth
+
+Merge sort is stable and good for large datasets where guaranteed O(n log n) is needed.
