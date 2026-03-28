@@ -1,0 +1,87 @@
+Power Function Analysis
+============================================================
+int pow(int x, int n) {
+    if (n == 0) return 1; // base case
+
+   int halfPow = pow(x, n / 2); // recursive call on half
+    int halfPowSq = halfPow * halfPow; // square of half power
+    if(n%2 != 0) {
+      halfPowSq *= x; // if n is odd, multiply by x once more
+    }
+    return halfPowSq;
+}
+
+  ============================================================
+
+  Approach 1: Recurrence Relation
+  ============================================================
+
+  From the code:
+  1) One recursive call is made on n/2.
+  2) Remaining operations are constant:
+     - one multiplication: halfPow * halfPow
+     - one extra multiplication only when n is odd
+
+  So recurrence is:
+  T(n) = T(n/2) + O(1)
+
+  Solve recurrence:
+  T(n) = O(log n)
+
+  Reason:
+  Each call halves n, so number of levels is about log_2(n).
+
+
+  ============================================================
+
+  Approach 2: Recursion Tree
+  ============================================================
+
+  Example for n = 16:
+
+  pow(x,16)
+    -> pow(x,8)
+      -> pow(x,4)
+        -> pow(x,2)
+          -> pow(x,1)
+            -> pow(x,0)
+
+  Observations:
+  1) This is a single chain (no branching).
+  2) At each level, n becomes half.
+  3) Work per level is constant O(1).
+
+  Total work:
+  O(1) + O(1) + ... (about log n levels) = O(log n)
+
+
+  ============================================================
+
+  Approach 3: Call Stack
+  ============================================================
+
+  Push phase (calls):
+  pow(x,13) -> pow(x,6) -> pow(x,3) -> pow(x,1) -> pow(x,0)
+
+  Pop phase (returns and computes):
+  pow(x,0) returns 1
+  pow(x,1): (1*1)*x = x
+  pow(x,3): (x*x)*x = x^3
+  pow(x,6): (x^3*x^3) = x^6
+  pow(x,13): (x^6*x^6)*x = x^13
+
+  Insights:
+  1) Maximum stack depth = number of halvings = O(log n)
+  2) Total calls are also O(log n)
+
+
+  ============================================================
+
+  Final Complexity Summary
+  ============================================================
+
+  Time Complexity: O(log n)
+  Space Complexity (recursive stack): O(log n)
+
+  This method is called Fast Exponentiation (Binary Exponentiation) and is much better than simple O(n) multiplication-based power.
+    
