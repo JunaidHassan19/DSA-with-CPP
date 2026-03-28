@@ -1,0 +1,87 @@
+Recursive Nth Fibonacci number.
+
+int fibo(int n) {
+    if (n <= 1) return n; // base case
+    return fibo(n - 1) + fibo(n - 2); // recursive case
+}
+
+============================================================
+
+APPROACH 1: RECURRENCE RELATION
+============================================================
+
+From the code:
+- Base cases: fibo(0) and fibo(1), so T(0) = O(1), T(1) = O(1)
+- Recursive case: two recursive calls + one addition
+
+Recurrence:
+T(n) = T(n-1) + T(n-2) + O(1)
+
+This grows exponentially.
+Approx result:
+T(n) = O(2^n)
+
+More tight bound is O(phi^n), where phi is about 1.618.
+In classes, O(2^n) is commonly used.
+
+
+============================================================
+
+APPROACH 2: RECURSION TREE
+============================================================
+
+For fibo(5):
+
+fibo(5)
+|- fibo(4)
+|  |- fibo(3)
+|  |  |- fibo(2)
+|  |  |  |- fibo(1)
+|  |  |  |- fibo(0)
+|  |  |- fibo(1)
+|  |- fibo(2)
+|     |- fibo(1)
+|     |- fibo(0)
+|- fibo(3)
+   |- fibo(2)
+   |  |- fibo(1)
+   |  |- fibo(0)
+   |- fibo(1)
+
+Observation:
+- The tree branches into 2 calls at many nodes.
+- Same subproblems repeat many times (like fibo(3), fibo(2), fibo(1)).
+- Total nodes grow exponentially.
+
+So total time is exponential: O(2^n)
+
+
+============================================================
+
+APPROACH 3: CALL STACK
+============================================================
+
+Important point:
+- Function makes many total calls (exponential),
+- But maximum depth of any one path is only n.
+
+Example deepest path for fibo(5):
+fibo(5) -> fibo(4) -> fibo(3) -> fibo(2) -> fibo(1)
+
+Depth is about n, so recursion stack space is O(n).
+
+
+FINAL RESULT
+============================================================
+
+Time Complexity: O(2^n)
+Space Complexity (call stack): O(n)
+
+
+NOTE (OPTIMIZATION)
+============================================================
+
+If we use memoization or DP, repeated work is removed:
+- Time can become O(n)
+- Space can be O(n) (or O(1) with iterative optimized method)
+
