@@ -1,0 +1,172 @@
+Backtracking - Introduction
+
+============================================================
+
+1) What is Backtracking?
+============================================================
+
+Backtracking is a problem-solving technique where we:
+1) Build a solution step by step.
+2) Check if current step is valid.
+3) If not valid, undo the last step (backtrack) and try another choice.
+
+Simple meaning:
+"Try, check, undo, and try next option."
+
+
+============================================================
+
+2) Why Backtracking is used
+============================================================
+
+Use backtracking when:
+1) We have many possible choices.
+2) We need one valid answer or all valid answers.
+3) We can reject invalid paths early.
+
+This helps avoid checking every complete possibility blindly.
+
+
+============================================================
+
+3) Core idea (Decision Tree)
+============================================================
+
+Think of choices like a tree:
+1) Root = starting state.
+2) Each level = one decision.
+3) Each branch = one choice.
+4) Invalid branch is cut immediately (pruning).
+
+Backtracking does DFS on this decision tree.
+
+
+============================================================
+
+4) Generic Backtracking Template
+============================================================
+
+Pseudo code:
+
+backtrack(state):
+	if state is complete:
+		save/print answer
+		return
+
+	for each choice in available choices:
+		if choice is valid:
+			apply choice
+			backtrack(updated state)
+			undo choice   // backtrack step
+
+
+============================================================
+
+5) Main Types of Backtracking Problems
+============================================================
+
+Type 1: Decision Backtracking
+------------------------------------------------------------
+Question form:
+"Is there at least one valid solution?" (Yes/No)
+
+Goal:
+Stop when first valid solution is found.
+
+Examples:
+1) Sudoku (check if puzzle can be solved)
+2) Rat in a Maze (is any path possible?)
+3) Subset Sum (is there a subset with target sum?)
+
+
+Type 2: Optimization Backtracking
+------------------------------------------------------------
+Question form:
+"What is the best solution?" (min or max)
+
+Goal:
+Explore candidates and keep best answer.
+
+Examples:
+1) Minimum cost assignment
+2) Maximum score path
+3) Small-size Traveling Salesman variant
+
+Note:
+Pruning is very important here to skip branches that cannot beat current best.
+
+
+Type 3: Enumeration Backtracking
+------------------------------------------------------------
+Question form:
+"List all valid solutions."
+
+Goal:
+Generate every valid answer.
+
+Examples:
+1) All subsets
+2) All permutations
+3) All N-Queens arrangements
+4) All maze paths
+
+Note:
+This type usually takes the most time because it outputs all solutions.
+
+
+Quick memory trick:
+------------------------------------------------------------
+Decision -> Find one
+Optimization -> Find best
+Enumeration -> Find all
+
+
+============================================================
+
+6) Backtracking vs Recursion
+============================================================
+
+1) Backtracking is built using recursion in most cases.
+2) Every backtracking solution is recursive (mostly),
+   but every recursion is NOT backtracking.
+3) Backtracking specifically does "choose -> explore -> undo".
+
+
+============================================================
+
+7) Time Complexity idea
+============================================================
+
+Backtracking usually has exponential complexity in worst case,
+because many choices are explored.
+
+General rough form:
+Time = O(branching_factor ^ depth)
+
+But pruning can reduce practical runtime a lot.
+
+
+============================================================
+
+8) Small real-life analogy
+============================================================
+
+Imagine opening a lock with multiple digits:
+1) Try a digit.
+2) Move to next digit.
+3) If wrong later, go back and change previous digit.
+
+This is exactly backtracking.
+
+
+============================================================
+
+9) Quick Revision (Exam)
+============================================================
+
+Backtracking:
+1) Build answer step by step.
+2) If invalid, undo last step.
+3) Try next option.
+4) Common in subsets, permutations, N-Queens, Sudoku, maze.
+5) Pattern: Choose -> Explore -> Unchoose.
