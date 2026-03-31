@@ -2,10 +2,12 @@
 using namespace std;
 
 // Grid Ways - Count of all paths from top-left to bottom-right in a grid (only right and down moves allowed)
-int gridWays(int row, int col, int n, int m)
+int gridWays(int row, int col, int n, int m, string path)
 {
   if (row == n - 1 && col == m - 1) // Base case: reached destination
   {
+    cout << path << endl;
+
     return 1;
   }
   if (col >= m || row >= n) // Base case: out of bounds
@@ -14,10 +16,10 @@ int gridWays(int row, int col, int n, int m)
   }
 
   // Right turn
-  int val1 = gridWays(row, col + 1, n, m);
+  int val1 = gridWays(row, col + 1, n, m, path + "R");
 
   // Down turn
-  int val2 = gridWays(row + 1, col, n, m);
+  int val2 = gridWays(row + 1, col, n, m, path + "D");
 
   return val1 + val2;
 }
@@ -26,8 +28,9 @@ int main()
 {
   int n = 3;
   int m = 3;
+  string path = "";
 
-  cout << gridWays(0, 0, n, m);
+  cout << gridWays(0, 0, n, m, path);
   return 0;
 }
 
