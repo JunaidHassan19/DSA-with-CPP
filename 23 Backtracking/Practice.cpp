@@ -296,7 +296,7 @@ int main()
 */
 
 // 06 - Practice 4X4 N-Queens Problem (with safety checks)
-
+/*
 // void printBoard(vector<vector<char>> board)
 // {
 //   int n = 4;
@@ -467,5 +467,51 @@ int main()
     board.push_back(newRow);
   }
   nQueens(board, 0);
+  return 0;
+}
+  */
+
+// 07 - Practice Grid Ways - Count of all paths from top-left to bottom-right in a grid (only right and down moves allowed)
+
+// int gridWays(int row, int col, int n, int m, string path)
+// {
+//   if (row == n - 1 && col == m - 1)
+//   {
+//     cout << path << endl;
+//     return 1;
+//   }
+//   if (col >= m || row >= n)
+//   {
+//     return 0;
+//   }
+//   int lev1 = gridWays(row, col + 1, n, m, path);
+//   int lev2 = gridWays(row + 1, col, n, m, path);
+//   return lev1 + lev2;
+// }
+
+int gridWays(int row, int col, int n, int m)
+{
+  if (row == n - 1 && col == m - 1)
+  {
+    return 1;
+  }
+  if (col >= m || row >= n)
+  {
+    return 0;
+  }
+
+  int vol1 = gridWays(row, col + 1, n, m);
+  int vol2 = gridWays(row + 1, col, n, m);
+  return vol1 + vol2;
+}
+
+int main()
+{
+  int n = 10;
+  int m = 10;
+  string path = "";
+
+  int res = gridWays(0, 0, n, m);
+  cout << res << endl;
   return 0;
 }
