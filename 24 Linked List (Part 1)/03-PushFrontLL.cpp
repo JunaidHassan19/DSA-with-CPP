@@ -38,8 +38,8 @@ public:
     }
     else // If the linked list is not empty, update the next pointer of the new node to point to the current head, and then update the head to the new node
     {
-      newNode->next = head; // Set the next pointer of the new node to the current head
-      head = newNode;       // Update the head to the new node
+      // newNode->next = head; // Set the next pointer of the new node to the current head
+      head = newNode; // Update the head to the new node
     }
   }
 };
