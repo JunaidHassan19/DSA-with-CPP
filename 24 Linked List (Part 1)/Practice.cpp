@@ -60,6 +60,7 @@ int main()
 */
 
 // Practice - Push Front in LL
+/*
 class Node
 {
   int data;
@@ -125,3 +126,21 @@ int main()
 
   return 0;
 }
+*/
+
+// Practice - Push Back in LL
+
+// int List Class
+void push_back(int val)
+{
+  Node *newNode = new Node(val);
+  if (head = NULL)
+  {
+    head = tail = newNode;
+  }
+  else
+  {
+    tail->next = newNode;
+    tail = newNode;
+  }
+};
