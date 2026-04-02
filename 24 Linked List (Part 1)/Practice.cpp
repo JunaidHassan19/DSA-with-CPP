@@ -85,6 +85,20 @@ public:
     tail = NULL;
   }
 
+  // void push_front(int val)
+  // {
+  //   Node *newNode = new Node(val);
+  //   if (head == NULL)
+  //   {
+  //     head = tail = newNode;
+  //   }
+  //   else
+  //   {
+  //     // newNode->next = head;
+  //     head = newNode;
+  //   }
+  // }
+
   void push_front(int val)
   {
     Node *newNode = new Node(val);
