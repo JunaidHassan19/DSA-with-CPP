@@ -314,7 +314,7 @@ public:
 
   // Parctice - Iterative search in LL
 
-  int searhcItr(int key)
+  int searchItr(int key)
   {
     Node *temp = head;
 
@@ -350,6 +350,6 @@ int main()
   // ll.insert(100, 3);
   // ll.printList();
 
-  cout << "Key = " << ll.searhcItr(4) << endl;
+  cout << "Key = " << ll.searchItr(4) << endl;
   return 0;
 }
