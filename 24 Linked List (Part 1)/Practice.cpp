@@ -383,6 +383,24 @@ public:
   {
     return helper(head, key);
   }
+
+  // Practice - Reverse LL
+
+  void reverse()
+  {
+    Node *curr = head;
+    Node *prev = NULL;
+
+    while (curr != NULL)
+    {
+      Node *next = curr->next;
+      curr->next = prev;
+
+      prev = curr;
+      curr = next;
+    }
+    head = prev;
+  }
 };
 
 int main()
@@ -404,6 +422,9 @@ int main()
   // ll.printList();
 
   // cout << "Key = " << ll.searchItr(4) << endl;
-  cout << "Key = " << ll.searchRec(4) << endl;
+  // cout << "Key = " << ll.searchRec(4) << endl;
+
+  ll.reverse();
+  ll.printList();
   return 0;
 }
