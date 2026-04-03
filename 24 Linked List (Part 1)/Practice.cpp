@@ -344,6 +344,20 @@ public:
     temp->next = NULL;
     delete temp;
   }
+
+  // Practice - Pop Back in LL
+  void pop_back()
+  {
+    Node *temp = head;
+
+    while (temp->next->next != NULL)
+    {
+      temp = temp->next;
+    }
+    temp->next = NULL;
+    delete tail;
+    tail = temp;
+  }
 };
 
 int main()
