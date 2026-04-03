@@ -311,21 +311,45 @@ public:
     newNode->next = temp->next;
     temp->next = newNode;
   }
+
+  // Parctice - Iterative search in LL
+
+  int searhcItr(int key)
+  {
+    Node *temp = head;
+
+    int idx = 0;
+    while (temp != NULL)
+    {
+      if (temp->data == key)
+      {
+        return idx;
+      }
+      temp = temp->next;
+      idx++;
+    }
+    return -1;
+  }
 };
 
 int main()
 {
   List ll;
+  ll.push_front(5);
+  ll.push_front(4);
   ll.push_front(3);
   ll.push_front(2);
   ll.push_front(1);
   ll.printList();
 
-  ll.push_back(4);
-  ll.push_back(5);
-  ll.push_back(6);
-  ll.printList();
+  // ll.push_back(4);
+  // ll.push_back(5);
+  // ll.push_back(6);
+  // ll.printList();
 
-  ll.insert(100, 3);
-  ll.printList();
+  // ll.insert(100, 3);
+  // ll.printList();
+
+  cout << "Key = " << ll.searhcItr(4) << endl;
+  return 0;
 }
