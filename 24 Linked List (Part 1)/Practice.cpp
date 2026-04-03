@@ -358,6 +358,31 @@ public:
     delete tail;
     tail = temp;
   }
+
+  // Practice - Recursive Search in LL
+
+  int helper(Node *temp, int key)
+  {
+    if (temp == NULL)
+    {
+      return -1;
+    }
+    if (temp->data == key)
+    {
+      return 0;
+    }
+    int idx = helper(temp->next, key);
+    if (idx == -1)
+    {
+      return -1;
+    }
+    return idx + 1;
+  }
+
+  int searchRec(int key)
+  {
+    return helper(head, key);
+  }
 };
 
 int main()
@@ -378,6 +403,7 @@ int main()
   // ll.insert(100, 3);
   // ll.printList();
 
-  cout << "Key = " << ll.searchItr(4) << endl;
+  // cout << "Key = " << ll.searchItr(4) << endl;
+  cout << "Key = " << ll.searchRec(4) << endl;
   return 0;
 }
