@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// Practice -  Detect a Cycle
+// ===== Practice -  Detect a Cycle =====
 class Node
 {
 public:
@@ -95,6 +95,53 @@ public:
     cout << "Cycle doesn't exists" << endl;
     return false;
   }
+
+  // ===== Practice - Remove a Cycle =====
+  void removeCycle()
+  {
+    Node *slow = head;
+    Node *fast = head;
+    bool isCycle = false;
+
+    while (fast != NULL && fast->next != NULL)
+    {
+      slow = slow->next;
+      fast = fast->next->next;
+
+      if (slow == fast)
+      {
+        cout << "Cycle exists" << endl;
+        isCycle = true;
+        break;
+      }
+    }
+    if (!isCycle)
+    {
+      cout << "Cycle doesn't exists" << endl;
+      return;
+    }
+
+    slow = head;
+    if (slow == fast)
+    {
+      while (fast->next != slow)
+      {
+        fast = fast->next;
+      }
+      fast->next = NULL;
+    }
+    else
+    {
+      Node *prev = fast;
+      while (slow != fast)
+      {
+        slow = slow->next;
+        prev = fast;
+        fast = fast->next;
+      }
+      prev->next = NULL;
+    }
+  }
 };
 
 int main()
@@ -107,6 +154,7 @@ int main()
   ll.push_back(5);
 
   ll.makeCycle();
-  ll.isCycle();
+  ll.removeCycle();
+  ll.printList();
   return 0;
 }
