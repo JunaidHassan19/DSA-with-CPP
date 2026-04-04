@@ -1,7 +1,9 @@
 #include <iostream>
+#include <list>
 using namespace std;
 
 // ===== Practice -  Detect a Cycle =====
+/*
 class Node
 {
 public:
@@ -95,9 +97,11 @@ public:
     cout << "Cycle doesn't exists" << endl;
     return false;
   }
+*/
 
-  // ===== Practice - Remove a Cycle =====
-  void removeCycle()
+// ===== Practice - Remove a Cycle =====
+/*
+void removeCycle()
   {
     Node *slow = head;
     Node *fast = head;
@@ -156,5 +160,43 @@ int main()
   ll.makeCycle();
   ll.removeCycle();
   ll.printList();
+  return 0;
+}
+  */
+
+// ===== Practice - List in STL =====
+
+void printList(list<int> ll)
+{
+  list<int>::iterator itr;
+
+  for (itr = ll.begin(); itr != ll.end(); itr++)
+  {
+    cout << (*itr) << " -> ";
+  }
+  cout << "NULL" << endl;
+}
+
+int main()
+{
+  list<int> ll;
+
+  ll.push_front(2);
+  ll.push_front(1);
+  printList(ll);
+
+  ll.push_back(3);
+  ll.push_back(4);
+  printList(ll);
+
+  cout << "Size = " << ll.size() << endl;
+
+  ll.push_back(5);
+  ll.push_front(0);
+  printList(ll);
+
+  cout << ll.front() << endl;
+  cout << ll.back() << endl;
+
   return 0;
 }
