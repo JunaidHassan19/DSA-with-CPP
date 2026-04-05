@@ -27,10 +27,10 @@ public:
 
 class List
 {
+public:
   Node *head;
   Node *tail;
 
-public:
   List()
   {
     head = NULL;
@@ -64,90 +64,90 @@ public:
       head = newNode;
     }
   }
-
-  void printList()
+};
+void printList(Node *head)
+{
+  Node *temp = head;
+  while (temp != NULL)
   {
-    Node *temp = head;
-    while (temp != NULL)
-    {
-      cout << temp->data << " -> ";
-      temp = temp->next;
-    }
-    cout << "NULL" << endl;
+    cout << temp->data << " -> ";
+    temp = temp->next;
+  }
+  cout << "NULL" << endl;
+}
+
+// Function to split the linked list into two halves and return the head of the second half
+Node *splitAtMid(Node *head)
+{
+  Node *slow = head;
+  Node *fast = head;
+  Node *prev = NULL;
+
+  while (fast != NULL && fast->next != NULL)
+  {
+    prev = slow;
+    slow = slow->next;
+    fast = fast->next->next;
   }
 
-  Node *splitAtmid(Node *head)
+  if (prev != NULL)
   {
-    Node *slow = head;
-    Node *fast = head;
-    Node *prev = NULL;
-
-    while (fast != NULL && fast->next != NULL)
-    {
-      prev = slow;
-      slow = slow->next;
-      fast = fast->next->next;
-    }
-
-    if (prev != NULL)
-    {
-      prev->next = NULL;
-    }
-    return slow;
+    prev->next = NULL;
   }
+  return slow;
+}
 
-  Node *merge(Node *left, Node *right)
+// Function to merge two sorted linked lists and return the head of the merged list
+Node *merge(Node *left, Node *right)
+{
+  List ans;
+  Node *i = left;
+  Node *j = right;
+
+  while (i != NULL && j != NULL)
   {
-    List ans;
-    Node *i = left;
-    Node *j = right;
-
-    while (i != NULL && j != NULL)
-    {
-      if (i->data <= j->data)
-      {
-        ans.push_back(i->data);
-        i = i->next;
-      }
-      else
-      {
-        ans.push_back(j->data);
-        j = j->next;
-      }
-    }
-
-    while (i != NULL)
+    if (i->data <= j->data)
     {
       ans.push_back(i->data);
       i = i->next;
     }
-
-    while (j != NULL)
+    else
     {
       ans.push_back(j->data);
       j = j->next;
     }
-
-    return ans.head;
   }
 
-  Node *mergeSort(Node *head)
+  while (i != NULL)
   {
-    if (head == NULL || head->next == NULL)
-    {
-      return head;
-    }
-    Node *rightHead = splitAtmid(head);
-    Node *left = mergeSort(head);
-    Node *right = mergeSort(rightHead);
-    return merge(left, right);
+    ans.push_back(i->data);
+    i = i->next;
   }
 
-  void sort()
+  while (j != NULL)
   {
-    head = mergeSort(head);
+    ans.push_back(j->data);
+    j = j->next;
   }
-};
+
+  return ans.head;
+}
+
+// Function to perform merge sort on the linked list and return the head of the sorted list
+Node *mergeSort(Node *head)
+{
+  if (head == NULL || head->next == NULL)
+  {
+    return head;
+  }
+
+  Node *rightHead = splitAtMid(head);
+
+  Node *left = mergeSort(head);
+  Node *right = mergeSort(rightHead);
+
+  return merge(left, right);
+}
 
 int main()
 {
@@ -158,10 +158,10 @@ int main()
   ll.push_back(3);
   ll.push_back(2);
   ll.push_back(1);
-  ll.printList();
+  printList(ll.head);
 
-  ll.sort();
-  ll.printList();
+  ll.head = mergeSort(ll.head);
+  printList(ll.head);
 
   return 0;
 }
