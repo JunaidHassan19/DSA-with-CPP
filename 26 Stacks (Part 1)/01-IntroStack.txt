@@ -1,0 +1,57 @@
+INTRODUCTION TO STACK
+
+1) What is a Stack?
+A stack is a linear data structure that follows the LIFO principle:
+Last In, First Out.
+
+This means the element inserted last will be removed first.
+
+Example:
+If we push 10, then 20, then 30,
+the top element is 30 and it will be removed first.
+
+
+2) How Stack is Different from Other Data Structures
+
+- Array:
+	In arrays, you can access any index directly (arr[i]).
+	In a stack, insertion and deletion happen only at one end (top).
+
+- Queue:
+	Queue follows FIFO (First In, First Out),
+	but stack follows LIFO (Last In, First Out).
+
+- Linked List:
+	Linked list allows insertion/deletion at many positions.
+	Stack restricts operations to only one side (top).
+
+
+3) Basic Stack Functions
+
+1. push(x)
+	 Adds element x to the top of the stack.
+
+2. pop()
+	 Removes the top element of the stack.
+	 (Usually returns removed element, depending on implementation.)
+
+3. top() or peek()
+	 Returns the top element without removing it.
+
+
+4) Time Complexity (TC)
+
+- push(x): O(1)
+- pop(): O(1)
+- top()/peek(): O(1)
+
+Reason:
+All these operations work only on the top end,
+so no traversal is required.
+
+
+5) Short Real-Life Analogy
+Think of a stack of plates:
+You place a new plate on top (push),
+remove the top plate first (pop),
+and see the top plate (top/peek).
