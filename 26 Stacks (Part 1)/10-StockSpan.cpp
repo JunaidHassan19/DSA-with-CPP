@@ -5,7 +5,7 @@
 using namespace std;
 
 // Stock Span Problem
-void stockSpamProblem(vector<int> stock, vector<int> span)
+void stockSpanProblem(vector<int> stock, vector<int> span)
 {
   stack<int> s;
   s.push(0);
@@ -42,6 +42,6 @@ int main()
   vector<int> stock = {100, 80, 60, 70, 60, 85, 1000};
   vector<int> span = {0, 0, 0, 0, 0, 0, 0};
 
-  stockSpamProblem(stock, span);
+  stockSpanProblem(stock, span);
   return 0;
 }
