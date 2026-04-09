@@ -4,6 +4,7 @@
 using namespace std;
 
 // Practice - Next Greater Element
+/*
 void nextGreater(vector<int> arr, vector<int> ans)
 {
   stack<int> s;
@@ -44,6 +45,52 @@ int main()
   vector<int> ans = {0, 0, 0, 0, 0};
 
   nextGreater(arr, ans);
+
+  return 0;
+}
+*/
+
+// Practice - Valid Parentheses
+bool isValid(string str)
+{
+  stack<char> s;
+
+  for (int i = 0; i < str.size(); i++)
+  {
+    char ch = str[i];
+    if (ch == '(' || ch == '[' || ch == '{')
+    {
+      s.push(ch);
+    }
+    else
+    {
+      if (s.empty())
+      {
+        return false;
+      }
+      int top = s.top();
+      if ((top == '(' && ch == ')') ||
+          (top == '[' && ch == ']') ||
+          (top == '{' && ch == '}'))
+      {
+        s.pop();
+      }
+      else
+      {
+        return false;
+      }
+    }
+  }
+  return s.empty();
+}
+
+int main()
+{
+  string str2 = "({[})";
+  string str1 = "({[]})";
+
+  cout << isValid(str1) << endl; // 1 (true)
+  cout << isValid(str2) << endl; // 0 (false)
 
   return 0;
 }
