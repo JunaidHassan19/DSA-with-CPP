@@ -1,0 +1,46 @@
+QUEUE (Data Structure) - Intro Notes
+
+1) What is a Queue?
+- A Queue is a linear data structure that follows FIFO (First In, First Out).
+- The element inserted first is removed first.
+- Think of it like a line at a ticket counter.
+
+2) Basic Operations
+- enqueue(x): Insert element x at the rear (back).
+- dequeue(): Remove element from the front.
+- front()/peek(): Get the front element without removing it.
+- isEmpty(): Check whether queue has no elements.
+
+3) Example Flow
+Start: []
+enqueue(10) -> [10]
+enqueue(20) -> [10, 20]
+enqueue(30) -> [10, 20, 30]
+dequeue()    -> [20, 30]   (10 removed)
+front()      -> 20
+
+4) Time Complexity (Typical)
+- enqueue: O(1)
+- dequeue: O(1)
+- front: O(1)
+
+5) Types of Queues
+- Simple Queue
+- Circular Queue
+- Deque (Double Ended Queue)
+- Priority Queue
+
+6) Applications
+- CPU scheduling
+- Printer queue
+- BFS in graphs
+- Handling requests in web servers
+- Buffer management (IO, streaming)
+
+7) Queue in C++ STL
+- Header: #include <queue>
+- Container: queue<int> q;
+- Common methods: push(), pop(), front(), empty(), size()
+
+Summary:
+Queue is an efficient FIFO structure used when processing must happen in arrival order.
