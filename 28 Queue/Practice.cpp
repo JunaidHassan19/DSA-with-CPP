@@ -238,7 +238,7 @@ int main()
 */
 
 // Practice Stack using 2 Queues
-
+/*
 class Stack
 {
   queue<int> q1;
@@ -292,5 +292,43 @@ int main()
   }
 
   cout << endl;
+  return 0;
+}
+*/
+
+// Practice First Non-Repeating letter in a Stream
+
+void firstNonRepeat(string str)
+{
+  queue<char> Q;
+  int freq[26] = {0};
+
+  for (int i = 0; i < str.size(); i++)
+  {
+    char ch = str[i];
+    Q.push(ch);
+    freq[ch - 'a']++;
+
+    while (!Q.empty() && freq[Q.front() - 'a'] > 1)
+    {
+      Q.pop();
+    }
+
+    if (Q.empty())
+    {
+      cout << "-1" << endl;
+    }
+    else
+    {
+      cout << Q.front() << endl;
+    }
+  }
+}
+
+int main()
+{
+  string str = "aabccxb";
+
+  firstNonRepeat(str);
   return 0;
 }
