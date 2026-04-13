@@ -1,5 +1,7 @@
 #include <iostream>
 #include <list>
+#include <queue>
+#include <stack>
 using namespace std;
 
 // Practice of Queue using Linked List
@@ -90,6 +92,7 @@ int main()
 */
 
 // Practice circular queue using array
+/*
 class Queue
 {
   int *arr;
@@ -170,5 +173,64 @@ int main()
   q.push(6);
 
   cout << q.front() << endl;
+  return 0;
+}
+*/
+
+// Practice Queue using 2 Stacks
+class Queue
+{
+  stack<int> s1;
+  stack<int> s2;
+
+public:
+  void push(int data)
+  {
+    while (!s1.empty())
+    {
+      s2.push(s1.top());
+      s1.pop();
+    }
+
+    s1.push(data);
+
+    while (!s2.empty())
+    {
+      s1.push(s2.top());
+      s2.pop();
+    }
+  }
+
+  void pop()
+  {
+    s1.pop();
+  }
+
+  int front()
+  {
+    return s1.top();
+  }
+
+  bool empty()
+  {
+    return s1.empty();
+  }
+};
+
+int main()
+{
+  Queue q;
+
+  q.push(1);
+  q.push(2);
+  q.push(3);
+  q.push(4);
+
+  while (!q.empty())
+  {
+    cout << q.front() << " ";
+    q.pop();
+  }
+  cout << endl;
   return 0;
 }
