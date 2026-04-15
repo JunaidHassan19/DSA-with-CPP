@@ -1,0 +1,62 @@
+GREEDY ALGORITHMS - QUICK NOTES
+
+1) What is a Greedy Algorithm?
+A greedy algorithm is a method where, at each step, we choose the option that looks best at that moment (locally optimal choice).
+We do not go back and change previous choices.
+
+2) Core Idea
+- Make the best immediate decision.
+- Hope that these local best decisions combine to form a global best answer.
+
+3) When Greedy Works
+Greedy works only for problems that satisfy:
+- Greedy Choice Property: A global optimum can be reached by choosing local optimum choices.
+- Optimal Substructure: Optimal solution of the whole problem contains optimal solutions to subproblems.
+
+4) General Greedy Steps
+1. Understand what must be optimized (minimize or maximize).
+2. Decide the greedy criterion (what is the "best" next choice).
+3. Sort or prioritize data based on that criterion (if needed).
+4. Pick choices one by one while maintaining feasibility.
+5. Stop when no valid choice remains.
+
+5) Common Examples
+- Activity Selection Problem (select maximum non-overlapping activities)
+- Fractional Knapsack (take items by highest value/weight ratio)
+- Minimum Number of Coins (for canonical coin systems)
+- Job Sequencing with Deadlines
+- Huffman Coding
+- Kruskal's and Prim's Algorithm (Minimum Spanning Tree)
+- Dijkstra's Algorithm (shortest path with non-negative edges)
+
+6) Important Note
+Greedy does NOT always work.
+Example: Coin change with coins {1, 3, 4} and amount = 6
+- Greedy: 4 + 1 + 1 (3 coins)
+- Optimal: 3 + 3 (2 coins)
+
+7) Advantages
+- Simple to implement
+- Fast in many practical cases
+- Often gives optimal answer for specific problem classes
+
+8) Disadvantages
+- May fail for many problems
+- Needs proof of correctness for each problem
+- Local best choice can lead to global wrong answer
+
+9) Time Complexity Pattern
+Many greedy solutions involve sorting first:
+- Sorting: O(n log n)
+- Single scan/selection after sort: O(n)
+- Total (common case): O(n log n)
+
+10) How to Identify a Greedy Problem in Interviews
+- Problem asks for min/max optimization.
+- You can define a clear "best next step".
+- A choice made now does not destroy possibility of optimal final answer.
+- You can justify/prove why local choice leads to global optimum.
+
+11) Short Summary
+Greedy algorithms choose the best immediate option at each step.
+They are efficient and elegant, but only correct when the problem has greedy-choice property and optimal substructure.
