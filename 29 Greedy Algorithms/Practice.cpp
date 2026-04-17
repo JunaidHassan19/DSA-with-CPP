@@ -107,6 +107,7 @@ int main()
 */
 
 // Practice Maximum Length of Chain of Pairs
+/*
 bool compare(pair<int, int> p1, pair<int, int> p2)
 {
   return p1.second < p2.second;
@@ -144,5 +145,36 @@ int main()
   pairs[4] = make_pair(50, 90);
 
   maxChainLength(pairs);
+  return 0;
+}
+*/
+
+// Practice Indian Coins Problem
+
+int getMinChange(vector<int> coins, int V)
+{
+  int ans = 0;
+  int n = coins.size();
+
+  for (int i = n - 1; i >= 0 && V > 0; i--)
+  {
+    if (V >= coins[i])
+    {
+      ans += V / coins[i];
+      V = V % coins[i];
+    }
+  }
+
+  cout << "Minimum number of coins = " << ans << endl;
+  return ans;
+}
+
+int main()
+{
+  vector<int> coins = {1, 2, 5, 10, 20, 50, 100, 200, 500, 2000};
+  int V = 1561;
+
+  getMinChange(coins, V);
+
   return 0;
 }
