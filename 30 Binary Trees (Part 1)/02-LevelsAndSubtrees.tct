@@ -1,0 +1,46 @@
+Levels and Subtrees in a Binary Tree
+
+Tree Diagram
+
+		     15
+		   /    \
+		 35      12
+		/  \
+	     3    6
+	    / \  / \
+	   1  10 5   7
+
+Levels in This Tree
+
+Level 0: 15
+Level 1: 35, 12
+Level 2: 3, 6
+Level 3: 1, 10, 5, 7
+
+Note:
+- Root node is always at level 0.
+- Level of a node = number of edges from root to that node.
+
+Subtrees in This Tree
+
+1) Subtree rooted at 35:
+
+	    35
+	   /
+	  3
+	 / \
+	1  10
+
+2) Subtree rooted at 6:
+
+	  6
+	 / \
+	5   7
+
+3) Subtree rooted at 12:
+
+	12
+
+Important Point:
+Every node itself can be considered a subtree root.
+So, each node in a tree forms one subtree with all of its descendants.
