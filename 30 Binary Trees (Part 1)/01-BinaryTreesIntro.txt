@@ -1,0 +1,81 @@
+Binary Trees - Introduction
+
+A tree is a non-linear data structure made of nodes connected by edges.
+A binary tree is a special type of tree where each node can have at most two children:
+1) Left child
+2) Right child
+
+Binary trees are widely used in programming for hierarchical data, searching, sorting,
+expression evaluation, and many advanced data structures.
+
+Basic Terminologies in Tree Data Structure
+
+Parent Node:
+A node that is an immediate predecessor of another node.
+Example: 35 is the parent of 3 and 6.
+
+Child Node:
+A node that is an immediate successor of another node.
+Example: 3 and 6 are children of 35.
+
+Root Node:
+The topmost node in a tree, which does not have a parent.
+Example: 15 is the root node.
+
+Leaf Node (External Node):
+Nodes that do not have any children.
+Example: 1, 10, 12, 5, 7, 7 are leaf nodes.
+
+Ancestor:
+Any node on the path from the root to a given node (excluding the node itself).
+Example: 15 and 35 are ancestors of 10.
+
+Descendant:
+A node x is a descendant of another node y if y is an ancestor of x.
+Example: 1, 10, and 6 are descendants of 35.
+
+Sibling:
+Nodes that share the same parent.
+Example: 1 and 10 are siblings, and 5 and 7 are siblings.
+
+Level of a Node:
+The number of edges in the path from the root to that node.
+The root node is at level 0.
+
+Internal Node:
+A node with at least one child.
+
+Neighbor of a Node:
+The parent or children of a node.
+
+Subtree:
+A node and all its descendants form a subtree.
+
+Quick Note:
+In many books, the term height of tree and depth of node are also used frequently:
+- Depth of a node = number of edges from root to that node
+- Height of a node = number of edges on the longest path from that node to a leaf
+
+Binary Tree Diagram (Using Given Numbers)
+
+								 15
+							 /    \
+						 35      12
+						/  \
+					 3    6
+					/ \  / \
+				 1  10 5   7
+
+Another leaf node with same value can also exist in a tree:
+
+								 15
+							 /    \
+						 35      12
+						/  \
+					 3    6
+					/ \  / \
+				 1  10 5   7
+									 /
+									7
+
+Note: In trees, duplicate values are allowed unless a specific rule says otherwise.
