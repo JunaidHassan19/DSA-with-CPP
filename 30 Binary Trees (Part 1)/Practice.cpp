@@ -124,7 +124,7 @@ void postorder(Node *root)
 */
 
 // Practice - Level-order Traversal of a Binary Tree
-
+/*
 void levelOrder(Node *root)
 {
   if (root == NULL)
@@ -167,6 +167,22 @@ void levelOrder(Node *root)
     }
   }
 }
+*/
+
+// Practice - Height of a Binary Tree
+int height(Node *root)
+{
+  if (root == NULL)
+  {
+    return 0;
+  }
+
+  int leftHt = height(root->left);
+  int rightHt = height(root->right);
+  int currHt = max(leftHt, rightHt) + 1;
+
+  return currHt;
+}
 
 int main()
 {
@@ -176,7 +192,8 @@ int main()
   // preorder(root);
   // inorder(root);
   // postorder(root);
-  levelOrder(root);
+  // levelOrder(root);
+  cout << "Height = " << height(root) << endl;
   cout << endl;
   return 0;
 }
