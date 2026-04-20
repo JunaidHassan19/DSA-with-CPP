@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
 
 // Practice Definition of a Node in the Binary Tree
@@ -108,6 +109,7 @@ void inorder(Node *root)
 */
 
 // Practice -Postorder Traversal of a Binary Tree
+/*
 void postorder(Node *root)
 {
   if (root == nullptr)
@@ -119,6 +121,52 @@ void postorder(Node *root)
   postorder(root->right);
   cout << root->data << " ";
 }
+*/
+
+// Practice - Level-order Traversal of a Binary Tree
+
+void levelOrder(Node *root)
+{
+  if (root == NULL)
+  {
+    return;
+  }
+
+  queue<Node *> q;
+  q.push(root);
+  q.push(NULL);
+
+  while (!q.empty())
+  {
+    Node *curr = q.front();
+    q.pop();
+
+    if (curr == NULL)
+    {
+      cout << endl;
+      if (q.empty())
+      {
+        break;
+      }
+
+      q.push(NULL);
+    }
+    else
+    {
+      cout << curr->data << " ";
+
+      if (curr->left != NULL)
+      {
+        q.push(curr->left);
+      }
+
+      if (curr->right != NULL)
+      {
+        q.push(curr->right);
+      }
+    }
+  }
+}
 
 int main()
 {
@@ -127,7 +175,8 @@ int main()
 
   // preorder(root);
   // inorder(root);
-  postorder(root);
+  // postorder(root);
+  levelOrder(root);
   cout << endl;
   return 0;
 }
