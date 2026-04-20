@@ -42,25 +42,37 @@ void levelOrder(Node *root)
 
   queue<Node *> q;
   q.push(root);
+  q.push(NULL);
 
   while (!q.empty())
   {
     Node *curr = q.front();
     q.pop();
 
-    cout << curr->data << " ";
-
-    if (curr->left != NULL)
+    if (curr == NULL)
     {
-      q.push(curr->left);
+      cout << endl;
+      if (q.empty())
+      {
+        break;
+      }
+      q.push(NULL);
     }
-
-    if (curr->right != NULL)
+    else
     {
-      q.push(curr->right);
+      cout << curr->data << " ";
+
+      if (curr->left != NULL)
+      {
+        q.push(curr->left);
+      }
+
+      if (curr->right != NULL)
+      {
+        q.push(curr->right);
+      }
     }
   }
-  cout << endl;
 }
 
 int main()
