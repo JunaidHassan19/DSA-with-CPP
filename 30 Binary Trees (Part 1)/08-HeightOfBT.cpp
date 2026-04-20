@@ -47,7 +47,8 @@ int height(Node *root)
 
 int main()
 {
-  vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
+  // vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
+  vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, 6, -1, 7, -1, -1, 3, -1, -1};
   Node *root = buildTree(nodes);
 
   cout << "Height = " << height(root) << endl;
