@@ -170,6 +170,7 @@ void levelOrder(Node *root)
 */
 
 // Practice - Height of a Binary Tree
+/*
 int height(Node *root)
 {
   if (root == NULL)
@@ -183,6 +184,21 @@ int height(Node *root)
 
   return currHt;
 }
+ */
+
+// Practice - Count Nodes in a Binary Tree
+int count(Node *root)
+{
+  if (root == NULL)
+  {
+    return 0;
+  }
+
+  int leftCount = count(root->left);
+  int rightCount = count(root->right);
+
+  return leftCount + rightCount + 1;
+}
 
 int main()
 {
@@ -193,7 +209,8 @@ int main()
   // inorder(root);
   // postorder(root);
   // levelOrder(root);
-  cout << "Height = " << height(root) << endl;
+  // cout << "Height = " << height(root) << endl;
+  cout << "Count = " << count(root) << endl;
   cout << endl;
   return 0;
 }
