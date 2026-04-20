@@ -187,6 +187,7 @@ int height(Node *root)
  */
 
 // Practice - Count Nodes in a Binary Tree
+/*
 int count(Node *root)
 {
   if (root == NULL)
@@ -199,6 +200,21 @@ int count(Node *root)
 
   return leftCount + rightCount + 1;
 }
+*/
+
+// Practice -Sum of Nodes in a Binary Tree
+int sum(Node *root)
+{
+  if (root == NULL)
+  {
+    return 0;
+  }
+
+  int leftSum = sum(root->left);
+  int rightSum = sum(root->right);
+
+  return leftSum + rightSum + root->data;
+}
 
 int main()
 {
@@ -210,7 +226,8 @@ int main()
   // postorder(root);
   // levelOrder(root);
   // cout << "Height = " << height(root) << endl;
-  cout << "Count = " << count(root) << endl;
+  // cout << "Count = " << count(root) << endl;
+  cout << "Sum = " << sum(root) << endl;
   cout << endl;
   return 0;
 }
