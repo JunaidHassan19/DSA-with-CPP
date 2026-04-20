@@ -93,6 +93,7 @@ void preorder(Node *root)
 */
 
 // Practice Inorder Traversal of a Binary Tree
+/*
 void inorder(Node *root)
 {
   if (root == NULL)
@@ -104,6 +105,20 @@ void inorder(Node *root)
   cout << root->data << " ";
   inorder(root->right);
 }
+*/
+
+// Practice -Postorder Traversal of a Binary Tree
+void postorder(Node *root)
+{
+  if (root == nullptr)
+  {
+    return;
+  }
+
+  postorder(root->left);
+  postorder(root->right);
+  cout << root->data << " ";
+}
 
 int main()
 {
@@ -111,6 +126,8 @@ int main()
   Node *root = buildTree(nodes);
 
   // preorder(root);
-  inorder(root);
+  // inorder(root);
+  postorder(root);
+  cout << endl;
   return 0;
 }
