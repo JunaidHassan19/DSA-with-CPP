@@ -45,7 +45,7 @@ int main()
 }
 */
 
-// Practice Preorder Traversal of a Binary Tree
+// Practice Tree Traversal of a Binary Tree
 
 class Node
 {
@@ -77,6 +77,8 @@ Node *buildTree(vector<int> nodes)
   return currNode;
 }
 
+// Function to perform preorder traversal of the binary tree
+/*
 void preorder(Node *root)
 {
   if (root == NULL)
@@ -88,12 +90,27 @@ void preorder(Node *root)
   preorder(root->left);
   preorder(root->right);
 }
+*/
+
+// Practice Inorder Traversal of a Binary Tree
+void inorder(Node *root)
+{
+  if (root == NULL)
+  {
+    return;
+  }
+
+  inorder(root->left);
+  cout << root->data << " ";
+  inorder(root->right);
+}
 
 int main()
 {
   vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
   Node *root = buildTree(nodes);
 
-  preorder(root);
+  // preorder(root);
+  inorder(root);
   return 0;
 }
