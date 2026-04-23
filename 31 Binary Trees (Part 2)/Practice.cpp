@@ -46,6 +46,7 @@ int height(Node *root)
 }
 
 // Practice -Diameter of a Tree -TC: O(n^2)
+
 int diameter1(Node *root)
 {
   if (root == NULL)
@@ -60,12 +61,29 @@ int diameter1(Node *root)
   return max(currDiam, max(leftDiam, rightDiam));
 }
 
+// Practice -Diameter of a Tree -TC: O(n)
+pair<int, int> diameter2(Node *root)
+{
+  if (root == NULL)
+  {
+    return make_pair(0, 0);
+  }
+  pair<int, int> leftInfo = diameter2(root->left);
+  pair<int, int> rightInfo = diameter2(root->right);
+
+  int currDiameter = leftInfo.second + rightInfo.second + 1;
+  int finalDiameter = max(currDiameter, max(leftInfo.first, rightInfo.first));
+  int finalHt = max(leftInfo.second, rightInfo.second) + 1;
+
+  return make_pair(finalDiameter, finalHt);
+}
+
 int main()
 {
   vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
   Node *root = buildTree(nodes);
 
-  cout << "Diameter = " << diameter1(root) << endl;
+  cout << "Diameter = " << diameter2(root).first << endl;
   cout << endl;
   return 0;
 }
