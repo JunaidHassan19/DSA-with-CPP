@@ -46,7 +46,7 @@ int height(Node *root)
 }
 
 // Practice -Diameter of a Tree -TC: O(n^2)
-
+/*
 int diameter1(Node *root)
 {
   if (root == NULL)
@@ -78,12 +78,68 @@ pair<int, int> diameter2(Node *root)
   return make_pair(finalDiameter, finalHt);
 }
 
+*/
+
+// Pracrice -Subtree of another tree
+bool isIdentical(Node *root1, Node *root2)
+{
+  if (root1 == NULL && root2 == NULL)
+  {
+    return true;
+  }
+  else if (root1 == NULL || root2 == NULL)
+  {
+    return false;
+  }
+
+  if (root1->data != root2->data)
+  {
+    return false;
+  }
+
+  return isIdentical(root1->left, root2->left) && isIdentical(root1->right, root2->right);
+}
+
+// Check if subRoot is a subtree of root -TC: O(n*m)
+bool isSubtree(Node *root, Node *subRoot)
+{
+  if (root == NULL && subRoot == NULL)
+  {
+    return true;
+  }
+  else if (root == NULL || subRoot == NULL)
+  {
+    return false;
+  }
+  if (root->data == subRoot->data)
+  {
+    if (isIdentical(root, subRoot))
+    {
+      return true;
+    }
+  }
+
+  int isleftSubtree = isSubtree(root->left, subRoot);
+  if (!isleftSubtree)
+  {
+    return isSubtree(root->right, subRoot);
+  }
+
+  return true;
+}
+
 int main()
 {
   vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
   Node *root = buildTree(nodes);
 
-  cout << "Diameter = " << diameter2(root).first << endl;
+  // cout << "Diameter = " << diameter2(root).first << endl;
+
+  Node *subroot = new Node(2);
+  subroot->left = new Node(4);
+  subroot->right = new Node(5);
+
+  cout << isSubtree(root, subroot) << endl;
   cout << endl;
   return 0;
 }
