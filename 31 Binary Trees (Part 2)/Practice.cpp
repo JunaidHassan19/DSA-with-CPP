@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <queue>
+#include <map>
 using namespace std;
 
 class Node
@@ -81,6 +83,7 @@ pair<int, int> diameter2(Node *root)
 */
 
 // Pracrice -Subtree of another tree
+/*
 bool isIdentical(Node *root1, Node *root2)
 {
   if (root1 == NULL && root2 == NULL)
@@ -127,6 +130,46 @@ bool isSubtree(Node *root, Node *subRoot)
 
   return true;
 }
+ */
+
+// Practice -Top View of a Tree
+void topView(Node *root)
+{
+  queue<pair<Node *, int>> Q;
+  map<int, int> m;
+
+  Q.push(make_pair(root, 0));
+  while (!Q.empty())
+  {
+    pair<Node *, int> curr = Q.front();
+    Q.pop();
+
+    Node *currNode = curr.first;
+    int currHD = curr.second;
+
+    if (m.count(currHD) == 0)
+    {
+      m[currHD] = currNode->data;
+    }
+
+    if (currNode->left != NULL)
+    {
+      pair<Node *, int> left = make_pair(currNode->left, currHD - 1);
+      Q.push(left);
+    }
+
+    if (currNode->right != NULL)
+    {
+      pair<Node *, int> right = make_pair(currNode->right, currHD + 1);
+      Q.push(right);
+    }
+  }
+
+  for (auto it : m)
+  {
+    cout << it.second << " ";
+  }
+}
 
 int main()
 {
@@ -135,11 +178,12 @@ int main()
 
   // cout << "Diameter = " << diameter2(root).first << endl;
 
-  Node *subroot = new Node(2);
-  subroot->left = new Node(4);
-  subroot->right = new Node(5);
+  // Node *subroot = new Node(2);
+  // subroot->left = new Node(4);
+  // subroot->right = new Node(5);
+  // cout << isSubtree(root, subroot) << endl;
 
-  cout << isSubtree(root, subroot) << endl;
+  topView(root);
   cout << endl;
   return 0;
 }
