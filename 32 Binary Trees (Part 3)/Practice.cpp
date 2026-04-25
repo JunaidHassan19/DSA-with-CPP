@@ -60,7 +60,7 @@ void KthLevel(Node *root, int K)
 */
 
 // Practice - Lowest Common Ancestor (LCA) of two nodes in a binary tree
-
+/*
 bool rootToNodePath(Node *root, int n, vector<int> &path)
 {
   if (root == NULL)
@@ -106,6 +106,31 @@ int LCA(Node *root, int n1, int n2)
   }
   return lca;
 }
+*/
+
+// Practice - Lowest Common Ancestor (LCA) of two nodes in a binary tree - Approach 2
+Node *LCA(Node *root, int n1, int n2)
+{
+  if (root == NULL)
+  {
+    return NULL;
+  }
+
+  if (root->data == n1 || root->data == n2)
+  {
+    return root;
+  }
+
+  Node *leftLCA = LCA(root->left, n1, n2);
+  Node *rightLCA = LCA(root->right, n1, n2);
+
+  if (leftLCA != NULL && rightLCA != NULL)
+  {
+    return root;
+  }
+
+  return leftLCA == NULL ? rightLCA : leftLCA;
+}
 
 int main()
 {
@@ -114,7 +139,11 @@ int main()
   // int K = 3;
   // KthLevel(root, K);
 
-  int n1 = 4, n2 = 5;
-  cout << "LCA = " << LCA(root, n1, n2) << endl;
+  // int n1 = 4, n2 = 5;
+  // cout << "LCA = " << LCA(root, n1, n2) << endl;
+
+  int n1 = 4;
+  int n2 = 6;
+  cout << "LCA = " << LCA(root, n1, n2)->data << endl;
   return 0;
 }
