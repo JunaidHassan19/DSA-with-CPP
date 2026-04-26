@@ -132,6 +132,44 @@ Node *LCA(Node *root, int n1, int n2)
   return leftLCA == NULL ? rightLCA : leftLCA;
 }
 
+// Practice - Minimum distance between two nodes in a binary tree
+
+int dist(Node *root, int n)
+{
+  if (root == NULL)
+  {
+    return -1;
+  }
+
+  if (root->data == n)
+  {
+    return 0;
+  }
+
+  int leftDist = dist(root->left, n);
+  if (leftDist != -1)
+  {
+    return leftDist + 1;
+  }
+
+  int rightDist = dist(root->right, n);
+  if (rightDist != -1)
+  {
+    return rightDist + 1;
+  }
+  return -1;
+}
+
+int nimDist(Node *root, int n1, int n2)
+{
+  Node *lcs = LCA(root, n1, n2);
+
+  int dist1 = dist(root, n1);
+  int dist2 = dist(root, n2);
+
+  return dist1 + dist2;
+}
+
 int main()
 {
   vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
@@ -142,8 +180,11 @@ int main()
   // int n1 = 4, n2 = 5;
   // cout << "LCA = " << LCA(root, n1, n2) << endl;
 
-  int n1 = 4;
-  int n2 = 6;
-  cout << "LCA = " << LCA(root, n1, n2)->data << endl;
+  // int n1 = 4;
+  // int n2 = 6;
+  // cout << "LCA = " << LCA(root, n1, n2)->data << endl;
+
+  int n1 = 4, n2 = 6;
+  cout << "min Dist = " << nimDist(root, n1, n2) << endl;
   return 0;
 }
