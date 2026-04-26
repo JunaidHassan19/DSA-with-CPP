@@ -109,6 +109,8 @@ int LCA(Node *root, int n1, int n2)
 */
 
 // Practice - Lowest Common Ancestor (LCA) of two nodes in a binary tree - Approach 2
+/*
+
 Node *LCA(Node *root, int n1, int n2)
 {
   if (root == NULL)
@@ -170,6 +172,38 @@ int nimDist(Node *root, int n1, int n2)
   return dist1 + dist2;
 }
 
+*/
+
+// Practice - Kth ancestor of a node in a binary tree
+
+int KthAncestor(Node *root, int node, int K)
+{
+  if (root == NULL)
+  {
+    return -1;
+  }
+
+  if (root->data == node)
+  {
+    return 0;
+  }
+
+  int leftDist = KthAncestor(root->left, node, K);
+  int rightDist = KthAncestor(root->right, node, K);
+
+  if (leftDist == -1 && rightDist == -1)
+  {
+    return -1;
+  }
+
+  int validVal = leftDist == -1 ? rightDist : leftDist;
+  if (validVal + 1 == K)
+  {
+    cout << "Kth Ancestor : " << root->data << endl;
+  }
+  return validVal + 1;
+}
+
 int main()
 {
   vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
@@ -184,7 +218,10 @@ int main()
   // int n2 = 6;
   // cout << "LCA = " << LCA(root, n1, n2)->data << endl;
 
-  int n1 = 4, n2 = 6;
-  cout << "min Dist = " << nimDist(root, n1, n2) << endl;
+  // int n1 = 4, n2 = 6;
+  // cout << "min Dist = " << nimDist(root, n1, n2) << endl;
+
+  int node = 5, K = 2;
+  cout << KthAncestor(root, node, K);
   return 0;
 }
