@@ -175,7 +175,7 @@ int nimDist(Node *root, int n1, int n2)
 */
 
 // Practice - Kth ancestor of a node in a binary tree
-
+/*
 int KthAncestor(Node *root, int node, int K)
 {
   if (root == NULL)
@@ -203,6 +203,76 @@ int KthAncestor(Node *root, int node, int K)
   }
   return validVal + 1;
 }
+*/
+
+// Practice - Transform to sum tree
+void levelOrder(Node *root)
+{
+  if (root == NULL)
+  {
+    return;
+  }
+
+  queue<Node *> q;
+  q.push(root);
+  q.push(NULL);
+
+  while (!q.empty())
+  {
+    Node *curr = q.front();
+    q.pop();
+
+    if (curr == NULL)
+    {
+      cout << endl;
+      if (q.empty())
+      {
+        break;
+      }
+      q.push(NULL);
+    }
+    else
+    {
+      cout << curr->data << " ";
+
+      if (curr->left != NULL)
+      {
+        q.push(curr->left);
+      }
+
+      if (curr->right != NULL)
+      {
+        q.push(curr->right);
+      }
+    }
+  }
+}
+
+int transform(Node *root)
+{
+  if (root == NULL)
+  {
+    return 0;
+  }
+
+  int leftOld = transform(root->left);
+  int rightOld = transform(root->right);
+  int currOld = root->data;
+
+  root->data = leftOld + rightOld;
+
+  if (root->left != NULL)
+  {
+    root->data += root->left->data;
+  }
+
+  if (root->right != NULL)
+  {
+    root->data += root->right->data;
+  }
+
+  return currOld;
+}
 
 int main()
 {
@@ -221,7 +291,10 @@ int main()
   // int n1 = 4, n2 = 6;
   // cout << "min Dist = " << nimDist(root, n1, n2) << endl;
 
-  int node = 5, K = 2;
-  cout << KthAncestor(root, node, K);
+  // int node = 5, K = 2;
+  // cout << KthAncestor(root, node, K);
+
+  transform(root);
+  levelOrder(root);
   return 0;
 }
