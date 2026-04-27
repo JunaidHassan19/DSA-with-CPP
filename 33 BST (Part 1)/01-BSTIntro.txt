@@ -1,0 +1,24 @@
+Binary Search Tree (BST) - Introduction
+
+A Binary Search Tree (BST) is a binary tree used to store data in a sorted way.
+It allows fast searching, insertion, and deletion by deciding at each node whether
+to move left or right.
+
+Special Property of BST
+
+For every node:
+1. All values in the left subtree are smaller than the node value.
+2. All values in the right subtree are greater than the node value.
+3. Both left and right subtrees are also BSTs.
+
+Example BST
+
+          8
+        /   \
+       3     10
+      / \      \
+     1   6      14
+        / \     /
+       4   7   13
+
+Here, each node follows the BST property (left < root < right).
