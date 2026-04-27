@@ -60,13 +60,38 @@ void inorder(Node *root)
   inorder(root->right);
 }
 
+// Practice - Search a key in BST
+bool search(Node *root, int key)
+{
+  if (root == NULL)
+  {
+    return false;
+  }
+
+  if (root->data == key)
+  {
+    return true;
+  }
+  else if (root->data > key)
+  {
+    return search(root->left, key);
+  }
+  else
+  {
+    return search(root->right, key);
+  }
+}
+
 int main()
 {
   int arr[] = {5, 1, 3, 4, 2, 7};
   int n = sizeof(arr) / sizeof(int);
 
   Node *root = buildBST(arr, n);
-  inorder(root);
+  // inorder(root);
+
+  int key = 4;
+  cout << search(root, key);
   cout << endl;
   return 0;
 }
