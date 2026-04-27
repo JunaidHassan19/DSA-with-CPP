@@ -22,3 +22,16 @@ Example BST
        4   7   13
 
 Here, each node follows the BST property (left < root < right).
+
+Time Complexity (TC)
+
+Let h = height of BST and n = number of nodes.
+
+1. Search: O(h)
+2. Insert: O(h)
+3. Delete: O(h)
+
+Average case (balanced BST): h = O(log n), so operations are O(log n).
+Worst case (skewed BST): h = O(n), so operations are O(n).
+
+Inorder Traversal: O(n)
