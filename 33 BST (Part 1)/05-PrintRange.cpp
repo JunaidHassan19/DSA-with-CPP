@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-// Delete a node in BST
+// Print all the nodes in the given range in a BST
 class Node
 {
 public:
