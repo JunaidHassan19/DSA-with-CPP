@@ -136,6 +136,30 @@ Node *delNode(Node *root, int val)
   return root;
 }
 
+// Practice -Print all the nodes in the given range
+void printRange(Node *root, int start, int end)
+{
+  if (root == NULL)
+  {
+    return;
+  }
+
+  if (start <= root->data && end >= root->data)
+  {
+    printRange(root->left, start, end);
+    cout << root->data << " ";
+    printRange(root->right, start, end);
+  }
+  else if (root->data < start)
+  {
+    printRange(root->right, start, end);
+  }
+  else
+  {
+    printRange(root->left, start, end);
+  }
+}
+
 int main()
 {
   // int arr[] = {5, 1, 3, 4, 2, 7};
@@ -148,13 +172,16 @@ int main()
   // int key = 4;
   // cout << search(root, key);
 
-  inorder(root);
+  // inorder(root);
+  // cout << endl;
+
+  // delNode(root, 8);
+
+  // inorder(root);
+  // cout << endl;
+
+  printRange(root, 5, 12);
+
   cout << endl;
-
-  delNode(root, 8);
-
-  inorder(root);
-  cout << endl;
-
   return 0;
 }
