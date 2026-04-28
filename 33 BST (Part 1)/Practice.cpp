@@ -82,16 +82,79 @@ bool search(Node *root, int key)
   }
 }
 
+// Practice - Delete a node in BST
+Node *getInorderSuccessor(Node *root)
+{
+  while (root->left != NULL)
+  {
+    root = root->left;
+  }
+
+  return root;
+}
+
+Node *delNode(Node *root, int val)
+{
+  // Base case
+  if (root == NULL)
+  {
+    return NULL;
+  }
+
+  // Recursive case
+  if (val < root->data) // Go to left subtree
+  {
+    root->left = delNode(root->left, val);
+  }
+
+  else if (val > root->data) // Go to right subtree
+  {
+    root->right = delNode(root->right, val);
+  }
+  else
+  {
+    // root == val -> delete this node -Case 1: No child
+    if (root->left == NULL && root->right == NULL)
+    {
+      delete root;
+      return NULL;
+    }
+
+    // Case 2: One child
+    if (root->left == NULL || root->right == NULL)
+    {
+      return root->left == NULL ? root->right : root->left;
+    }
+
+    // Case 3: Two children
+    Node *IS = getInorderSuccessor(root->right);
+    root->data = IS->data;
+    root->right = delNode(root->right, IS->data);
+    return root;
+  }
+
+  return root;
+}
+
 int main()
 {
-  int arr[] = {5, 1, 3, 4, 2, 7};
+  // int arr[] = {5, 1, 3, 4, 2, 7};
+  int arr[] = {8, 5, 3, 1, 4, 6, 10, 11, 14};
   int n = sizeof(arr) / sizeof(int);
 
   Node *root = buildBST(arr, n);
   // inorder(root);
 
-  int key = 4;
-  cout << search(root, key);
+  // int key = 4;
+  // cout << search(root, key);
+
+  inorder(root);
   cout << endl;
+
+  delNode(root, 8);
+
+  inorder(root);
+  cout << endl;
+
   return 0;
 }
