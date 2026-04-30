@@ -127,6 +127,42 @@ Info *largestBST(Node *root)
   return new Info(false, currMin, currMax, currSz);
 }
 
+// Practice -Merge 2 BSTs
+Node *mergeBSTs(Node *root1, Node *root2)
+{
+  vector<int> nodes1;
+  vector<int> nodes2;
+  vector<int> merged;
+
+  getInorder(root1, nodes1);
+  getInorder(root2, nodes2);
+
+  int i = 0, j = 0;
+  while (i < nodes1.size() && j < nodes2.size())
+  {
+    if (nodes1[i] < nodes2[j])
+    {
+      merged.push_back(nodes1[i++]);
+    }
+    else
+    {
+      merged.push_back(nodes2[j++]);
+    }
+  }
+
+  while (i < nodes1.size())
+  {
+    merged.push_back(nodes1[i++]);
+  }
+
+  while (j < nodes2.size())
+  {
+    merged.push_back(nodes2[j++]);
+  }
+
+  return BSTfromSortedVec(merged, 0, merged.size() - 1); // Building a balanced BST from the merged sorted vector of nodes
+}
+
 int main()
 {
   // int arr[7] = {3, 4, 5, 6, 7, 8, 9};
@@ -147,18 +183,31 @@ int main()
   // preorder(root);
   // cout << endl;
 
-  Node *root = new Node(50);
-  root->left = new Node(30);
-  root->left->left = new Node(5);
-  root->left->left->left = new Node(20);
+  // Node *root = new Node(50);
+  // root->left = new Node(30);
+  // root->left->left = new Node(5);
+  // root->left->left->left = new Node(20);
 
-  root->right = new Node(60);
-  root->right->right = new Node(45);
-  root->right->right->right = new Node(70);
-  root->right->right->right->left = new Node(65);
-  root->right->right->right->right = new Node(80);
+  // root->right = new Node(60);
+  // root->right->right = new Node(45);
+  // root->right->right->right = new Node(70);
+  // root->right->right->right->left = new Node(65);
+  // root->right->right->right->right = new Node(80);
 
-  largestBST(root);
-  cout << "Max Size : " << maxSize << endl;
+  // largestBST(root);
+  // cout << "Max Size : " << maxSize << endl;
+
+  Node *root1 = new Node(2);
+  root1->left = new Node(1);
+  root1->right = new Node(4);
+
+  Node *root2 = new Node(9);
+  root2->left = new Node(3);
+  root2->right = new Node(12);
+
+  Node *root = mergeBSTs(root1, root2);
+  preorder(root);
+  cout << endl;
+
   return 0;
 }
