@@ -1,0 +1,261 @@
+================================================================================
+                         PRIORITY QUEUE
+================================================================================
+
+DEFINITION:
+-----------
+A Priority Queue is an abstract data type where each element is associated with a priority value.
+Elements are served based on their priority, not in FIFO order like a regular queue.
+
+Key Characteristics:
+- Higher priority elements are dequeued before lower priority elements
+- If two elements have the same priority, they are served according to insertion order (tie-breaking)
+- Internally implemented using a Heap (Max Heap or Min Heap)
+
+================================================================================
+                         TYPES OF PRIORITY QUEUES
+================================================================================
+
+1. MAX PRIORITY QUEUE (Max Heap)
+   - Element with highest priority is accessed first
+   - Root node is the maximum element
+
+2. MIN PRIORITY QUEUE (Min Heap)
+   - Element with lowest priority is accessed first
+   - Root node is the minimum element
+
+================================================================================
+                         HOW PRIORITY QUEUE WORKS
+================================================================================
+
+Internal Structure: BINARY HEAP
+- Complete binary tree represented as an array
+- Parent at index i has children at indices 2*i+1 (left) and 2*i+2 (right)
+
+Example: Max Heap
+                    50
+                   /  \
+                  30   20
+                 / \   / \
+               15  10 8   5
+
+Array Representation: [50, 30, 20, 15, 10, 8, 5]
+
+================================================================================
+                         ACCESSING TOP ELEMENT
+================================================================================
+
+OPERATION 1: INSERT (Push) an element
+  - Time Complexity: O(log n)
+  - Add element at end, then bubble up to maintain heap property
+  
+  Example: Insert 40 into above heap
+                    50
+                   /  \
+                  40   20     <- 40 moved up
+                 / \   / \
+               15 30  8   5
+               
+  Array: [50, 40, 20, 15, 30, 8, 5]
+
+OPERATION 2: DELETE MAX/MIN (Pop) - Get top element
+  - Time Complexity: O(log n)
+  - Remove root element, replace with last element, bubble down
+  
+  Example: Delete 50 from heap above
+                    40
+                   /  \
+                  30   20     <- 40 placed, then bubbled down
+                 / \   / \
+               15  5  8  (removed)
+               
+  Array: [40, 30, 20, 15, 5, 8]
+
+OPERATION 3: PEEK (Get top element without removing)
+  - Time Complexity: O(1)
+  - Simply return root element
+  
+  int topElement = pq.top();  // No removal, just access
+
+================================================================================
+                      C++ STL PRIORITY QUEUE SYNTAX
+================================================================================
+
+#include <queue>
+#include <vector>
+
+// MAX Priority Queue (Max Heap - by default)
+priority_queue<int> maxPq;
+
+// MIN Priority Queue (Min Heap)
+priority_queue<int, vector<int>, greater<int>> minPq;
+
+// OPERATIONS:
+maxPq.push(50);           // Insert -> O(log n)
+maxPq.push(30);
+maxPq.push(20);
+
+int top = maxPq.top();    // Access top -> O(1)
+cout << top;              // Output: 50
+
+maxPq.pop();              // Delete top -> O(log n)
+
+int size = maxPq.size();  // O(1)
+bool empty = maxPq.empty(); // O(1)
+
+================================================================================
+                           EXAMPLE 1: MAX HEAP
+================================================================================
+
+Insert sequence: 50, 30, 20, 15, 10, 8, 5
+
+Step 1: Insert 50
+  [50]
+
+Step 2: Insert 30
+  [50, 30]
+
+Step 3: Insert 20
+  [50, 30, 20]
+
+Step 4: Insert 15
+  [50, 30, 20, 15]
+
+Step 5: Insert 10
+  [50, 30, 20, 15, 10]
+
+Step 6: Insert 8
+  [50, 30, 20, 15, 10, 8]
+
+Step 7: Insert 5
+  [50, 30, 20, 15, 10, 8, 5]
+
+Tree Representation:
+                    50
+                   /  \
+                  30   20
+                 / \   / \
+               15  10 8   5
+
+Accessing top element: maxPq.top() returns 50 (O(1) time)
+
+================================================================================
+                           EXAMPLE 2: MIN HEAP
+================================================================================
+
+Insert sequence: 50, 30, 20, 15, 10, 8, 5
+
+Final Array: [5, 10, 8, 15, 30, 50, 20]
+
+Tree Representation:
+                    5
+                   / \
+                  10  8
+                 / \  / \
+               15 30 50 20
+
+Accessing top element: minPq.top() returns 5 (O(1) time)
+
+================================================================================
+                    TIME COMPLEXITY ANALYSIS
+================================================================================
+
+Operation          Time Complexity     Space Complexity
+─────────────────────────────────────────────────────────
+Push (Insert)           O(log n)            O(1)
+Pop (Delete)            O(log n)            O(1)
+Top (Peek)              O(1)                O(1)
+Size                    O(1)                O(1)
+Empty                   O(1)                O(1)
+Heapify (build)         O(n)                O(n)
+
+Overall Space:          O(n)                (for storing n elements)
+
+EXPLANATION:
+- Push/Pop involve restructuring the heap, which takes log n operations in worst case
+- Top only accesses root, constant time
+- Heapify builds entire heap from array, linear time O(n)
+
+================================================================================
+                       PRACTICAL CODE EXAMPLE
+================================================================================
+
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main() {
+    // Max Priority Queue
+    priority_queue<int> maxPq;
+    
+    // Insert elements
+    maxPq.push(50);  // O(log n)
+    maxPq.push(30);
+    maxPq.push(20);
+    maxPq.push(100);
+    maxPq.push(5);
+    
+    // Access and remove top elements
+    while (!maxPq.empty()) {
+        cout << maxPq.top() << " ";  // O(1)
+        maxPq.pop();                  // O(log n)
+    }
+    // Output: 100 50 30 20 5
+    
+    cout << "\n--- Min Priority Queue ---\n";
+    
+    priority_queue<int, vector<int>, greater<int>> minPq;
+    
+    minPq.push(50);  // O(log n)
+    minPq.push(30);
+    minPq.push(20);
+    minPq.push(100);
+    minPq.push(5);
+    
+    while (!minPq.empty()) {
+        cout << minPq.top() << " ";  // O(1)
+        minPq.pop();                  // O(log n)
+    }
+    // Output: 5 20 30 50 100
+    
+    return 0;
+}
+
+================================================================================
+                           REAL-WORLD APPLICATIONS
+================================================================================
+
+1. Hospital Emergency Room
+   - Patients with critical injuries get priority over minor injuries
+   - Priority = severity of injury
+
+2. CPU Task Scheduling
+   - High priority tasks executed before low priority ones
+
+3. Dijkstra's Algorithm (Shortest Path)
+   - Uses min-heap priority queue to always process nearest unvisited node
+
+4. Huffman Coding (Data Compression)
+   - Builds optimal encoding tree using min-heap
+
+5. Load Balancing
+   - Requests directed to servers with lowest load (min-heap)
+
+6. Stock Market
+   - Highest bid/ask prices prioritized in order matching
+
+================================================================================
+                              KEY POINTS TO REMEMBER
+================================================================================
+
+✓ Priority Queue is NOT FIFO like regular queue
+✓ Implemented using Heap (binary tree structure)
+✓ Two types: Max Heap and Min Heap
+✓ Push and Pop operations: O(log n) time
+✓ Top/Peek operation: O(1) time
+✓ Space complexity: O(n) for storing elements
+✓ In C++ STL, default is Max Heap
+✓ For Min Heap, use greater<int> comparator
+✓ Perfect for problems requiring efficient access to extreme values (min/max)
+
+================================================================================
