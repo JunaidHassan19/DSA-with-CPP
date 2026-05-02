@@ -1,0 +1,128 @@
+================================================================================
+                             BUILDING HEAPS
+================================================================================
+
+WHAT IS "BUILDING A HEAP"?
+--------------------------
+Building a heap means arranging elements so they satisfy heap property:
+
+- Max Heap: parent >= children
+- Min Heap: parent <= children
+
+Heap is a Complete Binary Tree, so it is best stored in an array/vector.
+
+================================================================================
+          WHY HEAP IS USUALLY BUILT AS ARRAY / VECTOR (NOT NODE CLASS TREE)
+================================================================================
+
+In theory, heap operations have same asymptotic complexity whether we use nodes or array.
+But in practice, array/vector implementation is preferred because:
+
+1. O(1) index-based parent/child access
+   - No pointer traversal is needed
+
+2. Better constants (faster in real runtime)
+   - Better cache locality (contiguous memory)
+   - Less memory overhead (no left/right pointers in every node)
+
+3. Simple implementation
+   - Insert and delete are done by swapping indices
+
+So, we generally implement heaps as array/vector for better practical performance.
+
+================================================================================
+                     INDEX RELATIONS IN ARRAY HEAP
+================================================================================
+
+Assume 0-based indexing (C++ vector default):
+
+For a node at index i:
+- Left child index  = 2*i + 1
+- Right child index = 2*i + 2
+- Parent index      = (i - 1) / 2   (integer division)
+
+Example (0-based):
+Array: [50, 30, 20, 15, 10, 8, 5]
+Index:   0   1   2   3   4  5  6
+
+- For i = 1 (value 30):
+  left child  = 2*1 + 1 = 3 (value 15)
+  right child = 2*1 + 2 = 4 (value 10)
+  parent      = (1-1)/2 = 0 (value 50)
+
+Important checks:
+- Left child exists only if leftIndex < n
+- Right child exists only if rightIndex < n
+
+(For 1-based indexing formulas are:
+ left = 2*i, right = 2*i + 1, parent = i/2)
+
+================================================================================
+                       TWO WAYS TO BUILD A HEAP
+================================================================================
+
+1. By repeated insertion (top-down)
+   - Insert each element one by one
+   - After each insertion, do heapify-up (bubble up)
+   - Time Complexity: O(n log n)
+
+2. By heapify from bottom (bottom-up, best)
+   - Start from last non-leaf node and heapify-down
+   - Last non-leaf index = n/2 - 1 (0-based)
+   - Process i = n/2 - 1 down to 0
+   - Time Complexity: O(n)
+
+Bottom-up heap building is the standard and most efficient way.
+
+================================================================================
+                     C++ STYLE PSEUDOCODE (MAX HEAP)
+================================================================================
+
+heapify(arr, n, i):
+    largest = i
+    left = 2*i + 1
+    right = 2*i + 2
+
+    if left < n and arr[left] > arr[largest]:
+        largest = left
+    if right < n and arr[right] > arr[largest]:
+        largest = right
+
+    if largest != i:
+        swap(arr[i], arr[largest])
+        heapify(arr, n, largest)
+
+buildHeap(arr, n):
+    for i from (n/2 - 1) down to 0:
+        heapify(arr, n, i)
+
+================================================================================
+                           SMALL BUILD EXAMPLE
+================================================================================
+
+Input array: [10, 20, 15, 30, 40]
+Build as Max Heap (bottom-up):
+Final heap array: [40, 30, 15, 10, 20]
+
+Tree:
+                    40
+                   /  \
+                  30   15
+                 / \
+               10  20
+
+Now:
+- top/root = arr[0] = 40
+- parent-child relation can be found using index formulas above
+
+================================================================================
+                              SUMMARY
+================================================================================
+
+- Heap is built best in array/vector form.
+- Reason: same big-O but better practical runtime and memory than pointer-based node tree.
+- Parent/child in 0-based heap:
+  parent = (i-1)/2, left = 2*i+1, right = 2*i+2
+- Building methods:
+  repeated insert = O(n log n), bottom-up heapify = O(n)
+================================================================================
