@@ -15,8 +15,8 @@ public:
     vec.push_back(val);
 
     // fix heap - compare the newly added element with its parent and swap if it is greater than the parent
-    int x = vec.size() - 1;
-    int parI = (x - 1) / 2;
+    int x = vec.size() - 1; // index of the newly added element
+    int parI = (x - 1) / 2; // parent index
 
     // step 2- keep swapping until the newly added element is greater than its parent
     // ">" is used for max heap and "<" is used for min heap
@@ -24,8 +24,8 @@ public:
     while (parI >= 0 && vec[x] > vec[parI])
     {
       swap(vec[x], vec[parI]);
-      x = parI;
-      parI = (x - 1) / 2;
+      x = parI;           // update x to the parent index
+      parI = (x - 1) / 2; // update parent index
     }
   }
 
