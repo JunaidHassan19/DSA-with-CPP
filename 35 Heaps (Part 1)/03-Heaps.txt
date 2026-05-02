@@ -1,0 +1,95 @@
+================================================================================
+                                    HEAP
+================================================================================
+
+DEFINITION:
+-----------
+A Heap is a specialized tree-based data structure that follows a specific ordering rule.
+It is usually implemented using a complete binary tree.
+
+In a heap:
+- In a Max Heap, the parent node is greater than or equal to its children
+- In a Min Heap, the parent node is less than or equal to its children
+
+IMPORTANT NOTE:
+- Heap is NOT a binary search tree
+- It does not store elements in fully sorted order
+- It is mainly used when we need quick access to the minimum or maximum element
+
+================================================================================
+                           TYPES OF HEAP
+================================================================================
+
+1. Max Heap
+   - Root contains the largest element
+   - Every parent is greater than or equal to its children
+
+2. Min Heap
+   - Root contains the smallest element
+   - Every parent is less than or equal to its children
+
+================================================================================
+                         PROPERTIES OF HEAP
+================================================================================
+
+- It is a Complete Binary Tree
+- All levels are completely filled except possibly the last level
+- The last level is filled from left to right
+- Height of a heap with n elements is O(log n)
+
+================================================================================
+                             EXAMPLE
+================================================================================
+
+Max Heap example:
+
+                    50
+                   /  \
+                  30   20
+                 / \   / \
+               15  10 8   5
+
+Array representation: [50, 30, 20, 15, 10, 8, 5]
+
+Here, 50 is the root and the largest element, so this is a Max Heap.
+
+Min Heap example:
+
+                    5
+                   / \
+                  10  8
+                 / \  / \
+               15 30 50 20
+
+Array representation: [5, 10, 8, 15, 30, 50, 20]
+
+Here, 5 is the root and the smallest element, so this is a Min Heap.
+
+================================================================================
+                          WHY HEAP IS USEFUL
+================================================================================
+
+Heap is useful when we want:
+- Fast access to the largest or smallest element
+- Efficient insertion and deletion
+- Priority queue implementation
+- Algorithms like Dijkstra's shortest path and Heap sort
+
+================================================================================
+                        TIME COMPLEXITY
+================================================================================
+
+Operation               Time Complexity
+----------------------------------------
+Insert                  O(log n)
+Delete root             O(log n)
+Access root             O(1)
+Build heap              O(n)
+
+================================================================================
+                             SUMMARY
+================================================================================
+
+A heap is a complete binary tree that maintains either max-heap or min-heap order.
+It is mainly used to efficiently manage priority-based data.
+================================================================================
