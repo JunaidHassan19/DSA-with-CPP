@@ -1,6 +1,7 @@
 #include <iostream>
 #include <queue>
 #include <vector>
+#include <string>
 using namespace std;
 
 // Practice -Priority Queue in STL
@@ -109,8 +110,30 @@ public:
   }
 };
 
+// Practice -Priority Queue for objects
+class Student
+{
+public:
+  string name;
+  int marks;
+
+  Student(string name, int marks)
+  {
+    this->name = name;
+    this->marks = marks;
+  }
+
+  bool operator<(const Student &obj) const
+  {
+    // return this->marks < obj.marks;
+    // return this->marks > obj.marks;
+    return this->name < obj.name;
+  }
+};
+
 int main()
 {
+  /*
   Heap heap;
 
   heap.push(9);
@@ -125,6 +148,20 @@ int main()
     cout << heap.top() << " ";
     heap.pop();
   }
+*/
+
+  priority_queue<Student> pq;
+
+  pq.push(Student("jai", 50));
+  pq.push(Student("sia", 45));
+  pq.push(Student("lio", 49));
+
+  while (!pq.empty())
+  {
+    cout << "Top = " << pq.top().name << " -> " << pq.top().marks << endl;
+    pq.pop();
+  }
+  cout << endl;
 
   return 0;
 }
