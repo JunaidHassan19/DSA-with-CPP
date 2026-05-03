@@ -33,12 +33,14 @@ public:
     int l = 2 * i + 1; // left child index
     int r = 2 * i + 2; // right child index
 
-    int maxIdx = i;                             // assume the current index is the maximum
+    int maxIdx = i; // assume the current index is the maximum
+    // ">" is used for max heap -Ascending and "<" is used for min heap-Descending
     if (l < vec.size() && vec[l] > vec[maxIdx]) // compare left child with the current maximum
     {
       maxIdx = l;
     }
 
+    // ">" is used for max heap -Ascending and "<" is used for min heap-Descending
     if (r < vec.size() && vec[r] > vec[maxIdx]) // compare right child with the current maximum
     {
       maxIdx = r;
