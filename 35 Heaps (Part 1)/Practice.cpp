@@ -60,6 +60,44 @@ public:
     }
   }
 
+  // Practice -Pop in heap
+
+  void heapify(int i)
+  {
+    if (i >= vec.size())
+    {
+      return;
+    }
+
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
+
+    int maxIdx = i;
+    if (l < vec.size() && vec[l] > vec[maxIdx])
+    {
+      maxIdx = l;
+    }
+    if (r < vec.size() && vec[r] > vec[maxIdx])
+    {
+      maxIdx = r;
+    }
+
+    swap(vec[i], vec[maxIdx]);
+    if (maxIdx != i)
+    {
+      heapify(maxIdx);
+    }
+  }
+
+  void pop()
+  {
+    swap(vec[0], vec[vec.size() - 1]);
+
+    vec.pop_back();
+
+    heapify(0);
+  }
+
   int top()
   {
     return vec[0];
@@ -75,11 +113,18 @@ int main()
 {
   Heap heap;
 
+  heap.push(9);
+  heap.push(4);
+  heap.push(8);
+  heap.push(1);
+  heap.push(2);
   heap.push(5);
-  heap.push(50);
-  heap.push(500);
 
-  cout << "top = " << heap.top() << endl;
+  while (!heap.empty())
+  {
+    cout << heap.top() << " ";
+    heap.pop();
+  }
 
   return 0;
 }
