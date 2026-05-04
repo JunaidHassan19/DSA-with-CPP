@@ -131,6 +131,16 @@ public:
   }
 };
 
+// Practice -Priority Queue for pairs
+struct ComparePair
+{
+  bool operator()(pair<string, int> p1, pair<string, int> p2)
+  {
+    return p1.second < p2.second; // for max heap
+    // return p1.second > p2.second; // for min heap
+  }
+};
+
 int main()
 {
   /*
@@ -150,15 +160,16 @@ int main()
   }
 */
 
-  priority_queue<Student> pq;
+  // priority_queue<Student> pq;
+  priority_queue<pair<string, int>, vector<pair<string, int>>, ComparePair> pq;
 
-  pq.push(Student("jai", 50));
-  pq.push(Student("sia", 45));
-  pq.push(Student("lio", 49));
+  pq.push(make_pair("jai", 50));
+  pq.push(make_pair("sia", 45));
+  pq.push(make_pair("lio", 49));
 
   while (!pq.empty())
   {
-    cout << "Top = " << pq.top().name << " -> " << pq.top().marks << endl;
+    cout << "Top = " << pq.top().first << " -> " << pq.top().second << endl;
     pq.pop();
   }
   cout << endl;
