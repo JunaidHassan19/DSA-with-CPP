@@ -11,12 +11,14 @@ void heapify(int i, vector<int> &arr, int n)
   int maxI = i;
 
   // Compare with left child and find the maximum element
+  //  ">" is used to sort in descending order, for ascending order use "<"
   if (left < n && arr[left] > arr[maxI])
   {
     maxI = left;
   }
 
   // Compare with right child and find the maximum element
+  //  ">" is used to sort in descending order, for ascending order use "<"
   if (right < n && arr[right] > arr[maxI])
   {
     maxI = right;
