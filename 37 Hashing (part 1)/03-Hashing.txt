@@ -1,0 +1,30 @@
+HASHING - HASH FUNCTION
+
+Hashing:
+Hashing is a technique to map a key to a fixed-size integer (index) so that
+data can be stored and retrieved quickly.
+
+Hash Function:
+A hash function h(key) takes a key and returns an index in a table of size m.
+
+	h(key) -> [0, m-1]
+
+Example:
+	m = 10
+	h(key) = key % 10
+	h(47) = 7
+
+Properties of a good hash function:
+1) Fast to compute.
+2) Uniform distribution of keys across the table (reduces collisions).
+3) Deterministic: same key gives same hash every time.
+4) Uses all key information (not just a small part).
+
+Common simple hash functions:
+1) Division method: h(k) = k % m
+2) Multiplication method: h(k) = floor(m * frac(k * A))
+3) For strings: polynomial rolling hash
+
+Polynomial rolling hash (strings):
+	h(s) = (s[0]*p^0 + s[1]*p^1 + ... + s[n-1]*p^(n-1)) % m
+	where p is a small base (like 31 or 53).
