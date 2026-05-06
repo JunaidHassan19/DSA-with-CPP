@@ -1,0 +1,74 @@
+HASH TABLE (HASH MAP) - DATA STRUCTURE
+
+Definition:
+A hash table stores key-value pairs. A hash function converts a key into an array index
+so we can insert, search, and delete in near-constant time on average.
+
+Core idea:
+index = hash(key) % table_size
+
+If two keys map to the same index, a collision happens. Common fixes:
+1) Chaining: each bucket holds a linked list (or dynamic array) of pairs.
+2) Open addressing: find another empty slot (linear/probing/quadratic/double hash).
+
+ASCII DIAGRAM (Chaining)
+
+Table size = 5
+
+ index 0 -> [ (10, A) ] -> [ (15, B) ]
+ index 1 -> [ (21, C) ]
+ index 2 -> [ ]
+ index 3 -> [ (3, D) ] -> [ (18, E) ]
+ index 4 -> [ ]
+
+Example hash: h(k) = k % 5
+10 % 5 = 0, 15 % 5 = 0 -> collision -> chain at index 0
+
+OPERATIONS
+
+1) Insert(key, value)
+	- Compute index = h(key)
+	- If chaining: append pair to bucket list if key not present
+	- If open addressing: probe until empty slot or same key found
+
+2) Search(key)
+	- Compute index = h(key)
+	- If chaining: traverse bucket list to match key
+	- If open addressing: follow same probe sequence used in insert
+
+3) Delete(key)
+	- Compute index = h(key)
+	- If chaining: remove node from bucket list
+	- If open addressing: mark slot as deleted (tombstone) or rehash cluster
+
+4) Update(key, value)
+	- Search for key and replace the value
+
+5) Rehashing (when load factor grows)
+	- Create a bigger table, reinsert all keys (new index from new size)
+
+LOAD FACTOR
+alpha = (number of stored keys) / (table size)
+Higher alpha -> more collisions -> slower operations.
+
+TIME COMPLEXITY (TC)
+
+Let n = number of keys, m = table size, alpha = n / m
+
+Average case (good hash + controlled alpha):
+- Insert: O(1)
+- Search: O(1)
+- Delete: O(1)
+
+Worst case (all keys in one bucket or full probing):
+- Insert: O(n)
+- Search: O(n)
+- Delete: O(n)
+
+Space complexity:
+- O(m + n) for chaining
+- O(m) for open addressing (table size dominates)
+
+NOTES
+- Good hash function: fast, uniform distribution.
+- Rehash when alpha exceeds a threshold (commonly 0.7 for open addressing).
