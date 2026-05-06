@@ -1,0 +1,9 @@
+Introduction to Hashing
+
+Hashing is a technique used to store and access data efficiently. It converts a given key, such as a number, string, or object, into a fixed-size value called a hash code. This hash code is then used to decide where the data should be stored in a hash table.
+
+The main goal of hashing is to make search, insert, and delete operations faster. Instead of checking every element one by one, hashing helps locate data directly using its key. Because of this, many hash table operations can be performed in near constant time on average.
+
+A hash function is the function that performs this conversion from key to hash code. A good hash function should distribute values evenly across the table to reduce collisions. A collision happens when two different keys produce the same hash value.
+
+Hashing is widely used in databases, dictionaries, caches, and symbol tables. It is one of the most important concepts in data structures because it improves performance when fast data access is needed.
