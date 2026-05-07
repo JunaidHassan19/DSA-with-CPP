@@ -1,0 +1,39 @@
+Collision in hashing:
+When two or more different keys produce the same hash index, it is called a collision. Collisions are unavoidable when the number of possible keys is larger than the table size. A good hash function reduces collisions but cannot eliminate them.
+
+Collision resolution techniques:
+
+1) Separate chaining
+- Each table index stores a list (linked list or dynamic array) of all keys that hash to that index.
+- Insert: add the key to the list.
+- Search: hash the key, then search within the list.
+- Pros: simple, handles high load factor.
+- Cons: extra memory for pointers, cache misses.
+
+2) Open addressing
+All keys are stored inside the table. If a collision occurs, probe for the next empty slot.
+
+2.1) Linear probing
+- Check next slot: (h(key) + i) mod m, i = 0,1,2,...
+- Pros: simple, good cache locality.
+- Cons: primary clustering (long runs of occupied slots).
+
+2.2) Quadratic probing
+- Check quadratic offsets: (h(key) + i^2) mod m.
+- Pros: reduces primary clustering.
+- Cons: may still have secondary clustering; needs careful table size.
+
+2.3) Double hashing
+- Use a second hash function for step size:
+	(h1(key) + i * h2(key)) mod m.
+- Pros: best distribution among open addressing methods.
+- Cons: requires two good hash functions.
+
+3) Rehashing (resizing)
+- When load factor gets too high, create a larger table and re-insert all keys.
+- Reduces collisions and improves performance but is costly during resize.
+
+Notes:
+- Load factor (alpha) = number of stored keys / table size.
+- For open addressing, keep alpha below ~0.7 for good performance.
+- For chaining, alpha can be > 1 but average chain length grows with alpha.
