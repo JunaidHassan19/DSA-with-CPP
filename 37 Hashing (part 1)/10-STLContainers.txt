@@ -1,0 +1,60 @@
+STL Containers: map and unordered_map
+
+1. map
+
+A map stores key-value pairs in sorted order of keys.
+It is implemented using a balanced binary search tree, usually a Red-Black Tree.
+
+Properties:
+- Keys are unique.
+- Elements are stored in ascending order of keys.
+- Useful when you need sorted traversal.
+
+Time Complexity:
+- insert: O(log n)
+- erase: O(log n)
+- search/find: O(log n)
+- access using key: O(log n)
+- traversal: O(n)
+
+2. unordered_map
+
+An unordered_map also stores key-value pairs, but it does not keep the keys in sorted order.
+It is implemented using hashing.
+
+Properties:
+- Keys are unique.
+- Elements are not stored in any specific order.
+- Usually faster than map for insertion and search.
+
+Time Complexity:
+- insert: O(1) average, O(n) worst case
+- erase: O(1) average, O(n) worst case
+- search/find: O(1) average, O(n) worst case
+- access using key: O(1) average, O(n) worst case
+- traversal: O(n)
+
+3. map vs unordered_map
+
+- map keeps data sorted, unordered_map does not.
+- map gives guaranteed O(log n) operations.
+- unordered_map gives average O(1) operations and is usually faster.
+- If you need ordered output, use map.
+- If you only need fast lookup and order does not matter, use unordered_map.
+
+4. Example
+
+map<int, string> mp;
+unordered_map<int, string> ump;
+
+mp[3] = "C";
+mp[1] = "A";
+mp[2] = "B";
+
+ump[3] = "C";
+ump[1] = "A";
+ump[2] = "B";
+
+In map, output order will be 1, 2, 3.
+In unordered_map, output order is not fixed.
+
