@@ -1,0 +1,62 @@
+STL Containers: set and unordered_set
+
+1. set
+
+A set stores only unique values in sorted order.
+It is implemented using a balanced binary search tree, usually a Red-Black Tree.
+
+Properties:
+- Stores unique elements only.
+- Elements are always sorted in ascending order.
+- Useful when you need uniqueness and ordered traversal.
+
+Time Complexity:
+- insert: O(log n)
+- erase: O(log n)
+- search/find: O(log n)
+- access by index: not supported
+- traversal: O(n)
+
+2. unordered_set
+
+An unordered_set stores only unique values, but it does not keep them in sorted order.
+It is implemented using hashing.
+
+Properties:
+- Stores unique elements only.
+- Elements are not stored in any specific order.
+- Usually faster than set for insertion and search.
+
+Time Complexity:
+- insert: O(1) average, O(n) worst case
+- erase: O(1) average, O(n) worst case
+- search/find: O(1) average, O(n) worst case
+- access by index: not supported
+- traversal: O(n)
+
+3. set vs unordered_set
+
+- set keeps elements sorted, unordered_set does not.
+- set gives guaranteed O(log n) operations.
+- unordered_set gives average O(1) operations and is usually faster.
+- If you need ordered output, use set.
+- If you only need fast lookup and order does not matter, use unordered_set.
+
+4. Example
+
+set<int> s;
+unordered_set<int> us;
+
+s.insert(30);
+s.insert(10);
+s.insert(20);
+s.insert(10);
+
+us.insert(30);
+us.insert(10);
+us.insert(20);
+us.insert(10);
+
+In set, output order will be 10, 20, 30.
+In unordered_set, output order is not fixed.
+
