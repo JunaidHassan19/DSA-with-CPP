@@ -1,0 +1,20 @@
+Searching in Trie Data Structure - O(n) Time and O(1) Space
+
+Searching for a key in Trie data structure is similar to its insert operation. However, It only compares the characters and moves down. The search can terminate due to the end of a string or lack of key in the trie. 
+
+Here's a visual representation of searching word "dad" in Trie data structure:
+Let's assume that we have successfully inserted the words "and", "ant", and "dad" into our Trie, and we have to search for specific words within the Trie data structure. Let's try searching for the word "dad":
+
+Here's a visual representation of searching word "dad" in Trie data structure:
+
+Let's assume that we have successfully inserted the words "and", "ant", and "dad" into our Trie, and we have to search for specific words within the Trie data structure. Let's try searching for the word "dad":
+
+We start at the root node.
+We follow the branch corresponding to the character 'd'.
+We follow the branch corresponding to the character 'a'.
+We follow the branch corresponding to the character 'd'.
+We reach the end of the word and wordEnd flag is 1. 
+This means that "dad" is present in the Trie.
+
+Time Complexity: O(n), where n is the length of the word to search.
+Auxiliary Space: O(1)
