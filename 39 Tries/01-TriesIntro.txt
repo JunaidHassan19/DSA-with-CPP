@@ -1,0 +1,31 @@
+Trie Data Structure:
+
+The Trie data structure is used to store a set of keys represented as strings. It allows for efficient retrieval and storage of keys, making it highly effective in handling large datasets.
+
+We can insert and search strings (in a dictionary) in O(n) time where n is length of the string. This is obviously faster than BST. This is also faster than Hashing because of the ways it is implemented. We do not need to compute any hash function and no collision handling is required.
+
+Another advantage of Trie is, we can easily print all words in alphabetical order which is not easily possible with hashing.
+
+We can efficiently do prefix search (or auto-complete) with Trie.
+The main disadvantage of tries is that they need a lot of memory for storing the strings. For each node we have too many node pointers(equal to number of characters of the alphabet)
+
+
+Representation of Trie Node:
+Trie data structure consists of nodes connected by edges.
+Each node represents a character or a part of a string.
+The root node acts as a starting point and does not store any character.
+
+Insertion in Trie Data Structure - O(n) Time and O(n) Space
+
+Inserting "and" in Trie data structure:
+
+Start at the root node: The root node has no character associated with it and its wordEnd value is 0, indicating no complete word ends at this point.
+First character "a": Calculate the index using 'a' - 'a' = 0. Check if the child[0] is null. Since it is, create a new TrieNode with the character "a", wordEnd set to 0, and an empty array of pointers. Move to this new node.
+Second character "n": Calculate the index using 'n' - 'a' = 13. Check if child[13] is null. It is, so create a new TrieNode with the character "n", wordEnd set to 0, and an empty array of pointers. Move to this new node.
+Third character "d": Calculate the index using 'd' - 'a' = 3. Check if child[3] is null. It is, so create a new TrieNode with the character "d", wordEnd set to 1 (indicating the word "and" ends here).
+Inserting "ant" in Trie data structure:
+
+Start at the root node: Root node doesn't contain any data but it keep track of every first character of every string that has been inserted.
+First character "a": Calculate the index using 'a' - 'a' = 0. Check if the child[0] is null. We already have the "a" node created from the previous insertion. so move to the existing "a" node.
+First character "n": Calculate the index using 'n' - 'a' = 13. Check if child[13] is null. It's not, so move to the existing "n" node.
+Second character "t": Calculate the index using 't' - 'a' = 19. Check if child[19] is null. It is, so create a new TrieNode with the character "t", wordEnd set to 1 (indicating the word "ant" ends here).
