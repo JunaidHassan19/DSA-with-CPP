@@ -6,6 +6,7 @@
 using namespace std;
 
 // Largest Subarray with 0 Sum
+// Formula : sum[i..j] = sum[0..j] - sum[0..i-1]
 int largestSubWith0Sum(vector<int> arr) // tc = O(n)
 {
   unordered_map<int, int> m; // sum, index
