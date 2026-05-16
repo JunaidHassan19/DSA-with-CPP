@@ -1,0 +1,54 @@
+
+Introduction to Graphs
+
+1. What is a Graph?
+A graph is a mathematical structure used to model pairwise relationships between objects. A graph G is defined as G = (V, E), where V is a set of vertices (also called nodes) and E is a set of edges connecting pairs of vertices.
+
+2. Basic Terminology
+- Vertex (node): An individual entity in the graph.
+- Edge: A connection between two vertices. In undirected graphs the edge (u, v) is unordered; in directed graphs (a digraph) it is ordered (u -> v).
+- Degree: Number of edges incident to a vertex (for directed graphs, use in-degree and out-degree).
+- Path: A sequence of vertices where each adjacent pair is connected by an edge.
+- Cycle: A path that starts and ends at the same vertex with all edges/vertices distinct (except the start/end).
+- Connected component: A maximal set of vertices where each pair is connected by some path.
+
+3. Common Graph Types
+- Undirected vs Directed: Edges without or with direction.
+- Weighted vs Unweighted: Edges may carry weights (costs, distances).
+- Simple graph vs Multigraph: A simple graph has at most one edge between any two vertices and no self-loops; a multigraph can have parallel edges.
+- Sparse vs Dense: Depends on the number of edges relative to the number of possible edges (|E| vs |V|^2).
+- Tree: An acyclic connected undirected graph.
+
+4. Graph Representations
+- Adjacency Matrix: A |V|×|V| matrix A where A[u][v] indicates presence (and optionally weight) of an edge. Pros: O(1) edge queries; Cons: O(|V|^2) memory.
+- Adjacency List: For each vertex, store a list of neighbors (and weights). Pros: Memory O(|V|+|E|), efficient to iterate neighbors; Cons: edge query may be O(deg(v)).
+- Edge List: A list of edges (u, v, weight). Useful for algorithms that process edges directly (e.g., Kruskal).
+
+5. Traversal Basics
+- Breadth-First Search (BFS): Explores vertices in layers; finds shortest path (fewest edges) in unweighted graphs; O(|V|+|E|).
+- Depth-First Search (DFS): Explores as deep as possible then backtracks; used for connectivity, cycle detection, topological sort (with modifications); O(|V|+|E|).
+
+6. Key Problems & Algorithms (brief)
+- Shortest Paths: Dijkstra (non-negative weights), Bellman-Ford (handles negative weights), Floyd-Warshall (all-pairs).
+- Minimum Spanning Tree: Kruskal, Prim.
+- Topological Sort: Order vertices of a DAG so every directed edge u->v, u comes before v.
+- Strongly Connected Components: Kosaraju, Tarjan.
+
+7. Applications
+- Networks: social networks, communication and transportation networks.
+- Dependency resolution: build systems, package managers.
+- Navigation and mapping: routing and pathfinding.
+- Scheduling, recommendation systems, and many more.
+
+8. Small example
+Vertices: {A, B, C, D}
+Edges (undirected): { (A,B), (A,C), (B,D), (C,D) }
+
+Adjacency list:
+A: B, C
+B: A, D
+C: A, D
+D: B, C
+
+Further study suggestions: implement adjacency-list and adjacency-matrix representations, write BFS and DFS, and practice small algorithms (Dijkstra, Kruskal) on example graphs.
+
