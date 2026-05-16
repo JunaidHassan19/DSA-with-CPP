@@ -1,0 +1,44 @@
+TYPES OF GRAPHS
+===============
+ 
+Undirected
+  Edges have no direction. Relationships are mutual (A--B means B--A too).
+  Example: Social networks, road maps.
+ 
+Directed (digraph)
+  Edges are one-way arrows. A→B does not mean B→A.
+  Example: Web links, task dependencies, Git commits.
+ 
+Weighted
+  Edges carry a numeric value (cost, distance, time).
+  Example: GPS routing, network bandwidth, shortest-path problems.
+ 
+Cyclic
+  Contains at least one cycle — a path that loops back to its starting node.
+  Most real-world graphs are cyclic.
+ 
+Acyclic (DAG - Directed Acyclic Graph)
+  Directed graph with no cycles. Data flows only "downward."
+  Example: Build systems, scheduling, spreadsheet formulas.
+ 
+Complete
+  Every node is directly connected to every other node.
+  With n nodes, there are n(n-1)/2 edges.
+  Rarely used in practice — very expensive to store.
+ 
+Bipartite
+  Nodes split into two groups; edges only go between groups, never within.
+  Example: Job-matching, recommendation systems.
+ 
+Tree
+  A connected acyclic undirected graph.
+  Has exactly n-1 edges for n nodes.
+ 
+Sparse
+  Very few edges relative to the number of nodes.
+  Most real-world graphs are sparse.
+ 
+Dense
+  Many edges, close to the maximum possible number.
+ 
+
