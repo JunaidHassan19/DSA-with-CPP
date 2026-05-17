@@ -23,8 +23,8 @@ public:
     l[v].push_back(u);
   }
 
-  // Function to perform DFS traversal of the graph -Tc=O(V+E) and Sc=O(V)
-  void dfs(int u, vector<bool> &vis)
+  // Helper function for DFS traversal - tc=O(V+E) and sc=O(V)
+  void dfsHelper(int u, vector<bool> &vis)
   {
     vis[u] = true;
     cout << u << " ";
@@ -36,9 +36,17 @@ public:
       // If the neighbor vertex v has not been visited, recursively call dfs on vertex v
       if (!vis[v])
       {
-        dfs(v, vis);
+        dfsHelper(v, vis);
       }
     }
+  }
+
+  // Function to initiate DFS traversal of the graph -Tc=O(V+E) and Sc=O(V)
+  void dfs()
+  {
+    vector<bool> vis(7, false);
+    dfsHelper(0, vis);
+    cout << endl;
   }
 };
 
@@ -55,7 +63,6 @@ int main()
   graph.addEdge(4, 5);
   graph.addEdge(5, 6);
 
-  vector<bool> vis(7, false);
-  graph.dfs(0, vis);
+  graph.dfs();
   return 0;
 }
