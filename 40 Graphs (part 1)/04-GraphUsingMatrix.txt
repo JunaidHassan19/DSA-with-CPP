@@ -1,0 +1,53 @@
+Graph Using Adjacency Matrix
+
+An adjacency matrix is a way to represent a graph using a 2D array of size V x V, where each cell stores whether an edge exists between two vertices.
+
+1. Idea
+A 2D array (matrix) of size V x V is created. If there is an edge from u to v, then matrix[u][v] is set to 1. In an undirected graph, both matrix[u][v] and matrix[v][u] are set to 1. If no edge exists, the value remains 0.
+
+2. Example
+For the graph with vertices 0, 1, 2, 3 and edges:
+(0,1), (0,2), (1,3), (2,3)
+
+The adjacency matrix is:
+
+     0  1  2  3
+0  [ 0, 1, 1, 0 ]
+1  [ 1, 0, 0, 1 ]
+2  [ 1, 0, 0, 1 ]
+3  [ 0, 1, 1, 0 ]
+
+matrix[0][1] = 1 means there is an edge between 0 and 1.
+matrix[0][3] = 0 means there is no edge between 0 and 3.
+
+3. C++ Representation
+In C++, adjacency matrix is usually stored using a 2D array or a vector of vectors.
+
+Example:
+int adj[n][n] = {0};
+
+For an undirected edge u-v:
+adj[u][v] = 1;
+adj[v][u] = 1;
+
+For a directed edge u -> v:
+adj[u][v] = 1;
+
+4. Time Complexity
+- Add an edge: O(1)
+- Check if a specific edge exists: O(1)
+- Traverse all vertices and edges: O(V^2)
+- Space complexity: O(V^2)
+
+5. Advantages
+- Checking whether a particular edge exists is very fast, O(1)
+- Simple and easy to implement
+- Works well for dense graphs where most pairs of vertices are connected
+
+6. Disadvantages
+- Uses more memory, O(V^2), even if the graph has very few edges
+- Iterating over all neighbors of a node takes O(V) time
+- Not memory efficient for sparse graphs
+
+7. Conclusion
+Adjacency matrix is a simple and effective graph representation, especially when the graph is dense or when frequent edge existence checks are needed. It is easy to implement but should be avoided for large sparse graphs due to its high memory usage.
