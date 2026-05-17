@@ -1,0 +1,105 @@
+================================================================
+Graph Using Edge List
+================================================================
+
+An edge list is a way to represent a graph by storing all the edges of the graph in a list. Each edge is stored as a pair (u, v), meaning there is a connection between vertex u and vertex v.
+
+1. Idea
+Instead of storing neighbors for each vertex, we simply store every edge as a pair of two vertices. If the graph is weighted, each edge is stored as a triplet (u, v, weight). The list contains all edges and nothing else.
+
+2. Example
+For the graph with vertices 0, 1, 2, 3 and edges:
+(0,1), (0,2), (1,3), (2,3)
+
+The edge list is:
+[ (0,1), (0,2), (1,3), (2,3) ]
+
+Each pair represents one edge in the graph.
+
+3. C++ Representation
+In C++, edge list is usually stored using a vector of pairs or a vector of triplets for weighted graphs.
+
+Example (Unweighted):
+vector<pair<int,int>> edges;
+
+Adding edges:
+edges.push_back({0, 1});
+edges.push_back({0, 2});
+edges.push_back({1, 3});
+edges.push_back({2, 3});
+
+Example (Weighted):
+vector<tuple<int,int,int>> edges;  // (u, v, weight)
+edges.push_back({0, 1, 5});
+edges.push_back({0, 2, 3});
+
+4. Time Complexity
+- Add an edge: O(1)
+- Check if a specific edge exists: O(E)
+- Traverse all edges: O(E)
+- Space complexity: O(E)
+
+5. Advantages
+- Very simple and easy to implement
+- Uses minimum memory, only stores the edges that exist
+- Best choice for algorithms that process all edges one by one
+- Ideal for Kruskal's algorithm (Minimum Spanning Tree)
+
+6. Disadvantages
+- Checking whether a specific edge exists requires scanning the whole list, O(E)
+- Finding all neighbors of a vertex is slow, O(E)
+- Not suitable for BFS or DFS directly
+
+7. Conclusion
+Edge list is the simplest graph representation. It is best used when the algorithm needs to look at all edges one by one, such as in Kruskal's algorithm. It is not suitable when frequent neighbor lookups or edge existence checks are needed.
+
+
+================================================================
+Implicit Graph
+================================================================
+
+An implicit graph is a graph that is not stored explicitly in memory. Instead, the vertices and edges are generated on the fly during traversal using a set of rules or a function.
+
+1. Idea
+In an implicit graph, we do not build the full adjacency list or matrix beforehand. Instead, we define a rule or function that, given a current vertex (state), returns all its neighbors (next states). The graph is explored only as needed, which saves memory.
+
+2. Example
+A simple example is a grid graph. Consider a 4x4 grid where you can move up, down, left, or right from any cell.
+
+Instead of building the full graph, we define:
+- Each cell (row, col) is a vertex
+- Neighbors are the 4 adjacent cells (if they are within bounds)
+
+So from cell (1, 1), neighbors are:
+(0,1), (2,1), (1,0), (1,2)
+
+We never store the full graph. We just compute neighbors when needed.
+
+Another example is a number puzzle:
+- Start from number 1
+- From any number n, you can go to n+1 or n*2
+- Find the shortest path from 1 to 10
+
+Here the graph is infinite but we explore it using BFS without storing it fully.
+
+3. C++ Representation
+There is no fixed structure for implicit graphs. The neighbors are generated using a function during BFS or DFS.
+
+4. Time Complexity
+- Depends on the number of states and transitions generated
+- BFS / DFS on implicit graph: O(V + E) where V and E are the states and transitions actually visited
+- Space complexity: O(V) for visited states only
+
+5. Advantages
+- Saves a huge amount of memory since the graph is never fully stored
+- Can handle infinite or very large graphs
+- Very useful in AI search problems, puzzles, and game trees
+- Easy to implement using BFS or DFS with a neighbor-generating function
+
+6. Disadvantages
+- The graph structure is not visible or stored anywhere
+- Debugging is harder since there is no explicit structure to inspect
+- Performance depends on how efficiently neighbors are generated
+
+7. Conclusion
+Implicit graphs are used when the graph is too large or infinite to store explicitly. Instead of building the graph in advance, neighbors are computed on the fly during traversal. They are widely used in puzzle solving, shortest path problems on grids, and game-state search problems.
