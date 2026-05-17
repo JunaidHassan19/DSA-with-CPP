@@ -1,0 +1,48 @@
+Graph Using Adjacency List
+
+An adjacency list is a way to represent a graph by storing, for each vertex, a list of all vertices connected to it.
+
+1. Idea
+Instead of using a full matrix, we keep one list for every node. If there is an edge from u to v, then v is added to the list of u. In an undirected graph, both u and v are added to each other’s list.
+
+2. Example
+For the graph with vertices 0, 1, 2, 3 and edges:
+(0,1), (0,2), (1,3), (2,3)
+
+The adjacency list is:
+0 -> 1, 2
+1 -> 0, 3
+2 -> 0, 3
+3 -> 1, 2
+
+3. C++ Representation
+In C++, adjacency list is usually stored using an array of vectors or a vector of vectors.
+
+Example:
+vector<int> adj[n];
+
+For an undirected edge u-v:
+adj[u].push_back(v);
+adj[v].push_back(u);
+
+For a directed edge u -> v:
+adj[u].push_back(v);
+
+4. Time Complexity
+- Add an edge: O(1)
+- Check if a specific edge exists: O(degree of node)
+- Traverse all vertices and edges: O(V + E)
+- Space complexity: O(V + E)
+
+5. Advantages
+- Uses less memory for sparse graphs
+- Easy to iterate through neighbors of a node
+- Good for BFS, DFS, and most graph algorithms
+
+6. Disadvantages
+- Checking whether a particular edge exists can take more time than adjacency matrix
+- Not very efficient for dense graphs
+
+7. Conclusion
+Adjacency list is one of the most useful graph representations, especially when the graph has fewer edges compared to the maximum possible edges. It is widely used because it is memory efficient and supports fast traversal.
+
