@@ -4,7 +4,7 @@
 #include <queue>
 using namespace std;
 
-// Breadth First Search (BFS) implementation for a graph represented as an adjacency list
+// Breadth First Search (BFS) implementation for a graph represented as an adjacency list -tc = O(V+E) and sc=O(V)
 class Graph
 {
   int V;
