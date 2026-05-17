@@ -23,7 +23,7 @@ public:
     l[v].push_back(u);
   }
 
-  // Function to perform BFS traversal of the graph
+  // Function to perform BFS traversal of the graph - tc=O(V+E) and sc=O(V)
   void bfs()
   {
     queue<int> q;
