@@ -1,0 +1,166 @@
+Important Topological Sort Questions:
+Link to the list of questions: https://leetcode.com/tag/topological-sort/
+
+=== MEDIUM DIFFICULTY ===
+
+207. Course Schedule
+51.4%
+Med.
+
+210. Course Schedule II
+55.5%
+Med.
+
+310. Minimum Height Trees
+42.6%
+Med.
+
+444. Sequence Reconstruction
+30.8%
+Med.
+
+802. Find Eventual Safe States
+70.7%
+Med.
+
+851. Loud and Rich
+63.5%
+Med.
+
+1059. All Paths from Source Lead to Destination
+37.3%
+Med.
+
+1136. Parallel Courses
+62.2%
+Med.
+
+1245. Tree Diameter
+61.3%
+Med.
+
+1462. Course Schedule IV
+59.9%
+Med.
+
+1786. Number of Restricted Paths From First to Last Node
+41.2%
+Med.
+
+1976. Number of Ways to Arrive at Destination
+37.5%
+Med.
+
+2115. Find All Possible Recipes from Given Supplies
+56.9%
+Med.
+
+2192. All Ancestors of a Node in a Directed Acyclic Graph
+62.2%
+Med.
+
+3481. Apply Substitutions
+77.4%
+Med.
+
+=== HARD DIFFICULTY ===
+
+269. Alien Dictionary
+37.2%
+Hard
+
+329. Longest Increasing Path in a Matrix
+56.6%
+Hard
+
+631. Design Excel Sum Formula
+39.7%
+Hard
+
+913. Cat and Mouse
+35.3%
+Hard
+
+1203. Sort Items by Groups Respecting Dependencies
+65.9%
+Hard
+
+1591. Strange Printer II
+60.9%
+Hard
+
+1632. Rank Transform of a Matrix
+42.2%
+Hard
+
+1728. Cat and Mouse II
+40.3%
+Hard
+
+1857. Largest Color Value in a Directed Graph
+57.3%
+Hard
+
+1916. Count Ways to Build Rooms in an Ant Colony
+51.4%
+Hard
+
+2050. Parallel Courses III
+66.8%
+Hard
+
+2127. Maximum Employees to Be Invited to a Meeting
+61.8%
+Hard
+
+2204. Distance to a Cycle in Undirected Graph
+73.6%
+Hard
+
+2246. Longest Path With Different Adjacent Characters
+54.0%
+Hard
+
+2328. Number of Increasing Paths in a Grid
+57.4%
+Hard
+
+2360. Longest Cycle in a Graph
+50.7%
+Hard
+
+2371. Minimize Maximum Value in a Grid
+70.0%
+Hard
+
+2392. Build a Matrix With Conditions
+79.3%
+Hard
+
+2603. Collect Coins in a Tree
+40.1%
+Hard
+
+2876. Count Visited Nodes in a Directed Graph
+30.8%
+Hard
+
+3383. Minimum Runes to Add to Cast Spell
+44.6%
+Hard
+
+3435. Frequencies of Shortest Supersequences
+22.4%
+Hard
+
+3530. Maximum Profit from Valid Topological Order in DAG
+30.2%
+Hard
+
+3620. Network Recovery Pathways
+29.9%
+Hard
+
+3812. Minimum Edge Toggles on a Tree
+68.9%
+Hard
