@@ -1,0 +1,108 @@
+MINIMUM SPANNING TREE (MST)
+===========================
+
+DEFINITION
+----------
+A Minimum Spanning Tree (MST) is a subset of edges in a weighted, undirected,
+connected graph that:
+  - Connects ALL vertices together (spanning)
+  - Contains NO cycles (making it a tree)
+  - Has the MINIMUM possible total edge weight
+
+In other words: given a graph with N vertices, an MST uses exactly (N - 1) edges
+to connect every vertex with the lowest total cost possible.
+
+
+KEY PROPERTIES
+--------------
+1. Spanning    — Every vertex in the graph is included
+2. Tree        — No cycles; exactly (N - 1) edges for N vertices
+3. Minimum     — The sum of all edge weights is as small as possible
+4. Not unique  — Multiple MSTs can exist if edges share equal weights
+
+
+REAL-WORLD ANALOGIES
+--------------------
+- Laying cables to connect N cities with minimum total cable length
+- Building roads between towns at the lowest construction cost
+- Designing a network (electricity, water, internet) to minimize infrastructure
+
+
+TWO CLASSIC ALGORITHMS
+-----------------------
+
+1. KRUSKAL'S ALGORITHM
+   Strategy: Greedy — sort ALL edges by weight, add cheapest edge that doesn't
+             form a cycle.
+
+   Steps:
+     a) Sort all edges in ascending order of weight
+     b) Pick the smallest edge
+     c) If adding it does NOT create a cycle → include it in MST
+     d) If it DOES create a cycle → discard it
+     e) Repeat until (N - 1) edges are chosen
+
+   Time Complexity: O(E log E)  — dominated by sorting
+   Best for: Sparse graphs (few edges)
+   Uses: Union-Find (Disjoint Set Union) data structure to detect cycles
+
+
+2. PRIM'S ALGORITHM
+   Strategy: Greedy — grow the MST one vertex at a time from a starting node,
+             always picking the cheapest edge that connects a new vertex.
+
+   Steps:
+     a) Start from any vertex; mark it as visited
+     b) Look at all edges from visited vertices to unvisited vertices
+     c) Pick the edge with the minimum weight
+     d) Add that edge and its new vertex to the MST
+     e) Repeat until all vertices are included
+
+   Time Complexity: O(E log V) with a priority queue (min-heap)
+   Best for: Dense graphs (many edges)
+   Uses: Min-Heap / Priority Queue data structure
+
+
+QUICK COMPARISON
+----------------
+| Feature          | Kruskal's         | Prim's              |
+|------------------|-------------------|---------------------|
+| Approach         | Edge-based        | Vertex-based        |
+| Data Structure   | Union-Find        | Min-Heap / PQ       |
+| Best for         | Sparse graphs     | Dense graphs        |
+| Time Complexity  | O(E log E)        | O(E log V)          |
+| Starting point   | Any edge          | Any vertex          |
+
+
+SIMPLE EXAMPLE
+--------------
+Graph with 4 vertices (A, B, C, D) and edges:
+  A-B: 1
+  A-C: 4
+  B-C: 2
+  B-D: 5
+  C-D: 3
+
+Kruskal's picks edges in order:
+  1. A-B (weight 1) ✓
+  2. B-C (weight 2) ✓
+  3. C-D (weight 3) ✓  ← 3 edges for 4 vertices = done
+
+MST Total Weight = 1 + 2 + 3 = 6
+
+
+APPLICATIONS
+------------
+- Network design (telecommunications, electrical grids, pipelines)
+- Cluster analysis in machine learning
+- Image segmentation in computer vision
+- Approximation algorithms for the Travelling Salesman Problem (TSP)
+- Circuit design
+
+
+IMPORTANT NOTES
+---------------
+- MST only applies to CONNECTED graphs (all vertices reachable from any vertex)
+- For DIRECTED graphs, the equivalent is called a Minimum Spanning Arborescence
+  (solved by Edmonds' algorithm / Chu–Liu/Edmonds' algorithm)
+- An MST is NOT necessarily a shortest-path tree between any two vertices
