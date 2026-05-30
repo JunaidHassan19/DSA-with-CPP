@@ -1,0 +1,245 @@
+================================================================
+        DISJOINT SET (UNION-FIND)
+================================================================
+
+
+----------------------------------------------------------------
+WHAT IS IT?
+----------------------------------------------------------------
+
+A data structure that keeps track of elements split into separate
+groups. It can quickly:
+  - Tell you if two elements are in the same group
+  - Merge two groups into one
+
+Think of it like friend groups. Each group has one "leader"
+(called the root or representative). To check if two people are
+in the same group — just check if they share the same leader.
+
+
+----------------------------------------------------------------
+TWO CORE OPERATIONS
+----------------------------------------------------------------
+
+1. find(x)
+   -> Returns the root (representative) of x's group.
+   -> Follows parent pointers upward until it hits the root.
+
+2. union(x, y)
+   -> Merges the group of x with the group of y.
+   -> Find both roots. If different, make one point to the other.
+
+
+----------------------------------------------------------------
+THE parent[] ARRAY — EXPLAINED
+----------------------------------------------------------------
+
+parent[] is the backbone of the entire structure.
+It is a simple integer array of size n.
+
+  parent[i] = the parent of node i
+
+Initially, every node is its own parent (its own group):
+  parent = [0, 1, 2, 3, 4, 5]   <- for 6 nodes
+  meaning: node 0's parent is 0, node 1's parent is 1, etc.
+
+A node is the ROOT of its group when:
+  parent[i] == i     <- it points to itself
+
+When two nodes are unioned, one node's parent is updated
+to point to the other's root, linking the two groups.
+
+Example — after union(0,1), union(1,2):
+  parent = [0, 0, 0, 3, 4, 5]
+             ^  ^  ^
+             |  |  |
+             0  1  2 all point to 0 (root of their group)
+
+  parent[0] = 0  -> 0 is root (points to itself)
+  parent[1] = 0  -> 1's parent is 0
+  parent[2] = 0  -> 2's parent is 0 (path compressed)
+
+Reading the tree:
+  To find the group of node 2:
+    parent[2] = 0 -> parent[0] = 0 -> 0 == 0, so ROOT = 0
+  Node 2 belongs to the group led by node 0.
+
+WITHOUT path compression, parent[] can become a long chain:
+  parent = [1, 2, 3, 4, 5, 5]
+  finding root of 0: 0->1->2->3->4->5  (slow, O(n))
+
+WITH path compression, after find(0):
+  parent = [5, 5, 5, 5, 5, 5]
+  every node now points directly to root 5 (fast, O(1))
+
+
+----------------------------------------------------------------
+THE rank[] ARRAY — EXPLAINED
+----------------------------------------------------------------
+
+rank[] is a helper array of size n used to keep trees shallow.
+
+  rank[i] = an upper bound on the HEIGHT of the subtree at node i
+
+Initially all ranks are 0:
+  rank = [0, 0, 0, 0, 0, 0]
+
+Rank only matters for ROOT nodes. A non-root node's rank
+is outdated and ignored once it gets a parent.
+
+HOW RANK CHANGES:
+  - When merging two groups with DIFFERENT ranks:
+      attach the lower-rank root under the higher-rank root.
+      rank[] does NOT change.
+
+  - When merging two groups with EQUAL ranks:
+      attach either one under the other.
+      increment the winner's rank by 1.
+
+Example walkthrough:
+
+  Start:   rank = [0, 0, 0, 0]
+
+  union(0, 1):
+    rank[0] == rank[1] == 0, so attach 1 under 0.
+    rank[0] becomes 1.
+    rank = [1, 0, 0, 0]
+    Tree:   0
+            |
+            1
+
+  union(2, 3):
+    rank[2] == rank[3] == 0, so attach 3 under 2.
+    rank[2] becomes 1.
+    rank = [1, 0, 1, 0]
+    Tree:   2
+            |
+            3
+
+  union(0, 2):
+    rank[0] == rank[2] == 1, so attach 2 under 0.
+    rank[0] becomes 2.
+    rank = [2, 0, 1, 0]
+    Tree:       0
+               / \
+              1   2
+                  |
+                  3
+
+  Now find(3) = find(2) = find(0) = 0
+  Without rank control, this tree could have been a chain 0->1->2->3
+  With union by rank, max height is log(n).
+
+WHY NOT USE ACTUAL SIZE (number of nodes)?
+  Rank is cheaper to maintain. With path compression, actual
+  heights become meaningless anyway (nodes get re-parented).
+  Rank just needs to be "good enough" to guide the merge decision.
+
+
+----------------------------------------------------------------
+VISUAL EXAMPLE (parent[] and rank[] side by side)
+----------------------------------------------------------------
+
+6 nodes: 0, 1, 2, 3, 4, 5
+
+INITIAL STATE:
+  Index:    0  1  2  3  4  5
+  parent:  [0, 1, 2, 3, 4, 5]   each node is its own root
+  rank:    [0, 0, 0, 0, 0, 0]
+
+AFTER union(0, 1):
+  find(0)=0, find(1)=1, rank equal -> attach 1 under 0, rank[0]++
+  parent:  [0, 0, 2, 3, 4, 5]
+  rank:    [1, 0, 0, 0, 0, 0]
+  Groups: {0,1} {2} {3} {4} {5}
+
+AFTER union(1, 2):
+  find(1)=0, find(2)=2, rank[0]=1 > rank[2]=0 -> attach 2 under 0
+  parent:  [0, 0, 0, 3, 4, 5]
+  rank:    [1, 0, 0, 0, 0, 0]   <- rank[0] unchanged (it was bigger)
+  Groups: {0,1,2} {3} {4} {5}
+
+AFTER union(3, 4):
+  find(3)=3, find(4)=4, rank equal -> attach 4 under 3, rank[3]++
+  parent:  [0, 0, 0, 3, 3, 5]
+  rank:    [1, 0, 0, 1, 0, 0]
+  Groups: {0,1,2} {3,4} {5}
+
+connected(0, 2):
+  find(0)=0, find(2)=0 -> same root -> TRUE
+
+connected(0, 3):
+  find(0)=0, find(3)=3 -> different roots -> FALSE
+
+----------------------------------------------------------------
+COMPLEXITY
+----------------------------------------------------------------
+
+Operation       | Naive (no opt) | With both opts
+----------------|----------------|----------------
+find(x)         | O(n)           | O(a(n)) ~= O(1)
+unite(x, y)     | O(n)           | O(a(n)) ~= O(1)
+connected(x, y) | O(n)           | O(a(n)) ~= O(1)
+Space           | O(n)           | O(n)
+
+a(n) = inverse Ackermann function.
+For any real input size, a(n) <= 4. Practically constant.
+
+
+----------------------------------------------------------------
+REAL-WORLD APPLICATIONS
+----------------------------------------------------------------
+
+1. KRUSKAL'S MST
+   Sort edges by weight. For each edge (u,v):
+   if not connected(u,v) -> add to MST, unite(u,v)
+   if unite() returns false -> skip (would form cycle)
+
+2. CYCLE DETECTION (Undirected Graph)
+   For each edge (u,v):
+   if connected(u,v) already -> CYCLE FOUND
+
+3. NUMBER OF CONNECTED COMPONENTS
+   Run unite() for all edges.
+   Count nodes where parent[i] == i at the end.
+
+4. NETWORK CONNECTIVITY
+   Are server A and server B reachable from each other?
+   Just call connected(A, B).
+
+5. FRIEND CIRCLES / ACCOUNTS MERGE (LeetCode classics)
+
+
+----------------------------------------------------------------
+PATTERNS TO RECOGNIZE IN PROBLEMS
+----------------------------------------------------------------
+
+Reach for Union-Find when you see:
+  - "group elements together"
+  - "check if same connected component"
+  - "merge two sets"
+  - "how many groups / islands / components"
+  - "detect cycle in undirected graph"
+
+Classic LeetCode problems:
+  200  Number of Islands
+  547  Number of Provinces
+  684  Redundant Connection
+  721  Accounts Merge
+  1319 Number of Operations to Make Network Connected
+
+
+----------------------------------------------------------------
+QUICK REVISION CHECKLIST
+----------------------------------------------------------------
+
+[ ] parent[i] = parent of node i (itself if root)
+[ ] rank[i]   = upper bound on height of subtree at i
+[ ] find()    = follow parent[] up to root, compress on the way
+[ ] unite()   = merge two groups using rank[] to stay shallow
+[ ] path compression   -> parent[x] = find(parent[x])
+[ ] union by rank      -> attach lower rank under higher rank
+[ ] rank increments    -> only when two equal-rank roots merge
+[ ] Time: O(a(n)) per op ~= O(1)
+[ ] Space: O(n)
+[ ] unite() returns false -> already same set -> cycle signal
