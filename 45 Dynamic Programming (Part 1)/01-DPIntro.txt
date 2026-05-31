@@ -1,0 +1,49 @@
+================================================================
+        INTRODUCTION TO DYNAMIC PROGRAMMING (DP)
+================================================================
+
+----------------------------------------------------------------
+1. WHAT IS DYNAMIC PROGRAMMING?
+----------------------------------------------------------------
+
+Dynamic Programming (DP) is an algorithmic technique for solving
+problems by breaking them down into smaller overlapping subproblems,
+solving each subproblem only once, and storing the results to avoid
+redundant computation.
+
+The term was coined by Richard Bellman in the 1950s.
+
+DP is NOT just recursion — it is recursion + memory (memoization)
+or iteration + a table (tabulation).
+
+----------------------------------------------------------------
+2. WHEN TO USE DP?
+----------------------------------------------------------------
+
+A problem is a good candidate for DP if it has:
+
+  a) OPTIMAL SUBSTRUCTURE
+     - The optimal solution to the problem can be built from
+       optimal solutions of its subproblems.
+     - Example: fib(6) = fib(5) + fib(4)
+
+  b) OVERLAPPING SUBPROBLEMS
+     - The same subproblems are solved multiple times.
+     - Example: fib(4) is needed by both fib(6) and fib(5).
+
+If a problem has BOTH properties → DP is applicable.
+
+----------------------------------------------------------------
+3. DP vs PLAIN RECURSION
+----------------------------------------------------------------
+
+  Plain Recursion:
+    - Recomputes the same subproblems again and again.
+    - fib(6) naive recursion → 25 total function calls.
+    - Time complexity: O(2^n)  ← exponential, very slow.
+
+  Dynamic Programming:
+    - Computes each subproblem ONCE and stores the result.
+    - fib(6) with DP → only 7 computations.
+    - Time complexity: O(n)    ← linear, very fast.
+
