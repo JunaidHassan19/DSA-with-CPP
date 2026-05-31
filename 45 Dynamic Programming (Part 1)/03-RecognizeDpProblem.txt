@@ -1,0 +1,51 @@
+Dynamic Programming (DP) Problem Solving Guide
+
+Dynamic Programming can feel intimidating at first, but it becomes much easier once you recognize the patterns. Based on core concepts like Optimal Substructure and Overlapping Subproblems, here is a structured, step-by-step approach to tackle DP problems:
+
+1. Recognize it’s a DP Problem
+Before writing any code, confirm if DP is the right approach. Look for these clues:
+
+* Optimization or Counting: The problem asks for the maximum, minimum, longest, shortest, or the total number of ways to do something.
+
+* Optimal Substructure: The optimal solution to the main problem can be formed by combining the optimal solutions of its smaller subproblems.
+
+* Overlapping Subproblems: The recursive solution involves solving the exact same subproblems multiple times (just like repeated branches in a recursion tree).
+
+2. Define the "State"
+Identify what variables change between recursive calls. This defines your DP state.
+
+* Ask yourself: "What information do I need to uniquely describe a specific subproblem?"
+
+* Usually, it’s an index in an array, a pair of indices, or a remaining capacity.
+
+* Example: Let dp[i] be the maximum profit starting from day i.
+
+3. Formulate the Recurrence Relation
+This is the hardest part. You need to express the solution for the current state in terms of smaller states.
+
+* Think about the choices you have at the current step (e.g., "Take" the current element vs. "Skip" the current element).
+
+* Combine these choices mathematically. 
+
+* Example: dp[i] = max(take_current_element + dp[i+2], skip_current_element + dp[i+1])
+
+4. Establish the Base Cases
+Every recursive function needs a stopping condition. Identify the simplest possible valid inputs and their exact answers.
+
+* Example: What happens when the array is empty? What happens if the capacity is 0?
+
+5. Follow the "Standard DP Evolution" Framework
+Don't jump straight to the most optimized solution. Build it up progressively:
+
+* Step A: Brute Force Recursion. Write the plain recursive logic using your recurrence relation. It will probably hit a Time Limit Exceeded (TLE) error, but that means your logic is correct!
+
+* Step B: Memoization (Top-Down). Introduce a cache (an array or hash map). Before computing a subproblem, check if its answer is already in the cache. If it is, return it directly. This eliminates the overlapping subproblems.
+
+* Step C: Tabulation (Bottom-Up). Convert the memoized recursion into loops. Start by filling the base cases in a dp array, then iterate forward to build up the solution to your target state. 
+
+* Step D: Space Optimization (Advanced). Look at your loop. If dp[i] only relies on dp[i-1] and dp[i-2] (like in the Fibonacci sequence), you don't need a whole array. You can just use two variables to keep track of the previous states, reducing O(N) space to O(1).
+
+Quick Pro-Tips for Practice:
+* Draw the Tree: Whenever you are stuck, draw the recursion tree on paper. It makes the overlapping subproblems incredibly obvious.
+
+* Learn the Classic Patterns: Most DP problems are variations of classic problems: Knapsack, Longest Common Subsequence (LCS), Matrix Chain Multiplication (MCM), and Grid Traversals. Master the base patterns first!
