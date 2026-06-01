@@ -1,0 +1,406 @@
+================================================================
+                    TYPES OF DYNAMIC PROGRAMMING
+================================================================
+
+Dynamic Programming is broadly classified based on:
+  - Direction of solving  (Top-Down vs Bottom-Up)
+  - Structure of the problem  (Linear, Interval, Tree, etc.)
+
+----------------------------------------------------------------
+CLASSIFICATION OVERVIEW
+----------------------------------------------------------------
+
+  TYPE 1  — Top-Down DP          (Memoization)
+  TYPE 2  — Bottom-Up DP         (Tabulation)
+  TYPE 3  — Linear DP
+  TYPE 4  — 2D / Grid DP
+  TYPE 5  — Interval DP
+  TYPE 6  — Tree DP
+  TYPE 7  — Digit DP
+  TYPE 8  — Bitmask DP
+  TYPE 9  — DP on Subsequences
+  TYPE 10 — DP on Strings
+  TYPE 11 — Partition DP
+  TYPE 12 — Probability / Expected Value DP
+
+================================================================
+TYPE 1 — TOP-DOWN DP  (Memoization)
+================================================================
+
+  DEFINITION:
+    * Solve the problem recursively.
+    * Store (cache) the result of each subproblem.
+    * On a repeated call, return the cached value.
+    * Direction: Big problem → smaller subproblems.
+
+  KEY POINTS:
+    * Easy to implement — just add a cache to recursion.
+    * Uses a map or array as the memo table.
+    * Solves only the subproblems that are actually needed.
+    * Risk: stack overflow for very large n.
+
+  TIME  : O(n)   (each subproblem solved once)
+  SPACE : O(n)   (memo table + recursion stack)
+
+  EXAMPLE — Fibonacci:
+    memo = {}
+    def fib(n):
+        if n <= 1: return n
+        if n in memo: return memo[n]
+        memo[n] = fib(n-1) + fib(n-2)
+        return memo[n]
+
+  CLASSIC PROBLEMS:
+    - Fibonacci Numbers
+    - 0/1 Knapsack
+    - Longest Common Subsequence
+
+================================================================
+TYPE 2 — BOTTOM-UP DP  (Tabulation)
+================================================================
+
+  DEFINITION:
+    * Solve the problem iteratively.
+    * Fill a table starting from base cases up to the answer.
+    * Direction: Small subproblems → big problem.
+
+  KEY POINTS:
+    * No recursion — no stack overflow risk.
+    * Faster in practice (no function call overhead).
+    * Must compute ALL subproblems (even unneeded ones).
+    * Space can often be further optimized.
+
+  TIME  : O(n)   (one pass through table)
+  SPACE : O(n)   (can be O(1) with rolling array trick)
+
+  EXAMPLE — Fibonacci:
+    def fib(n):
+        dp = [0] * (n+1)
+        dp[1] = 1
+        for i in range(2, n+1):
+            dp[i] = dp[i-1] + dp[i-2]
+        return dp[n]
+
+  CLASSIC PROBLEMS:
+    - Fibonacci Numbers
+    - Climbing Stairs
+    - Coin Change
+    - Longest Increasing Subsequence
+
+================================================================
+TYPE 3 — LINEAR DP
+================================================================
+
+  DEFINITION:
+    * The state is a single index (1D).
+    * dp[i] depends only on previous values dp[i-1], dp[i-2], etc.
+    * The table is a 1D array filled left to right.
+
+  KEY POINTS:
+    * Simplest form of DP.
+    * Recurrence involves one variable (index i).
+    * Most beginner DP problems fall here.
+
+  TIME  : O(n)
+  SPACE : O(n) or O(1) after optimization
+
+  RECURRENCE PATTERN:
+    dp[i] = f(dp[i-1], dp[i-2], ...)
+
+  CLASSIC PROBLEMS:
+    - Fibonacci Numbers          dp[i] = dp[i-1] + dp[i-2]
+    - Climbing Stairs            dp[i] = dp[i-1] + dp[i-2]
+    - House Robber               dp[i] = max(dp[i-1], dp[i-2] + a[i])
+    - Maximum Subarray (Kadane)  dp[i] = max(a[i], dp[i-1] + a[i])
+    - Min Cost Climbing Stairs
+
+================================================================
+TYPE 4 — 2D / GRID DP
+================================================================
+
+  DEFINITION:
+    * The state is a pair of indices (i, j).
+    * dp[i][j] represents the answer for a 2D subproblem.
+    * Problems involve grids, matrices, or two sequences.
+
+  KEY POINTS:
+    * Requires a 2D table.
+    * Usually filled row by row or diagonally.
+    * Used heavily in path problems and string problems.
+
+  TIME  : O(n × m)
+  SPACE : O(n × m), can reduce to O(m) with rolling rows
+
+  RECURRENCE PATTERN:
+    dp[i][j] = f(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])
+
+  CLASSIC PROBLEMS:
+    - Unique Paths in Grid        dp[i][j] = dp[i-1][j] + dp[i][j-1]
+    - Minimum Path Sum in Grid
+    - Longest Common Subsequence  (LCS)
+    - Edit Distance               (Levenshtein Distance)
+    - 0/1 Knapsack                dp[i][w] = max(dp[i-1][w], dp[i-1][w-wt] + val)
+
+================================================================
+TYPE 5 — INTERVAL DP
+================================================================
+
+  DEFINITION:
+    * The state is an interval [i, j] of an array.
+    * dp[i][j] = best answer for the subarray from i to j.
+    * Solved by expanding intervals from smaller to larger.
+
+  KEY POINTS:
+    * Requires iterating over all interval lengths.
+    * Inner loop splits the interval at every possible mid-point k.
+    * Fill order: short intervals first, then longer ones.
+
+  TIME  : O(n^3)  (three nested loops: length, start, split)
+  SPACE : O(n^2)
+
+  RECURRENCE PATTERN:
+    dp[i][j] = min/max over all k in [i, j-1] of:
+               dp[i][k] + dp[k+1][j] + cost(i, j)
+
+  CLASSIC PROBLEMS:
+    - Matrix Chain Multiplication
+    - Burst Balloons
+    - Palindrome Partitioning
+    - Optimal Binary Search Tree
+    - Strange Printer
+
+================================================================
+TYPE 6 — TREE DP
+================================================================
+
+  DEFINITION:
+    * The problem is defined on a tree structure.
+    * dp is computed at each node using values from its children.
+    * Solved using DFS (post-order traversal).
+
+  KEY POINTS:
+    * Each node has a state (e.g., included / not included).
+    * Children's results are combined to get parent's result.
+    * Tree structure replaces the linear/2D array.
+
+  TIME  : O(n)   (each node visited once)
+  SPACE : O(n)   (recursion stack + dp array)
+
+  RECURRENCE PATTERN:
+    dp[node][state] = combine(dp[child][state] for all children)
+
+  CLASSIC PROBLEMS:
+    - Maximum Independent Set on Tree
+    - Diameter of Binary Tree
+    - House Robber III  (rob on tree)
+    - Subtree problems
+    - Binary Tree Maximum Path Sum
+
+================================================================
+TYPE 7 — DIGIT DP
+================================================================
+
+  DEFINITION:
+    * Count numbers in range [L, R] satisfying some property.
+    * State includes: current digit position, tight constraint,
+      and any problem-specific flags.
+    * Built digit by digit from most significant to least.
+
+  KEY POINTS:
+    * Tight flag: whether current number is still bounded by limit.
+    * Used when brute force would iterate over too many numbers.
+    * Typically recursive with memoization.
+
+  TIME  : O(digits × states)
+  SPACE : O(digits × states)
+
+  STATE:
+    dp[pos][tight][...extra flags...] = count of valid numbers
+
+  CLASSIC PROBLEMS:
+    - Count numbers with digit sum = k
+    - Count numbers without digit 4
+    - Numbers with no two adjacent same digits
+    - Count of numbers divisible by m in range [L, R]
+
+================================================================
+TYPE 8 — BITMASK DP
+================================================================
+
+  DEFINITION:
+    * State includes a bitmask representing a subset of items.
+    * dp[mask] = best answer when the set represented by mask
+      has been processed.
+    * Used when n is small (typically n ≤ 20).
+
+  KEY POINTS:
+    * A bitmask is an integer where each bit = one item.
+    * Bit i is 1 if item i is in the current subset.
+    * Enumerate all 2^n subsets efficiently.
+    * Very powerful for assignment / permutation problems.
+
+  TIME  : O(2^n × n)
+  SPACE : O(2^n)
+
+  RECURRENCE PATTERN:
+    dp[mask | (1 << i)] = min(dp[mask] + cost[last][i])
+
+  CLASSIC PROBLEMS:
+    - Travelling Salesman Problem  (TSP)
+    - Minimum Cost to Visit All Nodes
+    - Matching / Assignment Problems
+    - Count Hamiltonian Paths
+
+================================================================
+TYPE 9 — DP ON SUBSEQUENCES
+================================================================
+
+  DEFINITION:
+    * Find or count subsequences of an array/string with
+      some property (increasing, equal, bounded sum, etc.)
+    * dp[i] = answer considering the first i elements.
+
+  KEY POINTS:
+    * Subsequence = elements in order, not necessarily contiguous.
+    * Often combined with binary search for optimization.
+    * Can involve one or two arrays.
+
+  TIME  : O(n^2) or O(n log n) with optimization
+  SPACE : O(n)
+
+  CLASSIC PROBLEMS:
+    - Longest Increasing Subsequence     (LIS)
+    - Longest Bitonic Subsequence
+    - Number of LIS
+    - Longest Decreasing Subsequence
+    - Count of Subsets with Given Sum
+
+================================================================
+TYPE 10 — DP ON STRINGS
+================================================================
+
+  DEFINITION:
+    * Operate on one or two strings.
+    * dp[i][j] = answer considering first i chars of s1
+      and first j chars of s2.
+
+  KEY POINTS:
+    * If characters match: dp[i][j] comes from dp[i-1][j-1].
+    * If not: dp[i][j] comes from dp[i-1][j] or dp[i][j-1].
+    * Covers most text-comparison problems.
+
+  TIME  : O(n × m)
+  SPACE : O(n × m), reducible to O(m)
+
+  CLASSIC PROBLEMS:
+    - Longest Common Subsequence         (LCS)
+    - Shortest Common Supersequence      (SCS)
+    - Edit Distance                      (Insert/Delete/Replace)
+    - Longest Palindromic Subsequence
+    - Regular Expression Matching
+    - Wildcard Matching
+    - Distinct Subsequences
+
+================================================================
+TYPE 11 — PARTITION DP
+================================================================
+
+  DEFINITION:
+    * Divide an array or string into parts optimally.
+    * dp[i] = best way to partition the first i elements.
+    * Try all possible last partition points j.
+
+  KEY POINTS:
+    * Often involves splitting at every index and combining cost.
+    * Base case: dp[0] = 0 (empty partition).
+    * Must check validity of each partition.
+
+  TIME  : O(n^2) or O(n^3) depending on cost function
+  SPACE : O(n)
+
+  RECURRENCE PATTERN:
+    dp[i] = min over j < i of:  dp[j] + cost(j+1, i)
+
+  CLASSIC PROBLEMS:
+    - Palindrome Partitioning (min cuts)
+    - Word Break Problem
+    - Matrix Chain Multiplication
+    - Decode Ways
+    - Painting Fence / Partition Array
+
+================================================================
+TYPE 12 — PROBABILITY / EXPECTED VALUE DP
+================================================================
+
+  DEFINITION:
+    * Compute probability or expected value of outcomes.
+    * dp[state] = expected value / probability from that state.
+    * Transitions are weighted by probability.
+
+  KEY POINTS:
+    * States can go forward (forward DP) or backward.
+    * Useful in games, gambling, and random walk problems.
+    * Floating-point precision matters here.
+
+  TIME  : O(states × transitions)
+  SPACE : O(states)
+
+  RECURRENCE PATTERN:
+    E[state] = sum over outcomes of: P(outcome) * E[next_state]
+
+  CLASSIC PROBLEMS:
+    - Dice Throw Problems
+    - Knight Probability on Chessboard
+    - Soup Servings
+    - Expected number of coin flips
+
+================================================================
+COMPARISON TABLE — ALL TYPES AT A GLANCE
+================================================================
+
+  Type               | Dimension | Typical Time  | Key Idea
+  -------------------|-----------|---------------|----------------------
+  Top-Down (Memo)    | 1D / any  | O(n)          | Recurse + cache
+  Bottom-Up (Tab)    | 1D / any  | O(n)          | Iterate + table
+  Linear DP          | 1D        | O(n)          | dp[i] from dp[i-1]
+  2D / Grid DP       | 2D        | O(n × m)      | dp[i][j] from neighbors
+  Interval DP        | 2D        | O(n^3)        | Split at every midpoint
+  Tree DP            | Tree      | O(n)          | DFS + combine children
+  Digit DP           | Digits    | O(d × states) | Digit by digit build
+  Bitmask DP         | Subsets   | O(2^n × n)    | Subset as integer mask
+  Subsequence DP     | 1D / 2D   | O(n^2)        | Pick or skip elements
+  String DP          | 2D        | O(n × m)      | Match chars of 2 strings
+  Partition DP       | 1D        | O(n^2)        | Try all split points
+  Probability DP     | 1D / 2D   | O(states)     | Weight by probability
+
+================================================================
+WHICH TYPE TO USE? — DECISION GUIDE
+================================================================
+
+  Problem involves...                   → Use this type
+  -----------------------------------   -----------------
+  Single sequence, previous values      → Linear DP
+  Grid or two sequences                 → 2D / Grid DP
+  Range / subarray [i..j]               → Interval DP
+  Tree structure                        → Tree DP
+  Counting numbers with digit property  → Digit DP
+  All subsets, n ≤ 20                   → Bitmask DP
+  Subsequences (ordered, non-contiguous)→ Subsequence DP
+  Two string comparison / edit          → String DP
+  Splitting into parts optimally        → Partition DP
+  Probability or expected value         → Probability DP
+
+================================================================
+TOP 3 PROBLEMS FOR EACH TYPE (PRACTICE LIST)
+================================================================
+
+  Linear DP       : Climbing Stairs, House Robber, Jump Game
+  2D/Grid DP      : Unique Paths, Min Path Sum, 0/1 Knapsack
+  Interval DP     : Burst Balloons, MCM, Palindrome Partition
+  Tree DP         : House Robber III, Diameter of Tree, Max Path Sum
+  Digit DP        : Count digits without 4, Digit sum = k, Strobogrammatic
+  Bitmask DP      : TSP, Min cost assignment, Hamiltonian path
+  Subsequence DP  : LIS, Longest Bitonic, Count LIS
+  String DP       : LCS, Edit Distance, Longest Palindromic Subsequence
+  Partition DP    : Word Break, Min Palindrome Cuts, Decode Ways
+  Probability DP  : Knight Probability, Dice Throw, Soup Servings
