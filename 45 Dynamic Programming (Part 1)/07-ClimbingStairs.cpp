@@ -9,6 +9,7 @@ int climbingStairs(int n)
   {
     return 1;
   }
+  // the number of ways to climb n stairs is the sum of the ways to climb n-1 and n-2 stairs
   return climbingStairs(n - 1) + climbingStairs(n - 2);
 }
 
