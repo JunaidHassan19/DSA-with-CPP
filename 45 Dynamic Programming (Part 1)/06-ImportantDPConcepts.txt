@@ -1,0 +1,51 @@
+IMPORTANT CONCEPTS IN DYNAMIC PROGRAMMING
+->Fibonacci
+->0-1 Knapsack
+->Unbounded Knapsack
+->LCS (Longest Common Subsequence)
+->Catalan Number
+->MCM (Matrix Chain Multiplication)
+->DP on Grids (2D Arrays)
+ 
+
+Fibonacci
+- Climbing Stairs
+- Number Factors
+- Min Jumps to reach the end
+- Min Jumps with cost
+- House thief
+
+0-1 Knapsack
+- Subset Sum
+- Equal Subset Sum partition
+- Min Subset Sum Difference
+- Count of Subset Sum
+- Target Sum
+
+Unbounded Knapsack
+- Rod Cutting
+- Coin Change
+- Min Coin Change
+- Max Ribbon Cut
+
+LCS (Longest Common Subsequence)
+- Longest Common Substring
+- Edit Distance
+- Box Stacking
+- Longest Increasing Subsequence
+- Longest Bitonic Subsequence
+- Subsequence Pattern Matching
+- Min Add/Delete to convert one
+
+Catalan Number
+- No. of BSTs
+- N Parentheses
+- Convex Polygons
+- Disjoint Chords
+- Catalan Triangle
+- Mountain Ranges
+
+MCM
+- Word Break
+- Palindromic Partitioning
+- Minimum Partitioning
