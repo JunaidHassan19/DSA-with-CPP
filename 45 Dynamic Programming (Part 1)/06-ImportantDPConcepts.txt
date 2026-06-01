@@ -9,43 +9,43 @@ IMPORTANT CONCEPTS IN DYNAMIC PROGRAMMING
  
 
 Fibonacci
-- Climbing Stairs
-- Number Factors
-- Min Jumps to reach the end
-- Min Jumps with cost
-- House thief
+- Climbing Stairs -Leetcode 70
+- Number Factors - Leetcode 263
+- Min Jumps to reach the end - Leetcode 1013
+- Min Jumps with cost - Leetcode 1014
+- House thief - Leetcode 198
 
 0-1 Knapsack
-- Subset Sum
-- Equal Subset Sum partition
-- Min Subset Sum Difference
-- Count of Subset Sum
-- Target Sum
+- Subset Sum - Leetcode 416
+- Equal Subset Sum partition - Leetcode 416
+- Min Subset Sum Difference - Leetcode 1049
+- Count of Subset Sum - Leetcode 740
+- Target Sum - Leetcode 494
 
 Unbounded Knapsack
-- Rod Cutting
-- Coin Change
-- Min Coin Change
-- Max Ribbon Cut
+- Rod Cutting - Leetcode 343
+- Coin Change - Leetcode 322
+- Min Coin Change - Leetcode 518
+- Max Ribbon Cut - Leetcode 1416
 
 LCS (Longest Common Subsequence)
-- Longest Common Substring
-- Edit Distance
-- Box Stacking
-- Longest Increasing Subsequence
-- Longest Bitonic Subsequence
-- Subsequence Pattern Matching
-- Min Add/Delete to convert one
+- Longest Common Substring - Leetcode 718
+- Edit Distance - Leetcode 72
+- Box Stacking - Leetcode 1416
+- Longest Increasing Subsequence - Leetcode 300
+- Longest Bitonic Subsequence - Leetcode 1671
+- Subsequence Pattern Matching - Leetcode 44
+- Min Add/Delete to convert one - Leetcode 583
 
 Catalan Number
-- No. of BSTs
-- N Parentheses
-- Convex Polygons
-- Disjoint Chords
-- Catalan Triangle
-- Mountain Ranges
+- No. of BSTs - Leetcode 96
+- N Parentheses - Leetcode 22
+- Convex Polygons - Leetcode 1028
+- Disjoint Chords - Leetcode 1220
+- Catalan Triangle - Leetcode 1198
+- Mountain Ranges - Leetcode 1188
 
 MCM
-- Word Break
-- Palindromic Partitioning
-- Minimum Partitioning
+- Word Break - Leetcode 139
+- Palindromic Partitioning - Leetcode 132
+- Minimum Partitioning - Leetcode 1278
