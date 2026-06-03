@@ -1,0 +1,207 @@
+================================================================================
+                         KNAPSACK PROBLEMS - COMPLETE GUIDE
+================================================================================
+
+A knapsack problem asks: given a set of items (each with a weight and value),
+determine which items to include in a collection so that the total weight does
+not exceed a given capacity and the total value is maximized.
+
+--------------------------------------------------------------------------------
+1. FRACTIONAL KNAPSACK
+--------------------------------------------------------------------------------
+
+DEFINITION:
+  Items can be broken into fractions. You may take any portion of an item,
+  not just the whole thing.
+
+APPROACH:
+  Greedy Algorithm
+
+STEPS:
+  1. Calculate value-to-weight ratio (v/w) for each item.
+  2. Sort items in descending order of their ratio.
+  3. Pick items greedily — take as much of the highest-ratio item as possible.
+  4. If an item can be fully included, take it; otherwise take the fraction
+     that fills the remaining capacity.
+
+TIME COMPLEXITY:  O(n log n)  — due to sorting
+SPACE COMPLEXITY: O(1)
+
+EXAMPLE:
+  Capacity = 50 kg
+  Items: A(weight=10, value=60), B(weight=20, value=100), C(weight=30, value=120)
+
+  Ratios:  A = 6.0,  B = 5.0,  C = 4.0
+
+  Step 1: Take all of A  → weight used = 10, value = 60
+  Step 2: Take all of B  → weight used = 30, value = 160
+  Step 3: Take 20/30 of C → weight used = 50, value = 160 + 80 = 240
+
+  Maximum Value = 240
+
+KEY PROPERTY:
+  Greedy works here because partial items are allowed, so we never "waste"
+  capacity on a low-ratio item when a better one is available.
+
+
+--------------------------------------------------------------------------------
+2. 0-1 KNAPSACK
+--------------------------------------------------------------------------------
+
+DEFINITION:
+  Each item can either be taken entirely (1) or left behind (0).
+  No fractions allowed.
+
+APPROACH:
+  Dynamic Programming
+
+STEPS:
+  1. Create a 2D DP table: dp[i][w] = max value using first i items
+     with capacity w.
+  2. For each item i and capacity w:
+       - If item i's weight > w: dp[i][w] = dp[i-1][w]  (skip item)
+       - Else: dp[i][w] = max(dp[i-1][w], value[i] + dp[i-1][w - weight[i]])
+  3. Answer is dp[n][W] where n = number of items, W = total capacity.
+
+TIME COMPLEXITY:  O(n * W)   — n items, W = capacity
+SPACE COMPLEXITY: O(n * W)   — can be optimized to O(W) using 1D array
+
+EXAMPLE:
+  Capacity = 50 kg
+  Items: A(weight=10, value=60), B(weight=20, value=100), C(weight=30, value=120)
+
+  DP table (partial):
+    Evaluate taking/skipping each item at each capacity.
+    Best combination: Take A + C → weight = 40, value = 180
+                      Take A + B → weight = 30, value = 160
+                      Take B + C → weight = 50, value = 220  ← OPTIMAL
+
+  Maximum Value = 220
+
+  Note: Compare with Fractional Knapsack (240) — the greedy approach gives
+  more because fractions are allowed there.
+
+SPACE-OPTIMIZED 1D DP (Pseudocode):
+  dp[0..W] = 0
+  for each item i:
+      for w from W down to weight[i]:
+          dp[w] = max(dp[w], dp[w - weight[i]] + value[i])
+  return dp[W]
+
+  IMPORTANT: Iterate w in reverse to avoid using the same item twice.
+
+KEY PROPERTY:
+  Greedy does NOT work here. You must try all combinations via DP because
+  taking the best ratio item might block a better overall combination.
+
+
+--------------------------------------------------------------------------------
+3. UNBOUNDED KNAPSACK
+--------------------------------------------------------------------------------
+
+DEFINITION:
+  Each item can be taken any number of times (unlimited supply).
+  No restriction on how many copies of an item you pick.
+
+APPROACH:
+  Dynamic Programming (1D)
+
+STEPS:
+  1. Create a 1D DP array: dp[w] = max value achievable with capacity w.
+  2. For each capacity w from 1 to W:
+       For each item i:
+           If weight[i] <= w:
+               dp[w] = max(dp[w], dp[w - weight[i]] + value[i])
+  3. Answer is dp[W].
+
+TIME COMPLEXITY:  O(n * W)
+SPACE COMPLEXITY: O(W)
+
+EXAMPLE:
+  Capacity = 50 kg
+  Items: A(weight=10, value=60), B(weight=20, value=100), C(weight=30, value=120)
+
+  Since we can reuse items:
+    Take 5 × A → weight = 50, value = 300  ← OPTIMAL
+    Take 2 × A + 1 × B → weight = 40, value = 220
+    etc.
+
+  Maximum Value = 300
+
+  Note: Item A has the best ratio (6.0), so taking 5 of them is optimal.
+  Here the result matches what a greedy approach on ratio would suggest,
+  but DP is still necessary for correctness in general cases.
+
+KEY DIFFERENCE FROM 0-1:
+  Iterate w in FORWARD direction (not reverse).
+  This allows the same item to be reused multiple times within the same pass.
+
+  Pseudocode:
+    dp[0..W] = 0
+    for w from 1 to W:
+        for each item i:
+            if weight[i] <= w:
+                dp[w] = max(dp[w], dp[w - weight[i]] + value[i])
+    return dp[W]
+
+
+--------------------------------------------------------------------------------
+COMPARISON TABLE
+--------------------------------------------------------------------------------
+
+  Feature              | Fractional      | 0-1             | Unbounded
+  ---------------------|-----------------|-----------------|------------------
+  Item splitting       | Allowed         | Not allowed     | Not allowed
+  Item reuse           | Not allowed     | Not allowed     | Unlimited
+  Algorithm            | Greedy          | DP (2D or 1D)   | DP (1D)
+  Time Complexity      | O(n log n)      | O(n * W)        | O(n * W)
+  Space Complexity     | O(1)            | O(W) optimized  | O(W)
+  Greedy works?        | Yes             | No              | No (generally)
+  Optimal substructure | Yes             | Yes             | Yes
+  Overlapping subprob. | No              | Yes             | Yes
+
+
+--------------------------------------------------------------------------------
+COMMON VARIANTS & RELATED PROBLEMS
+--------------------------------------------------------------------------------
+
+  - Bounded Knapsack     : Each item has a limited count (between 0-1 and
+                           unbounded). Solved with DP + binary grouping trick.
+
+  - Multi-dimensional    : Multiple constraints (e.g., weight AND volume).
+                           DP table extended to extra dimensions.
+
+  - Multiple Knapsacks   : Multiple bags with different capacities.
+
+  - Subset Sum           : Special case of 0-1 Knapsack where value = weight
+                           and target = exact capacity.
+
+  - Coin Change          : Classic unbounded knapsack variant — minimize
+                           number of coins to make a target amount.
+
+  - Rod Cutting          : Unbounded knapsack variant — cut a rod to maximize
+                           revenue from selling pieces.
+
+
+--------------------------------------------------------------------------------
+TIPS & TRICKS
+--------------------------------------------------------------------------------
+
+  1. Always check if greedy is valid — it only works when items are divisible
+     (Fractional Knapsack).
+
+  2. For 0-1 Knapsack, iterate the weight dimension in REVERSE to avoid
+     picking the same item more than once.
+
+  3. For Unbounded Knapsack, iterate the weight dimension FORWARD to allow
+     reuse of the same item.
+
+  4. Memoization (top-down DP) is an alternative to tabulation (bottom-up DP)
+     and can be more intuitive to code for the 0-1 variant.
+
+  5. The 0-1 Knapsack is NP-complete in general (pseudo-polynomial via DP),
+     meaning it becomes infeasible for very large W.
+
+================================================================================
+                                  END OF FILE
+================================================================================
