@@ -45,3 +45,6 @@ int main()
   cout << lcsTab(str1, str2) << endl;
   return 0;
 }
+
+// leetcode 1143. Longest Common Subsequence
+//  https://leetcode.com/problems/longest-common-subsequence/submissions/2023885407
