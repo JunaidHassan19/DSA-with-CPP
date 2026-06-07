@@ -1,0 +1,135 @@
+================================================================
+                      CATALAN NUMBERS
+================================================================
+
+WHAT ARE CATALAN NUMBERS?
+--------------------------
+Catalan numbers are a sequence of natural numbers that appear in
+many counting problems in combinatorics. They are named after the
+Belgian mathematician Eugène Charles Catalan (1814–1894).
+
+The sequence begins:
+  C(0)  = 1
+  C(1)  = 1
+  C(2)  = 2
+  C(3)  = 5
+  C(4)  = 14
+  C(5)  = 42
+  C(6)  = 132
+  C(7)  = 429
+  C(8)  = 1430
+  C(9)  = 4862
+  C(10) = 16796
+  C(11) = 58786
+  C(12) = 208012
+  C(13) = 742900
+  C(14) = 2674440
+  C(15) = 9694845
+
+
+================================================================
+HOW TO FIND THE CATALAN NUMBER OF ANY NUMBER n
+================================================================
+
+There are three main methods:
+
+----------------------------------------------------------------
+METHOD 1: Direct Formula (using Binomial Coefficients)
+----------------------------------------------------------------
+
+         1       ( 2n )
+C(n) = ----- *  (    )
+        n + 1   (  n )
+
+Which expands to:
+
+          (2n)!
+C(n) = ----------
+       (n+1)! * n!
+
+EXAMPLE — Find C(4):
+  (2*4)! = 8! = 40320
+  (4+1)! = 5! = 120
+  4!     = 24
+  C(4) = 40320 / (120 * 24) = 40320 / 2880 = 14  ✓
+
+EXAMPLE — Find C(5):
+  (2*5)! = 10! = 3628800
+  (5+1)! = 6!  = 720
+  5!     = 120
+  C(5) = 3628800 / (720 * 120) = 3628800 / 86400 = 42  ✓
+
+
+----------------------------------------------------------------
+METHOD 2: Recursive Formula
+----------------------------------------------------------------
+
+C(0) = 1
+C(n) = SUM of C(i) * C(n-1-i)  for i = 0 to n-1
+
+Or equivalently:
+
+         2 * (2n - 1)
+C(n) = -------------- * C(n-1)
+            n + 1
+
+EXAMPLE — Build up from C(0):
+  C(0) = 1
+  C(1) = (2*1)/(1+1) * C(0) = 2/2 * 1 = 1
+  C(2) = (2*3)/(2+1) * C(1) = 6/3 * 1 = 2
+  C(3) = (2*5)/(3+1) * C(2) = 10/4 * 2 = 5
+  C(4) = (2*7)/(4+1) * C(3) = 14/5 * 5 = 14
+  C(5) = (2*9)/(5+1) * C(4) = 18/6 * 14 = 42  ✓
+
+
+----------------------------------------------------------------
+METHOD 3: Combinatorial / Ballot Problem Formula
+----------------------------------------------------------------
+
+C(n) = C(2n, n) - C(2n, n-1)
+
+Where C(a, b) is "a choose b" = a! / (b! * (a-b)!)
+
+EXAMPLE — Find C(3):
+  C(6,3) = 6!/(3!*3!) = 720/36 = 20
+  C(6,2) = 6!/(2!*4!) = 720/48 = 15
+  C(3)   = 20 - 15 = 5  ✓
+
+
+================================================================
+QUICK REFERENCE: STEP-BY-STEP TO FIND C(n)
+================================================================
+
+To find the Catalan number for any n:
+
+  Step 1: Calculate (2n)!
+  Step 2: Calculate (n+1)!
+  Step 3: Calculate n!
+  Step 4: Divide: (2n)! / ((n+1)! × n!)
+
+  That's your answer!
+
+
+================================================================
+WHERE CATALAN NUMBERS APPEAR IN REAL PROBLEMS
+================================================================
+
+Catalan numbers count:
+
+  * The number of ways to correctly match n pairs of parentheses.
+      e.g. n=3: ()()(), (())(), ()(()), (()()), ((()))  → 5 ways
+
+  * The number of distinct binary trees with n+1 leaves.
+
+  * The number of ways to triangulate a convex polygon with n+2 sides.
+
+  * The number of monotonic paths in an n×n grid that do not
+    cross above the diagonal.
+
+  * The number of ways a sequence of n+1 factors can be fully
+    parenthesized (the matrix chain multiplication problem).
+
+
+================================================================
+End of file
+================================================================
