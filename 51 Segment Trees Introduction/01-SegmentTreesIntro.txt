@@ -1,0 +1,130 @@
+================================================================================
+                        INTRODUCTION TO SEGMENT TREES
+================================================================================
+
+------------------------------------------------------------------------
+WHAT IS A SEGMENT TREE?
+------------------------------------------------------------------------
+
+A segment tree is a tree-based data structure used to store information
+about intervals, or "segments," of an array. It allows you to efficiently
+answer range queries and perform range updates on an array.
+
+The structure is a binary tree where:
+  - Each leaf node represents a single element of the array.
+  - Each internal node represents a segment (a contiguous subarray) and
+    stores some aggregated value over that segment (e.g., sum, minimum,
+    maximum, GCD, etc.).
+  - The root node represents the entire array.
+
+For an array of n elements, the segment tree has O(n) nodes and a height
+of O(log n).
+
+Example: For the array [2, 4, 1, 7, 3, 5], the sum segment tree looks like:
+
+                         [22]         <- sum of [0..5]
+                       /       \
+                  [14]           [8]  <- sum of [0..2], [3..5]
+                 /    \         /   \
+              [6]     [8]    [10]   [5] <- ...
+             /  \    /  \   /   \
+           [2] [4] [1] [7] [3] [5]   <- individual elements
+
+
+------------------------------------------------------------------------
+WHY USE A SEGMENT TREE?
+------------------------------------------------------------------------
+
+The problem segment trees solve is this: given an array of n elements,
+you want to repeatedly:
+  (1) Query: compute some function (sum, min, max, etc.) over a range [l, r]
+  (2) Update: modify one or more elements in the array
+
+A naive approach has these complexities:
+
+  Operation         | Naive Array   | Segment Tree
+  ------------------|---------------|-------------
+  Point update      | O(1)          | O(log n)
+  Range query       | O(n)          | O(log n)
+  Range update      | O(n)          | O(log n)*
+  Build             | O(n)          | O(n)
+
+  * With lazy propagation
+
+When you have many queries and updates, the O(n) per query of the naive
+approach becomes a bottleneck. Segment trees bring this down to O(log n)
+per operation, making problems that would time out with brute force
+feasible in competitive programming and real systems.
+
+
+------------------------------------------------------------------------
+WHEN SHOULD YOU USE A SEGMENT TREE?
+------------------------------------------------------------------------
+
+Use a segment tree when you need ALL of the following:
+  1. An array (or sequence) of values
+  2. Repeated range queries (sum, min, max, GCD, XOR, count, etc.)
+  3. Repeated updates (point updates or range updates)
+
+Common use cases:
+  - Range Sum Queries with point/range updates
+  - Range Minimum / Maximum Queries (RMQ)
+  - Counting inversions
+  - Interval scheduling and overlap problems
+  - Dynamic order statistics
+  - 2D segment trees for grid-based queries
+
+If you only need range queries with NO updates, a simpler prefix sum array
+or sparse table (for RMQ) may be enough.
+If you only need point queries with range updates, a difference array suffices.
+The segment tree shines when you need BOTH queries and updates frequently.
+
+
+------------------------------------------------------------------------
+CORE OPERATIONS
+------------------------------------------------------------------------
+
+1. BUILD
+   Construct the tree from an initial array in O(n) time by recursively
+   computing each node's value from its children.
+
+2. QUERY
+   To answer a range query [l, r], traverse the tree and combine values
+   from at most O(log n) nodes that together cover exactly [l, r].
+
+3. POINT UPDATE
+   To update a single element at index i, update the leaf and propagate
+   changes up to the root — O(log n) nodes total.
+
+4. RANGE UPDATE (with Lazy Propagation)
+   To update all elements in a range [l, r], use "lazy propagation" to
+   defer updates to child nodes until they are needed, keeping each
+   operation O(log n).
+
+
+------------------------------------------------------------------------
+COMPLEXITY SUMMARY
+------------------------------------------------------------------------
+
+  Time Complexity:
+    - Build:         O(n)
+    - Point Update:  O(log n)
+    - Range Query:   O(log n)
+    - Range Update:  O(log n)  [with lazy propagation]
+
+  Space Complexity:
+    - O(n) nodes (typically 4*n array space is allocated in practice)
+
+
+------------------------------------------------------------------------
+KEY INSIGHT
+------------------------------------------------------------------------
+
+The power of a segment tree comes from the divide-and-conquer structure:
+any range [l, r] in an array of n elements can be decomposed into at most
+O(log n) disjoint segments that already exist as nodes in the tree. So
+instead of iterating through every element in the range, you only visit
+a logarithmic number of precomputed nodes.
+
+This is the same reason binary search is fast: by halving the problem at
+each step, you reach the answer in log n steps instead of n.
