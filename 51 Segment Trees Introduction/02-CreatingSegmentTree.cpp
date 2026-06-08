@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-// Segment Tree implementation for sum queries
+// Segment Tree implementation for sum queries - tc: O(n) for building the tree, O(log n) for queries and updates
 class SegmentTree
 {
   vector<int> tree;
