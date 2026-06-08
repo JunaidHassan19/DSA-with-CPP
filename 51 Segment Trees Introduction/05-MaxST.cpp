@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-// Create a Segment Tree for maximum queries - tc: O(n) for building the tree, O(log n) for queries and updates
+// Maximum Segment Tree implementation for maximum queries - tc: O(n) for building the tree, O(log n) for queries
 class SegmentTree
 {
   vector<int> tree;
@@ -26,6 +26,27 @@ class SegmentTree
     tree[node] = max(tree[2 * node + 1], tree[2 * node + 2]);
   }
 
+  // Function to perform range maximum query on the segment tree
+  // tc: O(log n) for queries
+  int maxQuery(int qi, int qj, int si, int sj, int node)
+  {
+    if (qj < si || qi > sj)
+    {
+      return INT_MIN; // Return minimum integer for no overlap case
+    }
+
+    if (si >= qi && sj <= qj)
+    {
+      return tree[node]; // Return the value of the current node for complete overlap case
+    }
+
+    int mid = si + (sj - si) / 2;
+
+    int leftMax = maxQuery(qi, qj, si, mid, 2 * node + 1);
+    int rightMax = maxQuery(qi, qj, mid + 1, sj, 2 * node + 2);
+    return max(leftMax, rightMax);
+  }
+
 public:
   SegmentTree(vector<int> &nums)
   {
@@ -42,6 +63,12 @@ public:
     }
     cout << endl;
   }
+
+  // Public function to perform range maximum query on the segment tree
+  int rangeMaxQuery(int qi, int qj)
+  {
+    return maxQuery(qi, qj, 0, n - 1, 0);
+  }
 };
 
 int main()
@@ -50,5 +77,6 @@ int main()
 
   SegmentTree st(nums);
   st.printTree();
+  cout << "Maximum in range [2, 5]: " << st.rangeMaxQuery(2, 5) << endl;
   return 0;
 }
