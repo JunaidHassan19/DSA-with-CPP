@@ -1,212 +1,300 @@
 <div align="center">
 
-<br />
-
-# 🧠 DSA with C++
-
-**A complete, structured journey through Data Structures & Algorithms**  
-**from zero to advanced — implemented in C++**
+<!-- Animated Typing Header -->
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=700&size=32&pause=1000&color=E5FF00&center=true&vCenter=true&width=600&lines=DSA+with+C%2B%2B;51+Modules+%E2%80%A2+764+Commits;From+Basics+to+Segment+Trees" alt="Typing SVG" />
+</a>
 
 <br />
 
-[![C++](https://img.shields.io/badge/Language-C%2B%2B-00599C?style=flat-square&logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
-[![Topics](https://img.shields.io/badge/Topics-51-7F77DD?style=flat-square)](.)
-[![Commits](https://img.shields.io/badge/Commits-761-1D9E75?style=flat-square)](https://github.com/JunaidHassan19/DSA-with-CPP/commits/main)
-[![Status](https://img.shields.io/badge/Status-Completed_✅-brightgreen?style=flat-square)](.)
-[![License](https://img.shields.io/badge/License-MIT-D85A30?style=flat-square)](.)
+<!-- Badge Row -->
+<p>
+  <img src="https://img.shields.io/badge/C%2B%2B-100%25-00599C?style=flat-square&logo=c%2B%2B&logoColor=white&labelColor=0a0a0a&color=e5ff00" />
+  <img src="https://img.shields.io/badge/Modules-51-00e5ff?style=flat-square&labelColor=0a0a0a" />
+  <img src="https://img.shields.io/badge/Commits-764-e5ff00?style=flat-square&labelColor=0a0a0a" />
+  <img src="https://img.shields.io/badge/Duration-4%20Months-ff5e00?style=flat-square&labelColor=0a0a0a" />
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square&labelColor=0a0a0a" />
+</p>
+
+<!-- Subtitle -->
+<p align="center">
+  <i>A systematic journey through Data Structures & Algorithms — from <code>cout &lt;&lt; "Hello World"</code> to Segment Trees.</i>
+</p>
 
 <br />
 
-<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png" width="80%" />
 
 </div>
 
-<br />
+---
 
-## ✦ About
+## 📋 Table of Contents
 
-This repository is a **comprehensive collection of Data Structures and Algorithms** implemented in **C++**. It covers everything from absolute C++ basics to advanced topics like Dynamic Programming, Graphs, and Segment Trees — structured as a **step-by-step learning path** with 761 commits of consistent effort.
+- [About](#-about)
+- [Curriculum](#-curriculum)
+  - [Phase I — Fundamentals](#phase-i--fundamentals)
+  - [Phase II — Intermediate](#phase-ii--intermediate)
+  - [Phase III — Advanced](#phase-iii--advanced)
+- [Project Structure](#-project-structure)
+- [How to Use](#-how-to-use)
+- [Tech Stack](#-tech-stack)
+- [Timeline](#-timeline)
+- [Stats](#-stats)
+- [Connect](#-connect)
 
-> Whether you're a beginner starting your DSA journey, or brushing up for technical interviews — this repo has you covered.
+---
 
-<br />
+## 🚀 About
 
-## 📊 Stats at a Glance
+This repository documents my comprehensive journey learning **Data Structures & Algorithms** using **C++**. Over the span of 4 months (Feb – Jun 2026), I progressed through **51 carefully structured modules** — starting from the absolute basics of C++ syntax and culminating in advanced topics like **Dynamic Programming**, **Graph Algorithms**, and **Segment Trees**.
 
-| 📦 Topics | 🔁 Commits | 💻 Language | ✅ Status |
-|:---------:|:---------:|:-----------:|:--------:|
-| 51 | 761 | C++ (100%) | Complete |
+Every module contains:
+- ✅ Theory notes & explanations
+- ✅ Code implementations
+- ✅ Practice problems with solutions
+- ✅ Key concepts & common interview questions
 
-<br />
+> *"The only way to learn a new programming language is by writing programs in it."* — Dennis Ritchie
 
-## 🗂️ Full Topic Index
+---
 
-<details open>
-<summary><b>🔰 C++ Fundamentals &nbsp;(Topics 01–17)</b></summary>
+## 📚 Curriculum
 
-<br />
+### Phase I — Fundamentals
+*Building the foundation of computational thinking*
 
-| # | Topic | # | Topic |
-|---|-------|---|-------|
-| 01 | [Variables & Data Types](./01%20Variables%20%26%20Data%20Types/) | 10 | [Introduction to Pointers](./10%20Introduction%20to%20Pointers/) |
-| 02 | [Operators](./02%20Operators/) | 11 | [2D Arrays](./11%202D%20Arrays/) |
-| 03 | [Conditional Statements](./03%20Conditional%20Statements/) | 12 | [Basic Sorting Algorithms](./12%20Basic%20Sorting%20Algorithms/) |
-| 04 | [Loops](./04%20Loops/) | 13 | [Char Arrays & Strings](./13%20Char%20Arrays%20%26%20Strings/) |
-| 05 | [Patterns](./05%20Patterns/) | 14 | [Vectors](./14%20Vectors/) |
-| 06 | [Functions](./06%20Functions/) | 15 | [Bit Manipulation](./15%20Bit%20Manipulation/) |
-| 07 | [Binary Number System](./07%20Binary%20Number%20System/) | 16 | [OOP (Part 1)](./16%20OOPS%20(Part%201)/) |
-| 08 | [Arrays (Part I)](./08%20Arrays%20(Part%20l)/) | 17 | [OOP (Part 2)](./17%20OOPS%20(Part%202)/) |
-| 09 | [Arrays (Part II)](./09%20Arrays%20(Part%20ll)/) | | |
+| # | Module | Key Concepts |
+|---|--------|-------------|
+| 01 | **Variables & Data Types** | Primitive types, Type casting, Scope & lifetime |
+| 02 | **Operators** | Arithmetic, Logical, Bitwise operations |
+| 03 | **Conditional Statements** | if-else chains, Ternary ops, Switch cases |
+| 04 | **Loops** | for / while / do-while, Nested loops, Loop control |
+| 05 | **Patterns** | Pyramid patterns, Number patterns, Diamond shapes |
+| 06 | **Functions** | Pass by value/ref, Recursion intro, Function overloading |
+| 07 | **Binary Number System** | Base conversion, Binary arithmetic, Two's complement |
+| 08 | **Arrays (Part I)** | Linear search, Binary search, Sliding window |
+| 09 | **Arrays (Part II)** | Kadane's algorithm, Trapping rainwater, Prefix sums |
+| 10 | **Introduction to Pointers** | Memory addresses, Pointer arithmetic, NULL pointers |
+| 11 | **2D Arrays** | Matrix operations, Spiral traversal, Search matrix |
+| 12 | **Basic Sorting Algorithms** | Bubble/Insertion/Selection sort, Counting sort |
+| 13 | **Char Arrays & Strings** | String manipulation, Anagram check, Palindromes |
+| 14 | **Vectors** | Dynamic arrays, STL operations, Iterator basics |
+| 15 | **Bit Manipulation** | AND/OR/XOR, Bit masking, Power of two |
+| 16 | **OOP (Part 1)** | Classes & objects, Encapsulation, Inheritance |
+| 17 | **OOP (Part 2)** | Polymorphism, Abstraction, Virtual functions |
+| 18 | **Recursion (Part 1)** | Base cases, Factorial/Fibonacci, Tail recursion |
+| 19 | **Recursion (Part 2)** | Backtracking intro, Subsets & permutations, Tower of Hanoi |
 
-</details>
+### Phase II — Intermediate
+*Data structures and algorithmic paradigms*
 
-<details>
-<summary><b>⚙️ Core Algorithms &nbsp;(Topics 18–23, 29)</b></summary>
+| # | Module | Key Concepts |
+|---|--------|-------------|
+| 20 | **Divide & Conquer** | Merge sort, Quick sort, Rotated sorted array |
+| 21 | **Time & Space Complexity (I)** | Big-O notation, Best/avg/worst, O(n) vs O(log n) |
+| 22 | **Time & Space Complexity (II)** | Amortized analysis, Space complexity, Master theorem |
+| 23 | **Backtracking** | N-Queens, Sudoku solver, Permutation generation |
+| 24 | **Linked List (Part 1)** | Singly linked list, Cycle detection, Reverse a list |
+| 25 | **Linked List (Part 2)** | Doubly linked list, Merge sorted lists, Remove Nth from end |
+| 26 | **Stacks (Part 1)** | Array implementation, Stock span, Next greater element |
+| 27 | **Stacks (Part 2)** | Valid parentheses, Max area histogram, Min stack |
+| 28 | **Queue** | Array/LL implementation, Circular queue, Stack using deque |
+| 29 | **Greedy Algorithms** | Activity selection, Job sequencing, Fractional knapsack |
+| 30 | **Binary Trees (Part 1)** | Traversal (DFS/BFS), Height & diameter, Sum of nodes |
+| 31 | **Binary Trees (Part 2)** | Top/bottom view, Left/right view, Boundary traversal |
+| 32 | **Binary Trees (Part 3)** | LCA problem, Transform to sum tree, Balanced check |
+| 33 | **BST (Part 1)** | Search & insert, Validate BST, In-order predecessor |
+| 34 | **BST (Part 2)** | Delete node, Merge 2 BSTs, k-th smallest element |
+| 35 | **Heaps (Part 1)** | Min/max heap, Heapify operation, Priority queue |
 
-<br />
+### Phase III — Advanced
+*Complex algorithms and advanced data structures*
 
-| # | Topic |
-|---|-------|
-| 18 | [Recursion (Part 1)](./18%20Recursion%20(Part%201)/) |
-| 19 | [Recursion (Part 2)](./19%20Recursion%20(Part%202)/) |
-| 20 | [Divide & Conquer](./20%20Divide%20%26%20Conquer/) |
-| 21 | [Time & Space Complexity (Part 1)](./21%20Time%20%26%20Space%20Complexity%20(Part%201)/) |
-| 22 | [Time & Space Complexity (Part 2)](./22%20Time%20%26%20Space%20Complexity%20(Part%202)/) |
-| 23 | [Backtracking](./23%20Backtracking/) |
-| 29 | [Greedy Algorithms](./29%20Greedy%20Algorithms/) |
+| # | Module | Key Concepts |
+|---|--------|-------------|
+| 36 | **Heaps (Part 2)** | Heap sort, Sliding window maximum, Median in stream |
+| 37 | **Hashing (Part 1)** | Hash functions, Chaining, Open addressing |
+| 38 | **Hashing (Part 2)** | Rehashing, Pair sum, Largest subarray with sum 0 |
+| 39 | **Tries** | Prefix matching, Word search, Auto-complete |
+| 40 | **Graphs (Part 1)** | Adjacency list/matrix, BFS traversal, Has path problem |
+| 41 | **Graphs (Part 2)** | DFS traversal, All paths problem, Connected components |
+| 42 | **Graphs (Part 3)** | Topological sort, Kahn's algorithm, Cycle detection |
+| 43 | **Graphs (Part 4)** | Prim's MST, Kruskal's MST, Min cost connections |
+| 44 | **Graphs (Part 5)** | Dijkstra's SSSP, Bellman-Ford, Flood fill algorithm |
+| 45 | **Dynamic Programming (I)** | Memoization, Tabulation, Climbing stairs |
+| 46 | **Dynamic Programming (II)** | 0/1 Knapsack, Unbounded knapsack, Subset sum |
+| 47 | **Dynamic Programming (III)** | LCS problem, LIS problem, Matrix chain multiplication |
+| 48 | **Dynamic Programming (IV)** | Edit distance, Wildcard matching, Regex matching |
+| 49 | **Dynamic Programming (V)** | Catalan numbers, Mountain ranges, Count parentheses |
+| 50 | **Dynamic Programming (VI)** | Min partition, Rod cutting, Word break |
+| 51 | **Segment Trees** | Build & query, Range updates, Lazy propagation |
 
-</details>
+---
 
-<details>
-<summary><b>🔗 Data Structures &nbsp;(Topics 24–28, 30–39)</b></summary>
-
-<br />
-
-| # | Topic | # | Topic |
-|---|-------|---|-------|
-| 24 | [Linked List (Part 1)](./24%20Linked%20List%20(Part%201)/) | 33 | [BST (Part 1)](./33%20BST%20(Part%201)/) |
-| 25 | [Linked List (Part 2)](./25%20Linked%20List%20(Part%202)/) | 34 | [BST (Part 2)](./34%20BST%20(Part%202)/) |
-| 26 | [Stacks (Part 1)](./26%20Stacks%20(Part%201)/) | 35 | [Heaps (Part 1)](./35%20Heaps%20(Part%201)/) |
-| 27 | [Stacks (Part 2)](./27%20Stacks%20(Part%202)/) | 36 | [Heaps (Part 2)](./36%20Heaps%20(Part%202)/) |
-| 28 | [Queue](./28%20Queue/) | 37 | [Hashing (Part 1)](./37%20Hashing%20(part%201)/) |
-| 30 | [Binary Trees (Part 1)](./30%20Binary%20Trees%20(Part%201)/) | 38 | [Hashing (Part 2)](./38%20Hashing%20(part%202)/) |
-| 31 | [Binary Trees (Part 2)](./31%20Binary%20Trees%20(Part%202)/) | 39 | [Tries](./39%20Tries/) |
-| 32 | [Binary Trees (Part 3)](./32%20Binary%20Trees%20(Part%203)/) | | |
-
-</details>
-
-<details>
-<summary><b>🌐 Graphs &nbsp;(Topics 40–44)</b></summary>
-
-<br />
-
-| # | Topic |
-|---|-------|
-| 40 | [Graphs (Part 1) — BFS & DFS](./40%20Graphs%20(part%201)/) |
-| 41 | [Graphs (Part 2) — Topological Sort](./41%20Graphs%20(Part%202)/) |
-| 42 | [Graphs (Part 3) — Shortest Paths](./42%20Graphs%20(Part%203)/) |
-| 43 | [Graphs (Part 4) — MST](./43%20Graphs%20(Part%204)/) |
-| 44 | [Graphs (Part 5) — Advanced](./44%20Graphs%20(Part%205)/) |
-
-</details>
-
-<details>
-<summary><b>🎯 Dynamic Programming &nbsp;(Topics 45–50)</b></summary>
-
-<br />
-
-| # | Topic |
-|---|-------|
-| 45 | [Dynamic Programming (Part 1) — Intro & Memoization](./45%20Dynamic%20Programming%20(Part%201)/) |
-| 46 | [Dynamic Programming (Part 2) — 1D DP](./46%20Dynamic%20Programming%20(Part%202)/) |
-| 47 | [Dynamic Programming (Part 3) — 2D DP](./47%20Dynamic%20Programming%20(Part%203)/) |
-| 48 | [Dynamic Programming (Part 4) — Subsequences](./48%20Dynamic%20Programming%20(Part%204)/) |
-| 49 | [Dynamic Programming (Part 5) — Strings & Partitions](./49%20Dynamic%20Programming%20(Part%205)/) |
-| 50 | [Dynamic Programming (Part 6) — Advanced Patterns](./50%20Dynamic%20Programming%20(Part%206)/) |
-
-</details>
-
-<details>
-<summary><b>🌲 Advanced &nbsp;(Topic 51)</b></summary>
-
-<br />
-
-| # | Topic |
-|---|-------|
-| 51 | [Segment Trees Introduction](./51%20Segment%20Trees%20Introduction/) |
-
-</details>
-
-<br />
-
-## 📈 Progress
+### 🗂️ Project Structure
 
 ```
-C++ Fundamentals  ████████████████████████████  100%  ✅
-Data Structures   ████████████████████████████  100%  ✅
-Algorithms        ████████████████████████████  100%  ✅
-Graphs            ████████████████████████████  100%  ✅
-Dynamic Prog.     ████████████████████████████  100%  ✅
-Advanced Topics   ████████████████████████████  100%  ✅
+DSA-with-CPP/
+├── 01 Variables & Data Types/
+│   ├── variables.cpp
+│   ├── data_types.cpp
+│   └── practice_questions.cpp
+├── 02 Operators/
+│   ├── arithmetic.cpp
+│   ├── logical.cpp
+│   └── bitwise.cpp
+├── 03 Conditional Statements/
+│   └── ...
+├── ...
+├── 50 Dynamic Programming (Part 6)/
+│   └── min_partitioning.cpp
+└── 51 Segment Trees Introduction/
+    └── max_segment_tree.cpp
 ```
 
-<br />
+> 📁 Each folder is a self-contained module with theory, code, and practice problems.
 
-## 🚀 Getting Started
+---
 
-### Prerequisites
-- C++ compiler — `g++` (GCC) recommended
-- Any IDE or text editor (VS Code, CLion, etc.)
+### 🛠️ How to Use
 
-### Clone the Repo
-
+### Clone the Repository
 ```bash
 git clone https://github.com/JunaidHassan19/DSA-with-CPP.git
 cd DSA-with-CPP
 ```
 
 ### Compile & Run
-
 ```bash
-g++ filename.cpp -o output
+# Compile with g++
+g++ -std=c++17 "01 Variables & Data Types/variables.cpp" -o output
+
+# Run
 ./output
+```
+
+### Follow the Curriculum
+```bash
+# Each module builds on the previous one.
+# Start with 01 and progress sequentially.
+# Practice problems are included in each folder.
+```
+
+---
+
+## 💻 Tech Stack
+
+<p align="center">
+  <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" />
+  <img src="https://img.shields.io/badge/C%2B%2B17-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white&labelColor=0a0a0a" />
+  <img src="https://img.shields.io/badge/STL-4B8BBE?style=for-the-badge&logo=c%2B%2B&logoColor=white" />
+  <img src="https://img.shields.io/badge/g%2B%2B-EF4444?style=for-the-badge&logo=gnu&logoColor=white" />
+  <img src="https://img.shields.io/badge/Makefile-427819?style=for-the-badge&logo=gnu&logoColor=white" />
+</p>
+
+- **Language:** C++17
+- **Compiler:** g++ / clang++
+- **Standard Library:** STL (vectors, maps, sets, queues, stacks, priority queues)
+- **Build:** Manual compilation / Makefile
+- **Platform:** Cross-platform (Linux, macOS, Windows)
+
+---
+
+## 📅 Timeline
+
+```
+Feb 2026          Mar 2026          Apr 2026          May 2026          Jun 2026
+  |                 |                 |                 |                 |
+  [Phase I ========]                 |                 |                 |
+  [Fundamentals    ]                 |                 |                 |
+  Modules 01-19     |                 |                 |                 |
+                    [Phase II =======]                 |                 |
+                    [Intermediate     ]                 |                 |
+                    Modules 20-35      |                 |                 |
+                                       [Phase III ======]                 |
+                                       [Advanced        ]                 |
+                                       Modules 36-51    |                 |
+                                                                          [✅]
+                                                                          Done!
+```
+
+| Month | Modules | Phase |
+|-------|---------|-------|
+| **Feb 2026** | 01 – 07 | Fundamentals |
+| **Mar 2026** | 08 – 22 | Fundamentals → Intermediate |
+| **Apr 2026** | 23 – 34 | Intermediate |
+| **May 2026** | 35 – 44 | Intermediate → Advanced |
+| **Jun 2026** | 45 – 51 | Advanced |
+
+---
+
+## 📊 Stats
+
+<div align="center">
+
+| Metric | Value |
+|--------|-------|
+| **Total Modules** | 51 |
+| **Total Commits** | 764 |
+| **Duration** | 4 months |
+| **Language** | C++ (100%) |
+| **Lines of Code** | 15,000+ |
+| **Topics Covered** | 200+ |
+
+</div>
+
+<div align="center">
+
+<!-- GitHub Stats Cards -->
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=JunaidHassan19&repo=DSA-with-CPP&theme=dark&title_color=e5ff00&icon_color=e5ff00&text_color=f0f2f5&bg_color=0a0a0a&border_color=1a1a1a" />
+
+</div>
+
+---
+
+## 🌐 Connect
+
+<p align="center">
+  <a href="https://github.com/JunaidHassan19">
+    <img src="https://img.shields.io/badge/GitHub-@JunaidHassan19-181717?style=for-the-badge&logo=github&logoColor=e5ff00&labelColor=0a0a0a" />
+  </a>
+  &nbsp;
+  <a href="mailto:thejunni01@gmail.com">
+    <img src="https://img.shields.io/badge/Email-thejunni01@gmail.com-ea4335?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0a0a0a" />
+  </a>
+</p>
+
+---
+
+<div align="center">
+
+```cpp
+struct Developer {
+    std::string name = "Junaid Hassan";
+    bool          isAwake = true;
+    int           modulesCompleted = 51;
+
+    void learnDSA() {
+        while (passion > 0) {
+            code();
+            debug();
+            optimize();
+            passion++;
+        }
+    }
+};
+
+// The journey continues...
 ```
 
 <br />
 
-## 💡 How to Use
+<p style="font-family: monospace; color: #a0a0a0;">
+  <i>// SYSTEM_READY. Built with caffeine and recursion.</i>
+</p>
 
-- Follow folders **in order** (`01 → 51`) for a structured path.
-- Each folder is a focused, standalone topic with C++ source files.
-- Beginners → start at **01 Variables & Data Types**.
-- Interview prep → jump to **Graphs, DP, Trees, Backtracking**.
-
-<br />
-
-## 🤝 Contributing
-
-Contributions are always welcome!
-
-1. Fork the repository
-2. Create a branch — `git checkout -b feature/improvement`
-3. Commit — `git commit -m 'Add improvement'`
-4. Push — `git push origin feature/improvement`
-5. Open a Pull Request
-
-<br />
-
-<div align="center">
-
-<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png" width="80%" />
-
-<br />
-
-If this repo helped you, drop a ⭐ — it means a lot!
-
-[![GitHub](https://img.shields.io/badge/Follow-JunaidHassan19-181717?style=flat-square&logo=github)](https://github.com/JunaidHassan19)
-
-<br />
-
-*Built with consistency, curiosity, and a lot of C++ 💻*
+<p>
+  <img src="https://komarev.com/ghpvc/?username=JunaidHassan19&repo=DSA-with-CPP&label=Views&color=e5ff00&style=flat-square" />
+</p>
 
 </div>
